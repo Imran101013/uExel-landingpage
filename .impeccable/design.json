@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-05T00:00:00.000Z",
+  "title": "Design System: uExel",
+  "extensions": {
+    "colorMeta": {
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "#0b7ec9",
+        "tonalRamp": ["#041f30", "#063a56", "#08557c", "#0a70a2", "#0b7ec9", "#3a9bd6", "#7fc0e6", "#cfe8f7"]
+      },
+      "signal-blue-btn": {
+        "role": "primary-on-fill",
+        "displayName": "Signal Blue (Button)",
+        "canonical": "#0972b8",
+        "tonalRamp": ["#031c2c", "#053450", "#074c74", "#086598", "#0972b8", "#3593c9", "#78b9df", "#c9e2f2"]
+      },
+      "signal-blue-dark": {
+        "role": "primary-hover",
+        "displayName": "Signal Blue (Dark)",
+        "canonical": "#075a93",
+        "tonalRamp": ["#02141f", "#04263a", "#053855", "#064970", "#075a93", "#2f7fb0", "#75abcd", "#c6dfee"]
+      },
+      "deep-navy": {
+        "role": "secondary",
+        "displayName": "Deep Navy",
+        "canonical": "#0d3a5c",
+        "tonalRamp": ["#040f18", "#081d2e", "#0b2a44", "#0e3352", "#0d3a5c", "#3a5f7c", "#7d97ac", "#c8d5de"]
+      },
+      "midnight-navy": {
+        "role": "secondary-deep",
+        "displayName": "Midnight Navy",
+        "canonical": "#0a2e49",
+        "tonalRamp": ["#020c14", "#051625", "#071f34", "#082742", "#0a2e49", "#33556d", "#7691a2", "#c4d3dc"]
+      },
+      "near-black": {
+        "role": "neutral-surface-dark",
+        "displayName": "Near-Black",
+        "canonical": "#0a0d11",
+        "tonalRamp": ["#000000", "#050608", "#0a0d11", "#1c2027", "#3a4048", "#5c636c", "#8b929a", "#c9cdd2"]
+      },
+      "ink": {
+        "role": "neutral-text",
+        "displayName": "Ink",
+        "canonical": "#0b0f14",
+        "tonalRamp": ["#000000", "#060709", "#0b0f14", "#1d2129", "#3b414b", "#5d646e", "#8c929c", "#cacdd3"]
+      },
+      "frost-sky": {
+        "role": "neutral-surface-light",
+        "displayName": "Frost Sky",
+        "canonical": "#eaf4fd",
+        "tonalRamp": ["#0a1b26", "#1c3a4d", "#3a6076", "#6b93a5", "#a7c7d5", "#d3e6ee", "#eaf4fd", "#f8fbfe"]
+      },
+      "soft-sky": {
+        "role": "neutral-border-accent",
+        "displayName": "Soft Sky",
+        "canonical": "#cfe6fa",
+        "tonalRamp": ["#092635", "#194456", "#376a7d", "#6597a8", "#9dc0cf", "#cfe6fa", "#e4f2fc", "#f5fafd"]
+      },
+      "offwhite": {
+        "role": "neutral-surface",
+        "displayName": "Offwhite",
+        "canonical": "#f5f8fc",
+        "tonalRamp": ["#14161a", "#2b2e33", "#54585f", "#83878e", "#b4b8bd", "#dcdfe3", "#f5f8fc", "#fbfcfe"]
+      },
+      "slate": {
+        "role": "neutral-text-body",
+        "displayName": "Slate",
+        "canonical": "#5b6472",
+        "tonalRamp": ["#0e1013", "#1e2126", "#333740", "#484d57", "#5b6472", "#818994", "#aeb4bb", "#dadde0"]
+      },
+      "steel-gray": {
+        "role": "neutral-text-secondary",
+        "displayName": "Steel Gray",
+        "canonical": "#8b96a3",
+        "tonalRamp": ["#171a1d", "#2c3136", "#494f57", "#666d76", "#8b96a3", "#a9b2bc", "#c7cdd4", "#e5e8ec"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, paired with the Signal Blue arrow glyph." },
+      "title": { "displayName": "Title", "purpose": "Card and flip-card titles, tight leading." },
+      "body": { "displayName": "Body", "purpose": "Default paragraph copy." },
+      "label": { "displayName": "Label", "purpose": "Eyebrow micro-copy, uppercase, wide letter-spacing." }
+    },
+    "shadows": [
+      { "name": "cta-glow", "value": "0 10px 30px -8px rgba(11, 126, 201, 0.55)", "purpose": "Colored glow under the primary CTA button." },
+      { "name": "card-lift", "value": "0 30px 60px -25px rgba(11, 15, 20, 0.25)", "purpose": "Ambient diffuse lift under flip-cards and similar elevated cards." },
+      { "name": "popover-lift", "value": "0 20px 40px -20px rgba(11, 15, 20, 0.3)", "purpose": "Floating dropdown/popover panels (e.g. budget select)." }
+    ],
+    "motion": [
+      { "name": "flip-ease", "value": "transform 1s ease", "purpose": "3D card flip on the We Work With service cards." },
+      { "name": "btn-ease", "value": "transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease", "purpose": "Default button hover/press transition." },
+      { "name": "accordion-ease", "value": "grid-template-rows 0fr -> 1fr", "purpose": "Featured Work row expand/collapse." }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "980px" },
+      { "name": "mobile", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA action ('Book A Call'). Pill-shaped, Signal Blue (Button) fill, tinted glow shadow.",
+      "html": "<button class=\"ds-btn-primary\">Book A Call</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 16px 34px; border-radius: 999px; border: none; cursor: pointer; background: #0972b8; color: #fff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 0 10px 30px -8px rgba(11, 126, 201, 0.55); transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease; } .ds-btn-primary:hover { background: #075a93; transform: translateY(-2px); } .ds-btn-primary:focus-visible { outline: 2px solid #7fc0e6; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action on light surfaces.",
+      "html": "<button class=\"ds-btn-ghost\">Learn More</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; padding: 16px 34px; border-radius: 999px; border: none; cursor: pointer; background: #fff; color: #0b0f14; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.25s ease; } .ds-btn-ghost:hover { background: #eaf4fd; } .ds-btn-ghost:focus-visible { outline: 2px solid #0972b8; outline-offset: 2px; }"
+    },
+    {
+      "name": "Data Tag Chip",
+      "kind": "chip",
+      "refersTo": "tag-chip",
+      "description": "Sharp-cornered capability label, deliberately opposed to the pill buttons.",
+      "html": "<span class=\"ds-tag-chip\">MVP Development</span>",
+      "css": ".ds-tag-chip { display: inline-block; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding: 9px 16px; border-radius: 0; background: #fff; color: #0d3a5c; border: 1px solid #cfe6fa; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Contact form field shell; no distinct focus treatment currently exists in source.",
+      "html": "<div class=\"ds-field\"><input class=\"ds-field-input\" type=\"text\" placeholder=\"First Name\" /></div>",
+      "css": ".ds-field { background: #fff; border-radius: 14px; border: 1px solid rgba(11, 15, 20, 0.1); padding: 18px 22px; } .ds-field-input { width: 100%; border: none; outline: none; background: transparent; font-family: 'Inter', sans-serif; font-size: 16px; color: #0b0f14; } .ds-field-input::placeholder { color: #8b96a3; }"
+    },
+    {
+      "name": "Sticky Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header navigation item on the translucent, blurred sticky header.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">Services</a></nav>",
+      "css": ".ds-nav { background: rgba(10, 13, 17, 0.92); padding: 16px 24px; border-radius: 10px; } .ds-nav-link { font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #d7dce1; text-decoration: none; transition: color 0.2s ease; } .ds-nav-link:hover { color: #0b7ec9; }"
+    },
+    {
+      "name": "Tilted Expertise Card",
+      "kind": "card",
+      "refersTo": "signature-tilted-card",
+      "description": "Signature component: rotated card (±8°) used for browsable expertise/option groupings. Dark variant shown.",
+      "html": "<div class=\"ds-exp-card ds-exp-card--dark\"><h3 class=\"ds-exp-card-title\">AI &amp; Automation<br /><span class=\"ds-exp-card-num\">002</span></h3><p class=\"ds-exp-card-copy\">We build intelligent automation and AI-powered features using modern LLM and machine-learning tooling.</p></div>",
+      "css": ".ds-exp-card { width: 400px; height: 500px; border-radius: 12px; padding: 32px 30px; display: flex; flex-direction: column; font-family: 'Inter', sans-serif; } .ds-exp-card--dark { background: linear-gradient(160deg, #0d3a5c, #061a2b); color: #fff; transform: rotate(8deg); } .ds-exp-card-title { font-family: 'Abel', sans-serif; font-size: 32px; line-height: 1.05; margin: 0 0 16px; text-transform: uppercase; } .ds-exp-card-num { color: #5fb3e6; } .ds-exp-card-copy { font-size: 14px; line-height: 1.5; color: #c7cdd4; }"
+    },
+    {
+      "name": "Flip Card",
+      "kind": "custom",
+      "refersTo": "flip-card",
+      "description": "3D-flipping service card (front: navy gradient; back: white detail face). Front face shown at rest.",
+      "html": "<div class=\"ds-flip-card\"><div class=\"ds-flip-front\"><div class=\"ds-flip-num\">002.</div><div class=\"ds-flip-title\">Enterprises</div></div></div>",
+      "css": ".ds-flip-card { perspective: 1600px; min-height: 440px; width: 320px; } .ds-flip-front { position: relative; height: 100%; border-radius: 10px; padding: 38px 34px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; overflow: hidden; box-shadow: 0 30px 60px -25px rgba(11, 15, 20, 0.25); background: radial-gradient(circle at 30% 20%, rgba(11,126,201,0.9), transparent 55%), radial-gradient(circle at 75% 70%, rgba(13,58,92,0.95), transparent 60%), linear-gradient(135deg, #0a2e49, #061a2b); } .ds-flip-num { font-family: 'Abel', sans-serif; font-size: 30px; color: #5fb3e6; } .ds-flip-title { font-family: 'Abel', sans-serif; font-size: 32px; margin-top: 2px; }"
+    },
+    {
+      "name": "Accordion Row",
+      "kind": "custom",
+      "refersTo": "work-row",
+      "description": "Featured Work list row: no card chrome, expands via grid-template-rows transition.",
+      "html": "<div class=\"ds-work-row\"><div class=\"ds-work-name\">ABC</div><div class=\"ds-work-meta\">USA</div><div class=\"ds-work-meta\">Product Design</div><div class=\"ds-work-idx\">001</div><div class=\"ds-work-arrow\">↘</div></div>",
+      "css": ".ds-work-row { display: grid; grid-template-columns: 1fr auto auto auto auto; align-items: center; gap: 24px; padding: 32px 0; border-top: 1px solid rgba(255,255,255,0.08); background: #0a0d11; color: #fff; } .ds-work-name { font-family: 'Abel', sans-serif; font-size: 40px; text-transform: uppercase; } .ds-work-meta { font-family: 'Inter', sans-serif; font-size: 14px; color: #c7cdd4; } .ds-work-idx, .ds-work-arrow { font-family: 'Abel', sans-serif; font-size: 18px; color: #7d8590; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blueprint Desk",
+    "overview": "uExel's page reads like a confident engineering firm's own materials: a near-black control-room base, one signal-blue accent doing all the pointing, and condensed technical numerals stamped on everything from stat counters to case-study indices. The signature move is literal — cards for expertise areas and service categories sit tilted at odd angles (-8 deg/+8 deg), as if scattered spec sheets on a drafting table rather than snapped into a rigid grid. A canvas-particle animation dissolves and reforms the hero's closing word, the one moment of overt spectacle in an otherwise disciplined, restrained system. The system rejects decorative color and heavy shadow: outside the signal-blue accent and its navy-gradient companions, everything is near-black, white, or muted gray, and most surfaces sit flat with soft diffuse elevation reserved for a handful of interactive surfaces.",
+    "keyCharacteristics": [
+      "Near-black + navy base, one signal-blue accent, no other hues",
+      "Abel (condensed uppercase display) for numerals and headings, Inter for body copy",
+      "Tilted \"fanned\" cards as the recurring signature motif",
+      "Pill-shaped CTAs contrast deliberately with sharp-cornered data tags",
+      "Flat by default; shadow appears only on a small set of elevated interactive surfaces"
+    ],
+    "rules": [
+      { "name": "The One Accent Rule", "body": "Signal Blue is the only hue in the system besides navy and near-black/white. Reach for Signal Blue or a tint of it before introducing anything else.", "section": "colors" },
+      { "name": "The Text-on-Fill Rule", "body": "Any white text sitting directly on a blue fill uses the darker Signal Blue (Button) variant (#0972b8), never plain Signal Blue (#0b7ec9).", "section": "colors" },
+      { "name": "The All-Caps Numerals Rule", "body": "Every numeral meant to carry visual weight sits in Abel and is treated as a graphic element, never rendered in Inter.", "section": "typography" },
+      { "name": "The Flat-First Rule", "body": "Default every new surface to no shadow. Add a named shadow only when the element genuinely floats above other content.", "section": "elevation" },
+      { "name": "The Pill-or-Sharp Rule", "body": "A rounded element is either fully pill-shaped (actions) or sits at the established 10-14px card/field scale (containers). Data chips are the one deliberate 0px exception.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do keep Signal Blue as the only accent hue; reach for a tint/shade of it before introducing a new color.",
+      "Do use the darker Signal Blue (Button) variant, not plain Signal Blue, anywhere white text sits directly on a blue fill.",
+      "Do keep the tilted-card motif (±8°, alternating direction) for any new browsable-options card grouping.",
+      "Do default new surfaces to no shadow; add a named shadow only for genuinely floating/elevated elements.",
+      "Do use Abel for numerals and headings, Inter for everything read as a sentence."
+    ],
+    "donts": [
+      "Don't introduce a second accent hue without a deliberate decision — the system currently has none, on purpose.",
+      "Don't use a mid-range border-radius (6-8px) on any container; commit to either a full pill or the established 10-14px scale.",
+      "Don't apply the tilted-card treatment to content that isn't a browsable grouping of options.",
+      "Don't treat --radius: 22px as a real, load-bearing token — it's currently unused; resolve or remove it rather than building on it."
+    ]
+  }
+}

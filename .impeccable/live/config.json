@@ -1,0 +1,6 @@
+{
+  "files": ["uexel-landing.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}
