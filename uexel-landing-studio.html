@@ -789,69 +789,118 @@
 
       /* ===== FOOTER ===== */
       footer {
-        padding: 110px 0 50px;
-        border-top: 1px solid var(--line);
+        position: relative;
+        overflow: hidden;
+        padding: 100px 0 40px;
+        background: linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+        color: rgba(255, 255, 255, 0.75);
+      }
+      footer .drift {
+        opacity: 0.4;
+      }
+      footer .diamond-ghost {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .footer-top {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(240px, 340px) 1fr;
+        gap: 60px;
+        padding-bottom: 56px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+      }
+      .footer-logo {
+        align-self: flex-start;
+        padding: 10px 16px;
+      }
+      .footer-logo img {
+        height: 40px;
       }
       .footer-sig {
         font-family: var(--font-display);
-        font-size: clamp(30px, 5vw, 56px);
-        color: var(--ink);
-        line-height: 1.02;
-        margin-bottom: 60px;
+        font-size: clamp(26px, 3.2vw, 38px);
+        color: #ffffff;
+        line-height: 1.18;
+        margin: 0;
       }
       .footer-sig .accent {
         color: var(--blue);
       }
-      .footer-specialties {
-        font-family: var(--font-body);
-        font-size: 15px;
-        letter-spacing: 0.02em;
-        color: var(--steel);
-        margin-bottom: 60px;
-      }
-      .footer-specialties span {
-        color: var(--steel-dim);
-        margin: 0 6px;
-      }
-      .footer-cols {
+      .footer-social {
         display: flex;
-        justify-content: space-between;
-        gap: 40px;
         flex-wrap: wrap;
-        padding-bottom: 46px;
-        border-bottom: 1px solid var(--line);
+        gap: 20px;
+      }
+      .footer-social a {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: rgba(255, 255, 255, 0.7);
+        transition: color 0.2s ease;
+      }
+      .footer-social a:hover {
+        color: var(--blue);
+      }
+      .footer-link-cols {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 30px;
       }
       .footer-col h4 {
         font-family: var(--font-body);
         font-size: 12px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--steel-dim);
-        margin: 0 0 16px;
+        color: #8b96a3;
+        margin: 0 0 18px;
         font-weight: 600;
       }
       .footer-col a,
       .footer-col p {
         display: block;
         font-size: 14.5px;
-        color: var(--steel);
+        color: rgba(255, 255, 255, 0.72);
         margin: 0 0 10px;
+      }
+      .footer-col a {
+        transition: color 0.2s ease;
       }
       .footer-col a:hover {
         color: var(--blue);
       }
+      .footer-specialties {
+        position: relative;
+        z-index: 1;
+        font-family: var(--font-body);
+        font-size: 14px;
+        letter-spacing: 0.02em;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 40px;
+      }
+      .footer-specialties span {
+        color: #5b6472;
+        margin: 0 6px;
+      }
       .footer-bottom {
+        position: relative;
+        z-index: 1;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 30px;
+        padding-top: 24px;
         flex-wrap: wrap;
         gap: 14px;
         font-size: 13px;
-        color: var(--steel-dim);
+        color: rgba(255, 255, 255, 0.55);
       }
       .footer-bottom a {
-        color: var(--steel);
+        color: rgba(255, 255, 255, 0.7);
       }
 
       /* ===== scroll progress dot ===== */
@@ -917,14 +966,14 @@
       }
       .nav-links a:hover,
       .nav-links a.active {
-        color: var(--ink);
+        color: var(--blue);
       }
       .nav-links a.active::after {
         content: "";
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 18px;
+        bottom: -2px;
         height: 2px;
         background: var(--blue);
         box-shadow: 0 0 8px rgba(11, 126, 201, 0.6);
@@ -1406,6 +1455,13 @@
         .services-visual {
           display: none;
         }
+        .footer-top {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 40px;
+        }
+        .footer-link-cols {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
       }
       @media (max-width: 640px) {
         .services-grid {
@@ -1413,6 +1469,13 @@
         }
         .cap-grid {
           grid-template-columns: minmax(0, 1fr);
+        }
+        .footer-link-cols {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 26px;
+        }
+        footer .diamond-ghost {
+          display: none;
         }
       }
       @media (max-width: 640px) {
@@ -1451,26 +1514,6 @@
     </style>
   </head>
   <body>
-    <!--
-      THESIS: uExel's page told in dogstudio.co's editorial-agency grammar —
-      one continuous near-black scroll, an oversized serif headline statement,
-      and ghost-outlined case-study names — refusing the tilted drafting-desk
-      motif for cinematic, magazine-scaled confidence.
-      OWN-WORLD: uExel's own near-black/navy/signal-blue palette, unchanged.
-      Yeseva One (GT Sectra Display's free-license spirit) for every headline
-      statement, Heebo for body/UI — the same clean-geometric-sans register
-      dogstudio itself reads in. Thin diagonal blue accent lines, dot-progress
-      wayfinding, full-screen nav overlay.
-      STORY: A buyer meets uExel as a confident studio, not a spec sheet —
-      the mechanism (ships fast, healthcare-grade) still told first, but at
-      agency scale and swagger.
-      FIRST VIEWPORT: minimal header, giant rotating serif word beneath a
-      small uppercase lead-in, inline slash-stat row, single pill CTA.
-      FORM: brief-pinned to dogstudio.co, inspected live; content and palette
-      pulled verbatim from uexel-landing.html.
-      FINISH: unreviewed and undocumented is unfinished; this build ends with
-      the finish review, the verdict, and DESIGN.md.
-    -->
     <div class="menu-panel" id="menuPanel" role="dialog" aria-modal="true" aria-label="Site menu">
       <button class="menu-close" id="menuClose" aria-label="Close menu">✕</button>
       <nav>
@@ -2057,38 +2100,48 @@
     </section>
 
     <footer>
+      <div class="drift" style="width: 280px; height: 280px; top: -80px; right: 6%; background: radial-gradient(circle, rgba(11,126,201,0.22), transparent 70%);"></div>
+      <div class="diamond-ghost" style="width: 220px; height: 220px; top: 20px; left: -70px;"></div>
       <div class="wrap">
-        <div class="footer-specialties">Software Development <span>.</span> AI &amp; Automation <span>.</span> Healthcare IT <span>.</span></div>
-        <div class="footer-cols">
-          <div class="footer-col">
-            <h4>Address</h4>
-            <p>Islamabad Pakistan 44000</p>
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="#top" class="logo-plate footer-logo"><img src="uexel-logo.png" alt="uExel" /></a>
+            <p class="footer-sig">Executing Ideas.<br />Engineering <span class="accent">Impact.</span></p>
+            <div class="footer-social">
+              <a href="#">LinkedIn</a>
+              <a href="#">Facebook</a>
+              <a href="#">Instagram</a>
+              <a href="#">Tiktok</a>
+            </div>
           </div>
-          <div class="footer-col">
-            <h4>Contact</h4>
-            <a href="tel:+925123456700">+925123456700</a>
-            <a href="mailto:hello@uexel.com">hello@uexel.com</a>
-          </div>
-          <div class="footer-col">
-            <h4>Social</h4>
-            <a href="#">LinkedIn</a> <a href="#">Facebook</a> <a href="#">Instagram</a> <a href="#">Tiktok</a>
-          </div>
-          <div class="footer-col">
-            <h4>Pages</h4>
-            <a href="#work-with">About</a>
-            <a href="#expertise">Services</a>
-            <a href="#capabilities">Our Expertise</a>
-            <a href="#featured">Case Studies</a>
-            <a href="#contact">Contact Us</a>
-          </div>
-          <div class="footer-col">
-            <h4>Resources</h4>
-            <a href="#">Case Studies</a>
-            <a href="#">FAQ</a>
-            <a href="#">Careers</a>
-            <a href="#">Privacy Policy</a>
+          <div class="footer-link-cols">
+            <div class="footer-col">
+              <h4>Address</h4>
+              <p>Islamabad Pakistan 44000</p>
+            </div>
+            <div class="footer-col">
+              <h4>Contact</h4>
+              <a href="tel:+925123456700">+925123456700</a>
+              <a href="mailto:hello@uexel.com">hello@uexel.com</a>
+            </div>
+            <div class="footer-col">
+              <h4>Pages</h4>
+              <a href="#work-with">About</a>
+              <a href="#expertise">Services</a>
+              <a href="#capabilities">Our Expertise</a>
+              <a href="#featured">Case Studies</a>
+              <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-col">
+              <h4>Resources</h4>
+              <a href="#">Case Studies</a>
+              <a href="#">FAQ</a>
+              <a href="#">Careers</a>
+              <a href="#">Privacy Policy</a>
+            </div>
           </div>
         </div>
+        <div class="footer-specialties">Software Development <span>.</span> AI &amp; Automation <span>.</span> Healthcare IT <span>.</span></div>
         <div class="footer-bottom">
           <span>© uExel — Executing Ideas, 2026. All rights reserved.</span>
         </div>
