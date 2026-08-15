@@ -74,13 +74,7 @@
         margin: 0 auto;
         padding: 0 40px;
       }
-      .eyebrow {
-        font-size: 13px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--muted-2);
-        font-weight: 600;
-      }
+      
       section {
         position: relative;
       }
@@ -410,10 +404,7 @@
       .featured-on {
         margin-top: 8px;
       }
-      .featured-on .eyebrow {
-        margin-bottom: 14px;
-        display: block;
-      }
+      
       .badge-row {
         display: flex;
         gap: 26px;
@@ -433,25 +424,247 @@
         line-height: 1.55;
         margin: 0 0 0px;
       }
-      .hero-lede-section {
+      /* ===== ABOUT ===== */
+      .about-section {
         background: var(--black);
-        padding-top: 30px;
-        padding-bottom: 20px;
+        padding: 90px 0 100px;
+        overflow: hidden;
       }
-      .hero-lede {
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: center;
+      }
+      .about-copy h2 {
+        color: #fff;
+        font-size: clamp(28px, 3.4vw, 40px);
+        line-height: 1.15;
+        margin-top: 14px;
+      }
+      .about-copy p {
+        color: #c7cdd4;
+        font-size: 16.5px;
+        line-height: 1.6;
+        max-width: 440px;
+        margin: 18px 0 0;
+      }
+      .about-points {
+        list-style: none;
+        margin: 28px 0 34px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .about-points li {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .about-points li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .about-point-num {
+        flex-shrink: 0;
+        width: 26px;
         font-family: "Abel", sans-serif;
-        font-size: clamp(24px, 3vw, 36px);
-        text-transform: none;
-        color: #e7eaee;
-        line-height: 1.35;
-        max-width: 920px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
+        font-size: 16px;
+        color: var(--blue);
       }
-      .hero-lede b {
+      .about-point-text {
+        font-size: 15.5px;
+        color: #c7cdd4;
+        letter-spacing: 0.01em;
+      }
+      .about-visual {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.15fr 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 16px;
+        height: 440px;
+      }
+      .about-tile {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .about-tile-photo {
+        grid-column: 1;
+        grid-row: 1 / 3;
+      }
+      .about-tile-photo img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .about-tile-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          190deg,
+          rgba(10, 13, 17, 0) 35%,
+          rgba(10, 13, 17, 0.9) 100%
+        );
+      }
+      .about-tile-badge {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        z-index: 1;
+        padding: 14px 18px;
+        border-radius: 14px;
+        background: rgba(10, 13, 17, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(8px);
+      }
+      .about-tile-badge b {
+        display: block;
+        font-family: "Abel", sans-serif;
+        font-weight: 400;
+        font-size: 26px;
+        color: #fff;
+      }
+      .about-tile-badge span {
+        font-size: 11px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #aeb6bf;
+      }
+      .about-tile-globe {
+        grid-column: 2;
+        grid-row: 1;
+        background: linear-gradient(160deg, var(--navy), var(--navy-2));
+      }
+      .about-globe-grid {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.16) 1px,
+          transparent 1px
+        );
+        background-size: 16px 16px;
+        mask-image: radial-gradient(
+          ellipse 75% 75% at 60% 35%,
+          #000 0%,
+          transparent 100%
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse 75% 75% at 60% 35%,
+          #000 0%,
+          transparent 100%
+        );
+      }
+      .about-pin {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 0 5px rgba(11, 126, 201, 0.28);
+        animation: about-pin-pulse 2.6s ease-in-out infinite;
+      }
+      .about-pin-2 {
+        animation-delay: 0.6s;
+      }
+      .about-pin-3 {
+        animation-delay: 1.2s;
+      }
+      @keyframes about-pin-pulse {
+        0%,
+        100% {
+          opacity: 0.55;
+          transform: scale(0.85);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+      .about-tile-text {
+        position: absolute;
+        left: 20px;
+        bottom: 18px;
+        z-index: 1;
+        margin: 0;
+        font-family: "Abel", sans-serif;
+        font-size: 15px;
+        line-height: 1.3;
+        color: #fff;
+        text-transform: none;
+      }
+      .about-tile-text b {
         color: var(--blue);
         font-weight: 400;
+      }
+      .about-tile-code {
+        grid-column: 2;
+        grid-row: 2;
+        background: var(--ink);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 22px 22px 26px;
+      }
+      .about-code-dots {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+      .about-code-dots span {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.16);
+      }
+      .about-code-line {
+        height: 8px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        margin-bottom: 11px;
+      }
+      .about-code-line--accent {
+        background: rgba(11, 126, 201, 0.55);
+      }
+      @media (max-width: 900px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .about-copy p {
+          max-width: none;
+        }
+      }
+      @media (max-width: 560px) {
+        .about-visual {
+          grid-template-columns: 1fr;
+          grid-template-rows: none;
+          height: auto;
+        }
+        .about-tile-photo,
+        .about-tile-globe,
+        .about-tile-code {
+          grid-column: 1;
+          grid-row: auto;
+        }
+        .about-tile-photo {
+          height: 220px;
+        }
+        .about-tile-globe {
+          height: 150px;
+        }
+        .about-tile-code {
+          height: 150px;
+        }
+        .about-mini-stats {
+          gap: 26px;
+        }
       }
 
       /* ===== TRUSTED BY / CLIENTS ===== */
@@ -559,101 +772,104 @@
         font-size: 17px;
         color: var(--muted);
       }
-      .flip-grid {
+      .work-split {
+        margin-top: 60px;
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 500px));
-        justify-content: center;
-        gap: 36px;
+        grid-template-columns: 1fr 1px 1fr;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
       }
-      .flip-card {
-        perspective: 1600px;
-        min-height: 440px;
-      }
-      .flip-inner {
+      .work-divider {
         position: relative;
-        width: 100%;
-        height: 100%;
-        min-height: 440px;
-        transform-style: preserve-3d;
-        transition: transform 1s ease;
-        cursor: pointer;
+        background: var(--line);
+        transform: scaleY(0);
+        transform-origin: center;
       }
-      .flip-card.active .flip-inner {
-        transform: rotateY(180deg);
-      }
-      .flip-front,
-      .flip-back {
-        position: absolute;
-        inset: 0;
-        backface-visibility: hidden;
-        border-radius: 10px;
-        padding: 38px 34px;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 30px 60px -25px rgba(11, 15, 20, 0.25);
-      }
-      .flip-front {
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        overflow: hidden;
-        background:
-          radial-gradient(
-            circle at 30% 20%,
-            rgba(11, 126, 201, 0.9),
-            transparent 55%
-          ),
-          radial-gradient(
-            circle at 75% 70%,
-            rgba(13, 58, 92, 0.95),
-            transparent 60%
-          ),
-          linear-gradient(135deg, #0a2e49, #061a2b);
-      }
-      .flip-front::after {
+      .work-divider::before {
         content: "";
         position: absolute;
-        inset: 0;
-        background: repeating-linear-gradient(
-          115deg,
-          rgba(255, 255, 255, 0.05) 0 2px,
-          transparent 2px 26px
-        );
+        top: 50%;
+        left: 50%;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--blue);
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 0 5px var(--blue-light);
       }
-      .flip-back {
-        background: #fff;
-        color: var(--ink);
-        transform: rotateY(180deg);
-        justify-content: flex-start;
-      }
-      .flip-num {
+      .wwm-panel {
         position: relative;
+        padding: 56px 52px;
+        overflow: hidden;
+        background: var(--white);
+      }
+      .wwm-panel--alt {
+        background: linear-gradient(160deg, var(--blue-pale), var(--blue-light));
+      }
+      .work-ghost {
+        position: absolute;
+        top: -0.15em;
+        right: 0.05em;
         font-family: "Abel", sans-serif;
-        font-size: 30px;
+        font-size: clamp(110px, 12vw, 170px);
+        line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgba(11, 126, 201, 0.16);
+        pointer-events: none;
+        transition:
+          -webkit-text-stroke-color 0.5s ease,
+          transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .wwm-panel:hover .work-ghost {
+        -webkit-text-stroke-color: rgba(11, 126, 201, 0.4);
+        transform: translateY(-6px);
+      }
+      .work-num {
+        position: relative;
+        z-index: 1;
+        font-family: "Abel", sans-serif;
+        font-size: 20px;
         color: var(--blue);
-        z-index: 1;
       }
-      .flip-front .flip-num {
-        /* the front face's own radial-gradient highlight is this same blue,
-           so the plain --blue number can nearly vanish into it */
-        color: #5fb3e6;
-      }
-      .flip-title {
+      .work-title {
         position: relative;
-        font-family: "Abel", sans-serif;
-        font-size: 32px;
-        margin-top: 2px;
         z-index: 1;
+        font-size: 32px;
+        margin-top: 6px;
       }
-      .flip-back p {
-        margin: 20px 0 20px;
+      .work-rule {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 46px;
+        height: 2px;
+        margin-top: 22px;
+        background: var(--blue);
+        transform: scaleX(0.4);
+        transform-origin: left;
+        transition:
+          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+          width 0.4s ease;
+      }
+      .wwm-panel:hover .work-rule {
+        transform: scaleX(1);
+        width: 72px;
+      }
+      .wwm-panel p {
+        position: relative;
+        z-index: 1;
+        margin: 22px 0 26px;
         font-size: 15.5px;
+        max-width: 440px;
+      }
+      .wwm-panel .tag-list {
+        position: relative;
+        z-index: 1;
       }
       .tag-list {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: auto;
       }
       .tag {
         font-size: 11.5px;
@@ -665,6 +881,75 @@
         background: #fff;
         color: var(--navy);
         border: 1px solid var(--blue-pale);
+        transition:
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          color 0.25s ease;
+      }
+      .tag:hover {
+        transform: translateY(-2px);
+        border-color: var(--blue);
+        color: var(--blue-dark);
+      }
+
+      .wwm-pre {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      .wwm-pre.work-divider {
+        opacity: 1;
+        transform: scaleY(0);
+      }
+      .wwm-pre .tag {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .wwm-pre {
+          transition:
+            opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .wwm-pre.wwm-panel:nth-child(1) {
+          transition-delay: 0.1s;
+        }
+        .wwm-pre.wwm-panel:nth-child(3) {
+          transition-delay: 0.22s;
+        }
+        .wwm-pre.work-divider {
+          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .wwm-pre .tag {
+          transition:
+            opacity 0.4s ease,
+            transform 0.4s ease;
+        }
+        .wwm-pre .tag:nth-child(1) {
+          transition-delay: 0.48s;
+        }
+        .wwm-pre .tag:nth-child(2) {
+          transition-delay: 0.55s;
+        }
+        .wwm-pre .tag:nth-child(3) {
+          transition-delay: 0.62s;
+        }
+        .wwm-pre .tag:nth-child(4) {
+          transition-delay: 0.69s;
+        }
+        .wwm-pre .tag:nth-child(5) {
+          transition-delay: 0.76s;
+        }
+      }
+      .wwm-pre.wwm-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .wwm-pre.work-divider.wwm-in {
+        transform: scaleY(1);
+      }
+      .wwm-pre.wwm-in .tag {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       /* ===== FEATURED WORK ===== */
@@ -691,251 +976,310 @@
         border-bottom: 1px solid rgba(255, 255, 255, 0.4);
         padding-bottom: 4px;
       }
-      .work-list {
+      .case-list {
         margin-top: 60px;
         border-top: 1px solid rgba(255, 255, 255, 0.14);
       }
-      .work-item {
+      .case-row {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.15fr 1.15fr 0.9fr;
+        column-gap: 44px;
+        padding: 44px 28px 44px 32px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        transition: background 0.3s ease;
       }
-      .work-row {
-        display: grid;
-        grid-template-columns: 2fr 0.7fr 1.6fr 0.5fr 40px;
-        align-items: center;
-        gap: 20px;
-        padding: 4px 4px;
-        transition:
-          background 0.4s ease,
-          padding-left 0.4s ease;
-        cursor: pointer;
+      .case-row:hover,
+      .case-row:focus-within {
+        background: rgba(255, 255, 255, 0.025);
       }
-      .work-item:hover .work-row,
-      .work-item.active .work-row {
+      .case-bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
         background: var(--blue);
-        padding-left: 16px;
+        opacity: 0.55;
+        transform: scaleY(1);
+        transform-origin: top;
+        transition: opacity 0.3s ease;
       }
-      .work-item:hover .work-name,
-      .work-item.active .work-name {
-        color: #fff;
+      .case-row:hover .case-bar,
+      .case-row:focus-within .case-bar {
+        opacity: 1;
       }
-      .work-name {
-        font-family: "Abel", sans-serif;
-        font-size: clamp(24px, 3.4vw, 34px);
-        transition: color 0.2s ease;
-      }
-      .work-country,
-      .work-cat {
-        font-size: 13px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #9aa2ab;
-      }
-      .work-idx {
-        font-family: "Abel", sans-serif;
-        font-size: 18px;
-        color: #7d8590;
-        text-align: right;
-      }
-      .work-arrow {
-        font-size: 20px;
-        color: #7d8590;
-        text-align: right;
-      }
-
-      .work-panel {
-        display: grid;
-        grid-template-rows: 0fr;
-        overflow: hidden;
-        transition: grid-template-rows 0.5s ease;
-      }
-      .work-item:hover .work-panel,
-      .work-item.active .work-panel {
-        grid-template-rows: 1fr;
-      }
-      .work-panel-inner {
-        min-height: 0;
-        overflow: hidden;
-      }
-      .work-slides-wrap {
+      .case-col {
         position: relative;
-        padding: 8px 56px 34px;
       }
-      .work-slide {
-        display: none;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-      .work-slide.active {
-        display: grid;
-      }
-      .work-shot {
-        aspect-ratio: 16/10;
-        border-radius: 14px;
-        overflow: hidden;
-        position: relative;
-        background: linear-gradient(135deg, #0a2e49, #0b7ec9 150%);
-      }
-      .work-shot::before {
+      .case-col + .case-col::before {
         content: "";
         position: absolute;
-        top: 16px;
-        left: 16px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.45);
-        box-shadow:
-          16px 0 0 rgba(255, 255, 255, 0.45),
-          32px 0 0 rgba(255, 255, 255, 0.45);
-      }
-      .work-nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 44px;
-        height: 44px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        background: rgba(0, 0, 0, 0.35);
-        color: #fff;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.2s ease;
-      }
-      .work-nav:hover {
-        background: rgba(255, 255, 255, 0.15);
-      }
-      .work-prev {
-        left: 4px;
-      }
-      .work-next {
-        right: 4px;
-      }
-
-      /* ===== EXPERTISE — pinned horizontal scroll ===== */
-      .expertise {
-        background: var(--blue-light);
-        position: relative;
-        margin: 0 auto;
-      }
-      .expertise-pin {
-        height: 220vh;
-        position: relative;
-      }
-      .expertise-sticky {
-        position: sticky;
+        left: -22px;
         top: 0;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        /* vh-based so the heading + 400px tilted cards below always fit inside
-           this fixed 100vh box on short viewports (e.g. 1366x768 laptops) —
-           a fixed 110px here left no slack and got its overflow clipped */
-        padding-top: clamp(32px, 9vh, 110px);
+        bottom: 0;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.1);
       }
-      .expertise-sticky > .wrap { width: 100%; }
-      .expertise-scroll-area {
-        position: relative;
-        flex: 1;
-        max-width: var(--maxw);
-        margin: 0 auto;
-        padding: clamp(12px, 4vh, 60px) 40px;
-        display: flex;
-        align-items: center;
-        /* no overflow:hidden here — the tilted cards need to breathe past this
-           padded column's edges without a hard clip; .expertise-sticky above
-           still clips everything at the true viewport edges */
-      }
-      .expertise-bg-text {
-        flex: 0 0 400px;
+      .case-title {
         font-family: "Abel", sans-serif;
-        font-size: clamp(28px, 3.2vw, 52px);
-        font-weight: 700;
-        color: #0B7EC9;
-        line-height: 1.2;
-        text-transform: uppercase;
-        pointer-events: none;
-        transition: opacity 0.1s linear;
-      }
-      .expertise-cards {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        flex-shrink: 0;
-        /* NOT just a compositing hint: getMotion() below relies on
-           will-change:transform making this element its own children's
-           offsetParent to compute each card's position — toggling this on
-           and off would make offsetLeft return different, wrong values
-           while it's off. Keep it permanent; see getMotion()'s comment. */
-        will-change: transform;
-      }
-      .exp-card-spacer {
-        flex: 0 0 20vw;
-      }
-      .exp-card {
-        flex: 0 0 400px;
-        border-radius: 12px;
-        padding: clamp(20px, 4vh, 32px) 30px;
-        /* vh-based cap so the card shrinks on short viewports instead of
-           overflowing the 100vh pinned box (see .expertise-sticky) and
-           getting clipped by its overflow:hidden — floor is 320px (not lower)
-           because the heading + paragraph + 4-row tag list need at least
-           that much room even with their own clamped spacing at minimum */
-        height: clamp(320px, 50vh, 400px);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-      }
-      .exp-card.light {
-        background: #fff;
-        color: var(--ink);
-        transform: rotate(-8deg);
-      }
-      .exp-card.dark {
-        background: linear-gradient(160deg, #0d3a5c, #061a2b);
+        font-size: clamp(24px, 2.6vw, 30px);
         color: #fff;
-        transform: rotate(8deg);
-        position: relative;
-        z-index: 2;
+        margin-bottom: 22px;
       }
-      .exp-card h3 {
-        font-size: clamp(22px, 3.4vh, 32px);
-        line-height: 1.05;
-        margin-bottom: clamp(8px, 2vh, 16px);
+      .case-label {
+        font-size: 13px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #7d8590;
+        margin-bottom: 10px;
       }
-      .exp-card .num {
+      .case-label--accent {
         color: var(--blue);
       }
-      .exp-card.dark .num {
-        color: #5fb3e6;
+      .case-text {
+        margin: 0;
+        font-size: 15.5px;
+        color: #aeb6bf;
       }
-      .exp-card p {
-        font-size: 14px;
-        line-height: 1.5;
-        margin: 0 0 clamp(8px, 2vh, 18px);
+      .case-rule {
+        display: block;
+        height: 1px;
+        margin: 22px 0 18px;
+        background: rgba(255, 255, 255, 0.14);
       }
-      .exp-card.dark p {
-        color: #c7cdd4;
+      .case-tags {
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        color: #7d8590;
       }
-      .exp-tags {
-        margin-top: auto;
+      .case-col--outcome {
         display: flex;
         flex-direction: column;
       }
-      .exp-tags span {
-        padding: clamp(5px, 1.2vh, 9px) 0;
-        border-bottom: 1px solid rgba(11, 15, 20, 0.12);
-        font-size: 14px;
-        font-weight: 400;
+      .case-stat {
+        margin-bottom: 22px;
+      }
+      .case-stat-num {
+        display: block;
+        font-family: "Abel", sans-serif;
+        font-size: clamp(30px, 3vw, 38px);
+        line-height: 1;
+        color: var(--blue);
+      }
+      .case-stat-label {
+        display: block;
+        margin-top: 6px;
+        font-size: 13.5px;
+        color: #9aa2ab;
+      }
+      .case-more {
+        margin-top: auto;
+        align-self: flex-start;
+      }
+
+      /* Scroll-triggered reveal for each case study row: the left accent bar
+         draws top-to-bottom and the outcome stats count up from zero. Only
+         JS adds ".case-pre" (see the case-studies reveal script below), so a
+         no-JS/failed-script page keeps every row and its real stat values at
+         their normal, fully visible resting state. */
+      .case-pre .case-bar {
+        transform: scaleY(0);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .case-pre .case-bar {
+          transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+      }
+      .case-pre.case-in .case-bar {
+        transform: scaleY(1);
+      }
+
+      /* ===== EXPERTISE — discipline ledger ===== */
+      .expertise {
+        background: var(--blue-light);
+        padding: 70px 0;
+      }
+      .expertise-list {
+        margin-top: 60px;
+        border-top: 1px solid var(--line);
+      }
+      /* Healthcare IT and Applied AI share this panel-ledger structure: a
+         filled intro panel opposite the capability grid, mirrored left/right
+         between the two so the pair reads as a matched set that still
+         differs by specialty (navy gradient vs. ink + a circuit dot-grid). */
+      .expertise-panel-block {
+        display: grid;
+        grid-template-columns: 1fr 1.7fr;
+        border-bottom: 1px solid var(--line);
+      }
+      .expertise-panel-block--b {
+        grid-template-columns: 1.7fr 1fr;
+      }
+      .expertise-panel {
+        background: linear-gradient(160deg, var(--navy), var(--navy-2));
+        padding: 44px 36px;
+      }
+      .expertise-panel--ink {
+        position: relative;
+        overflow: hidden;
+        background: var(--ink);
+      }
+      .expertise-panel--ink::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image: radial-gradient(
+          circle,
+          rgba(11, 126, 201, 0.4) 1px,
+          transparent 1px
+        );
+        background-size: 16px 16px;
+        mask-image: radial-gradient(
+          ellipse 85% 85% at 70% 30%,
+          #000 0%,
+          transparent 100%
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse 85% 85% at 70% 30%,
+          #000 0%,
+          transparent 100%
+        );
+      }
+      .expertise-panel-letter {
+        position: relative;
+        z-index: 1;
+        display: block;
+        font-family: "Abel", sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.1em;
+        color: #5fb3e6;
+        margin-bottom: 8px;
+      }
+      .expertise-panel-title {
+        position: relative;
+        z-index: 1;
+        font-family: "Abel", sans-serif;
+        font-size: clamp(24px, 2.6vw, 30px);
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.01em;
+        margin: 0 0 14px;
+      }
+      .expertise-panel-desc {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.78);
+        max-width: 30ch;
+      }
+      .expertise-panel-rule {
+        position: relative;
+        z-index: 1;
+        display: block;
+        height: 1px;
+        margin: 22px 0 18px;
+        background: rgba(255, 255, 255, 0.18);
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+      .expertise-panel-proof {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        font-size: 13.5px;
+        line-height: 1.5;
+        color: #eaf4fd;
+        max-width: 26ch;
+      }
+      .expertise-panel-caps {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 40px;
+        row-gap: 28px;
+        align-content: start;
+        padding: 44px 40px;
+      }
+      .expertise-panel-cap {
+        padding: 4px 10px;
+        margin: -4px -10px;
+        transition: background 0.2s ease;
+      }
+      .expertise-panel-cap:hover {
+        background: rgba(11, 15, 20, 0.03);
+      }
+      .expertise-panel-cap h4 {
+        margin: 0 0 6px;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 15.5px;
         color: var(--ink);
       }
-      .exp-card.dark .exp-tags span {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-        color: #fff;
+      .expertise-panel-cap p {
+        margin: 0;
+        font-size: 14.5px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+      @media (max-width: 768px) {
+        .expertise-panel-block,
+        .expertise-panel-block--b {
+          grid-template-columns: 1fr;
+        }
+        .expertise-panel-caps {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Scroll-triggered reveal for each discipline block: the hairline rule
+         under the panel draws left-to-right and the capability grid cascades
+         in row by row. Only JS adds ".oe-pre" (see the "our expertise —
+         reveal" script below), so a no-JS/failed-script page keeps every
+         block at its normal, fully visible resting state. */
+      .oe-pre .expertise-panel-rule {
+        transform: scaleX(0);
+      }
+      .oe-pre .expertise-panel-cap {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .oe-pre .expertise-panel-rule {
+          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .oe-pre .expertise-panel-cap {
+          transition:
+            opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .oe-pre .expertise-panel-cap:nth-child(1) {
+          transition-delay: 0.15s;
+        }
+        .oe-pre .expertise-panel-cap:nth-child(2) {
+          transition-delay: 0.21s;
+        }
+        .oe-pre .expertise-panel-cap:nth-child(3) {
+          transition-delay: 0.27s;
+        }
+        .oe-pre .expertise-panel-cap:nth-child(4) {
+          transition-delay: 0.33s;
+        }
+        .oe-pre .expertise-panel-cap:nth-child(5) {
+          transition-delay: 0.39s;
+        }
+        .oe-pre .expertise-panel-cap:nth-child(6) {
+          transition-delay: 0.45s;
+        }
+      }
+      .oe-pre.oe-in .expertise-panel-rule {
+        transform: scaleX(1);
+      }
+      .oe-pre.oe-in .expertise-panel-cap {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       /* ===== OUR PROCESS ===== */
@@ -1768,10 +2112,7 @@
         align-items: center;
         gap: 50px;
       }
-      .cta-copy .eyebrow {
-        display: block;
-        margin-bottom: 18px;
-      }
+     
       .cta-copy h2 {
         color: #fff;
         font-size: clamp(32px, 4.2vw, 48px);
@@ -1939,15 +2280,21 @@
           grid-template-columns: 1fr;
           gap: 50px;
         }
-        .flip-grid {
+        .work-split {
           grid-template-columns: 1fr;
-          gap: 24px;
         }
-        .flip-card {
-          min-height: 380px;
+        .work-divider {
+          display: none;
         }
-        .flip-inner {
-          min-height: 380px;
+        .wwm-panel {
+          padding: 44px 28px;
+          border-bottom: 1px solid var(--line);
+        }
+        .wwm-panel:last-child {
+          border-bottom: none;
+        }
+        .work-ghost {
+          font-size: clamp(80px, 26vw, 110px);
         }
         .process-grid {
           grid-template-columns: 1fr;
@@ -1959,31 +2306,13 @@
         .process-step-body-content {
           padding-left: 26px;
         }
-        .work-row {
-          grid-template-columns: 1fr auto;
-          grid-template-areas: "name idx" "meta meta";
-          row-gap: 8px;
-        }
-        .work-name {
-          grid-area: name;
-        }
-        .work-idx {
-          grid-area: idx;
-        }
-        .work-country,
-        .work-cat {
-          grid-area: meta;
-          display: inline-block;
-          margin-right: 16px;
-        }
-        .work-arrow {
-          display: none;
-        }
-        .work-slide {
+        .case-row {
           grid-template-columns: 1fr;
+          row-gap: 26px;
+          padding: 36px 22px 36px 26px;
         }
-        .work-slides-wrap {
-          padding: 8px 44px 26px;
+        .case-col + .case-col::before {
+          display: none;
         }
         .footer-top {
           grid-template-columns: 1fr 1fr;
@@ -2006,6 +2335,7 @@
         }
         .work-with,
         .featured,
+        .expertise,
         .process,
         .testimonials,
         .cta-banner {
@@ -2026,51 +2356,9 @@
           grid-template-columns: 1fr;
         }
       }
-      /* below this width the pinned horizontal scroll gives way to a plain stacked layout */
-      @media (max-width: 768px) {
-        .expertise-pin {
-          height: auto;
-        }
-        .expertise-sticky {
-          position: static;
-          height: auto;
-          padding: 70px 0 40px;
-        }
-      .expertise-sticky > .wrap { width: 100%; }
-        .expertise-scroll-area {
-          margin-top: 30px;
-          display: block;
-          overflow: visible;
-        }
-        .expertise-bg-text {
-          padding: 0 0 20px 40px;
-          font-size: clamp(30px, 8vw, 42px);
-          opacity: 1 !important;
-        }
-        .expertise-cards {
-          display: flex;
-          flex-direction: column;
-          padding-left: 0;
-          transform: none !important;
-          gap: 24px;
-          align-items: stretch;
-        }
-        .exp-card {
-          flex: none;
-          height: auto;
-          min-height: 300px;
-        }
-        .exp-card-spacer {
-          display: none;
-        }
-        .exp-card.light,
-        .exp-card.dark {
-          transform: none !important;
-        }
-      }
       /* ===== CUSTOM CURSOR ===== */
       body { cursor: auto; }
-      a, button, [role="button"], .flip-card, .work-row { cursor: none; }
+      a, button, [role="button"] { cursor: none; }
       #custom-cursor {
         position: fixed;
         top: 0; left: 0;
@@ -2163,13 +2451,9 @@
 
       /* ===== FOCUS-VISIBLE =====
          Native default outline was previously the only focus indicator
-         anywhere on the page. Branded to the signal-blue accent, and
-         extended to .flip-card/.work-row now that they're real keyboard-
-         operable controls (see tabindex/role additions in the markup). */
+         anywhere on the page. Branded to the signal-blue accent instead. */
       a:focus-visible,
-      button:focus-visible,
-      .flip-card:focus-visible,
-      .work-row:focus-visible {
+      button:focus-visible {
         outline: 2px solid var(--blue);
         outline-offset: 3px;
       }
@@ -2188,7 +2472,7 @@
         </a>
         <nav class="links">
           <a href="#top">Home</a>
-          <a href="#">About</a>
+          <a href="#about">About</a>
           <a href="#">Services</a>
           <a href="#">Product</a>
           <a href="#">Industries</a>
@@ -2203,7 +2487,7 @@
       </div>
       <div class="mobile-menu" id="mobileMenu">
         <a href="#top">Home</a>
-        <a href="#work-with">About</a>
+        <a href="#about">About</a>
         <a href="#expertise">Services</a>
         <a href="#featured">Product</a>
         <a href="#testimonials">Industries</a>
@@ -2264,14 +2548,55 @@
       </div>
     </section>
 
-    <section class="hero-lede-section">
-      <div class="wrap">
-        <p class="hero-lede">
-          When you need a technology partner who ships fast without breaking
-          things, that's when <b>uExel</b> steps in. From first prototype to
-          enterprise scale, we engineer solutions that move your business
-          forward — reliable, compliant, and built to last.
-        </p>
+    <section class="about-section" id="about">
+      <div class="wrap about-grid">
+        <div class="about-copy">
+          <h2>Engineers first,<br />consultants second.</h2>
+          <p>
+            We're a global team of builders who'd rather ship working
+            software than sit in status meetings — the same partner from
+            first prototype through enterprise scale.
+          </p>
+          <ul class="about-points">
+            <li>
+              <span class="about-point-num">01</span>
+              <span class="about-point-text">Senior engineers, not resellers</span>
+            </li>
+            <li>
+              <span class="about-point-num">02</span>
+              <span class="about-point-text">Fixed scope, fixed timeline</span>
+            </li>
+            <li>
+              <span class="about-point-num">03</span>
+              <span class="about-point-text">We stay on after launch</span>
+            </li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">Meet The Team ↗</a>
+        </div>
+        <div class="about-visual" aria-hidden="true">
+          <div class="about-tile about-tile-photo">
+            <img src="Hero-bg.jpg" alt="" loading="lazy" />
+            <div class="about-tile-badge">
+              <b>120+</b>
+              <span>IT Professionals</span>
+            </div>
+          </div>
+          <div class="about-tile about-tile-globe">
+            <div class="about-globe-grid"></div>
+            <span class="about-pin about-pin-1" style="top: 28%; left: 26%"></span>
+            <span class="about-pin about-pin-2" style="top: 55%; left: 66%"></span>
+            <span class="about-pin about-pin-3" style="top: 72%; left: 40%"></span>
+            <p class="about-tile-text">Global delivery<br /><b>3 time zones</b></p>
+          </div>
+          <div class="about-tile about-tile-code">
+            <div class="about-code-dots"><span></span><span></span><span></span></div>
+            <div class="about-code-line" style="width: 70%"></div>
+            <div class="about-code-line" style="width: 45%"></div>
+            <div class="about-code-line about-code-line--accent" style="width: 60%"></div>
+            <div class="about-code-line" style="width: 38%"></div>
+            <div class="about-code-line" style="width: 55%"></div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2349,56 +2674,43 @@
           </p>
         </div>
 
-        <div class="flip-grid">
-          <div class="flip-card active" data-card="1" role="button" tabindex="0" aria-expanded="true">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="flip-num">001.</div>
-                <div class="flip-title">Startups</div>
-              </div>
-              <div class="flip-back">
-                <div class="flip-num">001.</div>
-                <div class="flip-title">Startups</div>
-                <p>
-                  We help startups turn ideas into shipped products — fast. From
-                  MVP to full-scale launch, we build with modern stacks like
-                  React, Node.js, and cloud-native infrastructure. Flexible,
-                  agile, and outcome-driven, we become your engineering team at
-                  every stage.
-                </p>
-                <div class="tag-list">
-                  <span class="tag">MVP Development</span>
-                  <span class="tag">Prototyping</span>
-                  <span class="tag">Fast Launch</span>
-                  <span class="tag">Agile Workflow</span>
-                  <span class="tag">Full-Cycle Development</span>
-                </div>
-              </div>
+        <div class="work-split" id="workSplit">
+          <div class="wwm-panel">
+            <span class="work-ghost" aria-hidden="true">01</span>
+            <h3 class="work-title">Startups</h3>
+            <span class="work-rule" aria-hidden="true"></span>
+            <p>
+              We help startups turn ideas into shipped products — fast. From
+              MVP to full-scale launch, we build with modern stacks like
+              React, Node.js, and cloud-native infrastructure. Flexible,
+              agile, and outcome-driven, we become your engineering team at
+              every stage.
+            </p>
+            <div class="tag-list">
+              <span class="tag">MVP Development</span>
+              <span class="tag">Prototyping</span>
+              <span class="tag">Fast Launch</span>
+              <span class="tag">Agile Workflow</span>
+              <span class="tag">Full-Cycle Development</span>
             </div>
           </div>
-          <div class="flip-card" data-card="2" role="button" tabindex="0" aria-expanded="false">
-            <div class="flip-inner">
-              <div class="flip-front">
-                <div class="flip-num">002.</div>
-                <div class="flip-title">Enterprises</div>
-              </div>
-              <div class="flip-back">
-                <div class="flip-num">002.</div>
-                <div class="flip-title">Enterprises</div>
-                <p>
-                  We partner with enterprises and healthcare organizations to
-                  modernize legacy systems and ship compliant, scalable
-                  software. From lab information systems to custom platforms, we
-                  act as a reliable extension of your team.
-                </p>
-                <div class="tag-list">
-                  <span class="tag">Legacy Modernization</span>
-                  <span class="tag">Compliance</span>
-                  <span class="tag">System Integration</span>
-                  <span class="tag">Staff Augmentation</span>
-                  <span class="tag">DevOps</span>
-                </div>
-              </div>
+          <div class="work-divider"></div>
+          <div class="wwm-panel wwm-panel--alt">
+            <span class="work-ghost" aria-hidden="true">02</span>
+            <h3 class="work-title">Enterprises</h3>
+            <span class="work-rule" aria-hidden="true"></span>
+            <p>
+              We partner with enterprises and healthcare organizations to
+              modernize legacy systems and ship compliant, scalable
+              software. From lab information systems to custom platforms, we
+              act as a reliable extension of your team.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Legacy Modernization</span>
+              <span class="tag">Compliance</span>
+              <span class="tag">System Integration</span>
+              <span class="tag">Staff Augmentation</span>
+              <span class="tag">DevOps</span>
             </div>
           </div>
         </div>
@@ -2418,162 +2730,240 @@
             engagement is unique, with its own goals and outcomes.
           </p>
         </div>
-        <div class="work-list" id="workList">
-          <div class="work-item">
-            <div class="work-row" role="button" tabindex="0" aria-expanded="false">
-              <div class="work-name">ABC</div>
-              <div class="work-country">USA</div>
-              <div class="work-cat">Product Design</div>
-              <div class="work-idx">001</div>
-              <div class="work-arrow">↘</div>
+        <div class="case-list" id="caseList">
+          <article class="case-row">
+            <span class="case-bar" aria-hidden="true"></span>
+            <div class="case-col">
+              <h3 class="case-title">Lorem ipsum dolor sit amet</h3>
+              <div class="case-label case-label--accent">The Problem</div>
+              <p class="case-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Integer nec odio praesent libero sed cursus ante dapibus
+                diam, sed nisi nulla quis sem at nibh elementum imperdiet.
+              </p>
             </div>
-            <div class="work-panel">
-              <div class="work-panel-inner">
-                <div class="work-slides-wrap">
-                  <button class="work-nav work-prev" aria-label="Previous" tabindex="-1">
-                    ←
-                  </button>
-                  <div class="work-slides">
-                    <div class="work-slide active">
-                      <div class="work-shot"></div>
-                      <div class="work-shot"></div>
-                    </div>
-                    <div class="work-slide">
-                      <div class="work-shot"></div>
-                      <div class="work-shot"></div>
-                    </div>
-                  </div>
-                  <button class="work-nav work-next" aria-label="Next" tabindex="-1">
-                    →
-                  </button>
-                </div>
+            <div class="case-col">
+              <div class="case-label case-label--accent">What We Built</div>
+              <p class="case-text">
+                Duis sagittis ipsum praesent mauris fusce nec tellus sed
+                augue semper porta mauris massa vitae totam vitae erat.
+              </p>
+              <span class="case-rule" aria-hidden="true"></span>
+              <div class="case-tags">Lorem · Ipsum · Dolor · Sit</div>
+            </div>
+            <div class="case-col case-col--outcome">
+              <div class="case-label">Outcome</div>
+              <div class="case-stat">
+                <span class="case-stat-num">42%</span>
+                <span class="case-stat-label">Lorem ipsum dolor sit</span>
               </div>
-            </div>
-          </div>
-          <div class="work-item">
-            <div class="work-row" role="button" tabindex="0" aria-expanded="false">
-              <div class="work-name">DEF</div>
-              <div class="work-country">USA</div>
-              <div class="work-cat">Mobile App Development</div>
-              <div class="work-idx">002</div>
-              <div class="work-arrow">↘</div>
-            </div>
-            <div class="work-panel">
-              <div class="work-panel-inner">
-                <div class="work-slides-wrap">
-                  <button class="work-nav work-prev" aria-label="Previous" tabindex="-1">
-                    ←
-                  </button>
-                  <div class="work-slides">
-                    <div class="work-slide active">
-                      <div class="work-shot"></div>
-                      <div class="work-shot"></div>
-                    </div>
-                    <div class="work-slide">
-                      <div class="work-shot"></div>
-                      <div class="work-shot"></div>
-                    </div>
-                  </div>
-                  <button class="work-nav work-next" aria-label="Next" tabindex="-1">
-                    →
-                  </button>
-                </div>
+              <div class="case-stat">
+                <span class="case-stat-num">12×</span>
+                <span class="case-stat-label">Consectetur adipiscing elit</span>
               </div>
+              <a href="#" class="btn btn-outline case-more">Read More ↗</a>
             </div>
-          </div>
-          <div class="work-item">
-            <div class="work-row" role="button" tabindex="0" aria-expanded="false">
-              <div class="work-name">GHI</div>
-              <div class="work-country">GBR</div>
-              <div class="work-cat">Healthcare IT</div>
-              <div class="work-idx">003</div>
-              <div class="work-arrow">↘</div>
+          </article>
+          <article class="case-row">
+            <span class="case-bar" aria-hidden="true"></span>
+            <div class="case-col">
+              <h3 class="case-title">Consectetur adipiscing elit</h3>
+              <div class="case-label case-label--accent">The Problem</div>
+              <p class="case-text">
+                Sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo.
+              </p>
             </div>
-            <div class="work-panel">
-              <div class="work-panel-inner">
-                <div class="work-slides-wrap">
-                  <button class="work-nav work-prev" aria-label="Previous" tabindex="-1">
-                    ←
-                  </button>
-                  <div class="work-slides">
-                    <div class="work-slide active">
-                      <div class="work-shot"></div>
-                      <div class="work-shot"></div>
-                    </div>
-                    <div class="work-slide">
-                      <div class="work-shot"></div>
-                      <div class="work-shot"></div>
-                    </div>
-                  </div>
-                  <button class="work-nav work-next" aria-label="Next" tabindex="-1">
-                    →
-                  </button>
-                </div>
+            <div class="case-col">
+              <div class="case-label case-label--accent">What We Built</div>
+              <p class="case-text">
+                Duis aute irure dolor in reprehenderit in voluptate velit
+                esse cillum dolore eu fugiat nulla pariatur excepteur sint.
+              </p>
+              <span class="case-rule" aria-hidden="true"></span>
+              <div class="case-tags">Lorem · Ipsum · Dolor · Sit</div>
+            </div>
+            <div class="case-col case-col--outcome">
+              <div class="case-label">Outcome</div>
+              <div class="case-stat">
+                <span class="case-stat-num">87%</span>
+                <span class="case-stat-label">Lorem ipsum dolor sit</span>
               </div>
+              <div class="case-stat">
+                <span class="case-stat-num">3.2k</span>
+                <span class="case-stat-label">Consectetur adipiscing elit</span>
+              </div>
+              <a href="#" class="btn btn-outline case-more">Read More ↗</a>
             </div>
-          </div>
+          </article>
+          <article class="case-row">
+            <span class="case-bar" aria-hidden="true"></span>
+            <div class="case-col">
+              <h3 class="case-title">Sed ut perspiciatis unde omnis</h3>
+              <div class="case-label case-label--accent">The Problem</div>
+              <p class="case-text">
+                Excepteur sint occaecat cupidatat non proident sunt in
+                culpa qui officia deserunt mollit anim id est laborum
+                perspiciatis unde omnis iste natus error.
+              </p>
+            </div>
+            <div class="case-col">
+              <div class="case-label case-label--accent">What We Built</div>
+              <p class="case-text">
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur
+                aut odit aut fugit sed quia consequuntur magni dolores.
+              </p>
+              <span class="case-rule" aria-hidden="true"></span>
+              <div class="case-tags">Lorem · Ipsum · Dolor · Sit</div>
+            </div>
+            <div class="case-col case-col--outcome">
+              <div class="case-label">Outcome</div>
+              <div class="case-stat">
+                <span class="case-stat-num">9</span>
+                <span class="case-stat-label">Lorem ipsum dolor sit</span>
+              </div>
+              <div class="case-stat">
+                <span class="case-stat-num">64%</span>
+                <span class="case-stat-label">Consectetur adipiscing elit</span>
+              </div>
+              <a href="#" class="btn btn-outline case-more">Read More ↗</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="expertise" id="expertise">
-      <div class="expertise-pin">
-        <div class="expertise-sticky">
-          <div class="wrap">
-            <div class="section-head">
-              <h2>Our Expertise <span class="arrow">↘</span></h2>
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Our Expertise <span class="arrow">↘</span></h2>
+          <p class="lede">
+            Two disciplines we've committed to for years, stated honestly —
+            including where we're strong and where we bring in a specialist.
+            Everything else we build sits on top of these.
+          </p>
+        </div>
+
+        <div class="expertise-list" id="expertiseList">
+          <div class="expertise-panel-block">
+            <div class="expertise-panel">
+              <h3 class="expertise-panel-title">Healthcare IT</h3>
+              <p class="expertise-panel-desc">
+                Depth built one hospital interface at a time, not a
+                marketing category we added last quarter.
+              </p>
+              <span class="expertise-panel-rule" aria-hidden="true"></span>
+              <p class="expertise-panel-proof">
+                Production interfaces, maintained end to end.
+              </p>
+            </div>
+            <div class="expertise-panel-caps">
+              <div class="expertise-panel-cap">
+                <h4>EHR integration</h4>
+                <p>
+                  Epic, Cerner, Meditech and Athena interfaces — read,
+                  write, and the reconciliation rules in between.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>HL7 v2 &amp; FHIR R4</h4>
+                <p>
+                  Mapping layers, custom profiles, and replay tooling for
+                  when an upstream feed misbehaves.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>Clinical workflow design</h4>
+                <p>
+                  Intake, referral, and care-coordination flows shaped
+                  with people who've worked clinical-side.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>Device &amp; RPM pipelines</h4>
+                <p>
+                  DICOM, BLE, and continuous telemetry ingested with
+                  backpressure, dedup, and delivery auditing.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>HIPAA &amp; SOC 2 delivery</h4>
+                <p>
+                  Technical safeguards, audit trails, and evidence
+                  collection built into the first slice, not the last.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>Claims &amp; revenue cycle</h4>
+                <p>
+                  Eligibility checks, prior authorization, and 837/835
+                  exchange with payer-side integrations.
+                </p>
+              </div>
             </div>
           </div>
-          <div class="expertise-scroll-area">
-            <div class="expertise-bg-text" id="expertiseBgText">
-              Builds<br />Digital<br/> Products
+
+
+          <div class="expertise-panel-block expertise-panel-block--b">
+            <div class="expertise-panel-caps">
+              <div class="expertise-panel-cap">
+                <h4>Clinical risk models</h4>
+                <p>
+                  Deterioration, sepsis, and readmission scoring,
+                  validated prospectively before anyone acts on it.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>Clinical NLP &amp; extraction</h4>
+                <p>
+                  Notes, referrals, faxes, and prior-auth packets turned
+                  into structured data, with citations to the source.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>LLM application engineering</h4>
+                <p>
+                  Retrieval, tool use, and structured output — designed
+                  around the failure modes, not the happy path.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>Evaluation &amp; monitoring</h4>
+                <p>
+                  Gold-standard test sets, drift alerting, and a review
+                  queue that only surfaces what's uncertain.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>Ambient &amp; voice</h4>
+                <p>
+                  Scribing, triage, and patient-facing agents with
+                  escalation rules and defensible transcripts.
+                </p>
+              </div>
+              <div class="expertise-panel-cap">
+                <h4>MLOps &amp; governance</h4>
+                <p>
+                  Versioning, provenance, and model cards, so any output
+                  can be traced back to its inputs.
+                </p>
+              </div>
             </div>
-            <div class="expertise-cards" id="expertiseCards">
-              <div class="exp-card light">
-                <h3>Software Development<br /><span class="num">001</span></h3>
-                <p>
-                  We turn your ideas into fast, reliable web and mobile products
-                  built on modern, scalable architecture designed to grow with
-                  your business.
-                </p>
-                <div class="exp-tags">
-                  <span>React &amp; Next.js</span>
-                  <span>Node.js &amp; NestJS</span>
-                  <span>Cloud-Native Infra</span>
-                  <span>Custom Platforms</span>
-                </div>
-              </div>
-              <div class="exp-card dark">
-                <h3>AI &amp; Automation<br /><span class="num">002</span></h3>
-                <p>
-                  We build intelligent automation and AI-powered features using
-                  modern LLM and machine-learning tooling, engineered to scale
-                  with real usage.
-                </p>
-                <div class="exp-tags">
-                  <span>LLMs &amp; RAG</span>
-                  <span>Generative AI</span>
-                  <span>Agents &amp; Workflows</span>
-                  <span>MLOps</span>
-                </div>
-              </div>
-              <div class="exp-card light">
-                <h3>Healthcare IT<br /><span class="num">003</span></h3>
-                <p>
-                  We modernize lab and clinical systems with secure, compliant
-                  infrastructure built for healthcare's toughest regulatory
-                  requirements.
-                </p>
-                <div class="exp-tags">
-                  <span>Lab Information Systems</span>
-                  <span>HIPAA Compliance</span>
-                  <span>EHR Integrations</span>
-                  <span>IT Infrastructure</span>
-                </div>
-              </div>
-              <div class="exp-card-spacer"></div>
+            <div class="expertise-panel expertise-panel--ink">
+              <h3 class="expertise-panel-title">Applied AI</h3>
+              <p class="expertise-panel-desc">
+                Models built to pass clinical review, not just a
+                benchmark.
+              </p>
+              <span class="expertise-panel-rule" aria-hidden="true"></span>
+              <p class="expertise-panel-proof">
+                Every model shipped with an evaluation harness, not just
+                a demo.
+              </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -3016,7 +3406,7 @@
       // custom cursor
       (function () {
         const cursor = document.getElementById('custom-cursor');
-        const targets = 'a, button, [role="button"], .flip-card, .work-row';
+        const targets = 'a, button, [role="button"]';
         let mouseX = 0, mouseY = 0, curX = 0, curY = 0, raf;
         function loop() {
           curX += (mouseX - curX) * 0.18;
@@ -3048,180 +3438,105 @@
           ),
         );
 
-      // flip cards — exactly one card is active (flipped open) at a time;
-      // clicking the already-active card flips to the next sibling instead of closing to none
-      const flipCards = Array.from(document.querySelectorAll(".flip-card"));
-      function activateFlipCard(card, i) {
-        const next = card.classList.contains("active")
-          ? flipCards[(i + 1) % flipCards.length]
-          : card;
-        flipCards.forEach((c) => {
-          c.classList.remove("active");
-          c.setAttribute("aria-expanded", "false");
-        });
-        next.classList.add("active");
-        next.setAttribute("aria-expanded", "true");
-      }
-      flipCards.forEach((card, i) => {
-        card.addEventListener("click", () => activateFlipCard(card, i));
-        card.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            activateFlipCard(card, i);
-          }
-        });
-      });
-
-      // featured work — row expands to an image preview on hover (desktop) or tap (touch),
-      // with its own prev/next slide navigation
-      document.querySelectorAll(".work-item").forEach((item) => {
-        const row = item.querySelector(".work-row");
-        const navButtons = item.querySelectorAll(".work-nav");
-        function toggleRow() {
-          const isActive = item.classList.toggle("active");
-          row.setAttribute("aria-expanded", String(isActive));
-          navButtons.forEach((btn) =>
-            btn.setAttribute("tabindex", isActive ? "0" : "-1"),
-          );
-        }
-        row.addEventListener("click", toggleRow);
-        row.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            toggleRow();
-          }
-        });
-
-        const slides = Array.from(item.querySelectorAll(".work-slide"));
-        let slideIdx = 0;
-        function showSlide(i) {
-          slideIdx = (i + slides.length) % slides.length;
-          slides.forEach((s, idx) =>
-            s.classList.toggle("active", idx === slideIdx),
-          );
-        }
-        item.querySelector(".work-prev").addEventListener("click", (e) => {
-          e.stopPropagation();
-          showSlide(slideIdx - 1);
-        });
-        item.querySelector(".work-next").addEventListener("click", (e) => {
-          e.stopPropagation();
-          showSlide(slideIdx + 1);
-        });
-      });
-
-      // expertise section — pins in the viewport while a third card slides in
-      // over the faded "BUILDS PRODUCTS" text, ending with all 3 cards centered
       (function () {
-        const pin =
-          document.getElementById("expertise") &&
-          document.querySelector(".expertise-pin");
-        const scrollArea = document.querySelector(".expertise-scroll-area");
-        const cardsEl = document.getElementById("expertiseCards");
-        const bgText = document.getElementById("expertiseBgText");
-        if (!pin || !scrollArea || !cardsEl || !bgText) return;
+        const split = document.getElementById("workSplit");
+        if (!split) return;
+        const revealEls = [
+          ...split.querySelectorAll(".wwm-panel, .work-divider"),
+        ];
+        revealEls.forEach((el) => el.classList.add("wwm-pre"));
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              revealEls.forEach((el) => el.classList.add("wwm-in"));
+              obs.disconnect();
+            });
+          },
+          { threshold: 0.25 },
+        );
+        observer.observe(split);
+      })();
 
-        // geometry only — independent of scroll position, safe to read anytime
-        // since offsetLeft/offsetWidth ignore any transform already applied.
-        // cardsEl has `will-change: transform`, which makes it act as its own
-        // children's offsetParent, so card.offsetLeft alone excludes the
-        // bg-text's leading offset — add cardsEl.offsetLeft back in to get
-        // each card's true position within the scroll area.
-        function computeMotion() {
-          const cards = Array.from(cardsEl.querySelectorAll(".exp-card"));
-          const firstCard = cards[0];
-          const thirdCard = cards[cards.length - 1];
-          const base = cardsEl.offsetLeft;
-          const groupWidth =
-            thirdCard.offsetLeft + thirdCard.offsetWidth - firstCard.offsetLeft;
-          const thirdCardStart = base + thirdCard.offsetLeft;
-          // the scroll area is capped at --maxw like the rest of the site
-          // (matching sections such as Featured Work), so cards should hide
-          // and center against its padded content width, not the raw window
-          // — otherwise the initial gap after the bg text balloons on wide
-          // screens just to clear the third card past the full window edge
-          const areaStyle = getComputedStyle(scrollArea);
-          const vw =
-            scrollArea.clientWidth -
-            parseFloat(areaStyle.paddingLeft) -
-            parseFloat(areaStyle.paddingRight);
-          // a single shift applied to the whole row (not the third card alone)
-          // so every card moves at the same speed — shifted right just enough
-          // at rest that the third card clears the viewport edge (plus a
-          // buffer), then eased to the shift that centers the full group
-          const startX = Math.max(0, vw - thirdCardStart + 40);
-          const endX = (vw - groupWidth) / 2 - base;
-          return { startX, endX };
-        }
+      // case studies — reveal: each row's left accent bar starts hidden only
+      // once ".case-pre" is added here, then draws top-to-bottom the first
+      // time the row scrolls into view, while its outcome numbers count up
+      // from zero to the value already in the markup (see the ".case-pre"/
+      // ".case-in" rules under FEATURED WORK in the stylesheet)
+      (function () {
+        const list = document.getElementById("caseList");
+        if (!list) return;
+        const rows = Array.from(list.querySelectorAll(".case-row"));
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
 
-        // this geometry only changes when the layout itself changes (resize),
-        // never from scrolling — cache it instead of recomputing on every
-        // rAF tick of the scroll-driven loop below
-        let motion = computeMotion();
-
-        // pin duration scales with how far the cards actually need to travel
-        function setPinHeight() {
-          if (window.innerWidth < 768) {
-            pin.style.height = "";
-            return;
-          }
-          const travel = Math.abs(motion.endX - motion.startX);
-          pin.style.height = `${travel * 1.5 + window.innerHeight}px`;
-        }
-
-        function targetProgress() {
-          const rect = pin.getBoundingClientRect();
-          const total = pin.offsetHeight - window.innerHeight;
-          if (total <= 0) return 0;
-          return Math.min(1, Math.max(0, -rect.top / total));
-        }
-
-        function render(progress) {
-          const { startX, endX } = motion;
-          cardsEl.style.transform = `translateX(${startX + progress * (endX - startX)}px)`;
-          bgText.style.opacity = Math.max(0, 1 - progress / 0.2);
-        }
-
-        // ease the applied progress toward the scroll-derived target each
-        // frame instead of snapping straight to it, so the motion glides
-        // smoothly through mouse-wheel/trackpad steps rather than jumping
-        let currentProgress = 0;
-        let rafId = null;
-        function loop() {
-          const target = targetProgress();
-          currentProgress += (target - currentProgress) * 0.12;
-          if (Math.abs(target - currentProgress) < 0.0008) {
-            currentProgress = target;
-          }
-          render(currentProgress);
-          if (currentProgress !== target) {
-            rafId = requestAnimationFrame(loop);
-          } else {
-            rafId = null;
-          }
-        }
-
-        function requestUpdate() {
-          if (window.innerWidth < 768) {
-            if (rafId) {
-              cancelAnimationFrame(rafId);
-              rafId = null;
+        function animateStat(el) {
+          const target = el.textContent.trim();
+          const match = target.match(/^([\d.]+)(.*)$/);
+          if (!match) return;
+          if (reduceMotion) return;
+          const endNum = parseFloat(match[1]);
+          const suffix = match[2];
+          const decimals = (match[1].split(".")[1] || "").length;
+          el.textContent = "0" + suffix;
+          const duration = 900;
+          const start = performance.now();
+          function tick(now) {
+            const p = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            if (p < 1) {
+              el.textContent = (endNum * eased).toFixed(decimals) + suffix;
+              requestAnimationFrame(tick);
+            } else {
+              el.textContent = target;
             }
-            cardsEl.style.transform = "";
-            bgText.style.opacity = "";
-            return;
           }
-          if (!rafId) rafId = requestAnimationFrame(loop);
+          requestAnimationFrame(tick);
         }
-        window.addEventListener("scroll", requestUpdate, { passive: true });
-        window.addEventListener("resize", () => {
-          motion = computeMotion();
-          setPinHeight();
-          requestUpdate();
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const row = entry.target;
+              row.classList.add("case-in");
+              row
+                .querySelectorAll(".case-stat-num")
+                .forEach(animateStat);
+              obs.unobserve(row);
+            });
+          },
+          { threshold: 0.3 },
+        );
+        rows.forEach((row) => {
+          row.classList.add("case-pre");
+          observer.observe(row);
         });
-        setPinHeight();
-        render(0);
-        requestUpdate();
+      })();
+
+      // our expertise — reveal: each discipline block's hairline rule draws
+      // left-to-right and its capability grid cascades in row by row the
+      // first time the block scrolls into view (see the ".oe-pre"/".oe-in"
+      // rules under EXPERTISE in the stylesheet)
+      (function () {
+        const list = document.getElementById("expertiseList");
+        if (!list) return;
+        const blocks = Array.from(list.querySelectorAll(".expertise-panel-block"));
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("oe-in");
+              obs.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.2 },
+        );
+        blocks.forEach((block) => {
+          block.classList.add("oe-pre");
+          observer.observe(block);
+        });
       })();
 
       // our process — accordion of steps; the active one drives the ring
@@ -3533,5 +3848,8 @@
         setTimeout(runOnce, 1200);
       })();
     </script>
-  </body>
+  <!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=a0cae905-2bdb-4431-a64c-b2eb6bbdecf5"></script>
+<!-- impeccable-live-end -->
+</body>
 </html>
