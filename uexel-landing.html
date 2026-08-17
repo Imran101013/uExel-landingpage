@@ -160,12 +160,13 @@
         height: 44px;
         width: auto;
         display: block;
-        background: white;
+        filter: invert(1) hue-rotate(180deg);
       }
       .logo-footer img {
         height: 44px;
         width: auto;
         display: block;
+        filter: invert(1) hue-rotate(180deg);
       }
       nav.links {
         display: flex;
@@ -356,7 +357,7 @@
       }
       .hero-particles canvas {
         display: block;
-        width: 100%;
+        width: 70%;
         height: 100%;
       }
       .section-dark h1,
@@ -455,7 +456,6 @@
         padding: 0;
         display: flex;
         flex-direction: column;
-        gap: 14px;
       }
       .about-points li {
         display: flex;
@@ -1252,13 +1252,96 @@
         grid-area: hc;
         background: linear-gradient(160deg, var(--navy), var(--navy-2));
         color: #fff;
-        justify-content: center;
+        justify-content: end;
+        position: relative;
+        overflow: hidden;
+      }
+      .expertise-tile--healthcare .tile-bg-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.28;
+      }
+      .expertise-tile--healthcare .tile-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(10,46,73,0.92) 0%, rgba(10,46,73,0.55) 55%, rgba(13,58,92,0.25) 100%);
+        pointer-events: none;
+      }
+      .expertise-tile--healthcare > *:not(.tile-bg-svg):not(.tile-overlay) {
+        position: relative;
+        z-index: 1;
+      }
+      .hc-pulse {
+        stroke-dasharray: 420;
+        stroke-dashoffset: 420;
+        animation: hc-draw 3s ease-in-out infinite;
+      }
+      @keyframes hc-draw {
+        0%   { stroke-dashoffset: 420; opacity: 0.6; }
+        50%  { stroke-dashoffset: 0;   opacity: 1; }
+        100% { stroke-dashoffset: -420; opacity: 0.6; }
+      }
+      .hc-dot {
+        animation: hc-dot-pulse 3s ease-in-out infinite;
+      }
+      @keyframes hc-dot-pulse {
+        0%,100% { r: 4; opacity: 0.5; }
+        50%     { r: 7; opacity: 1; }
       }
       .expertise-tile--ai {
         grid-area: ai;
         background: var(--ink);
         color: #fff;
-        justify-content: center;
+        justify-content: end;
+        position: relative;
+        overflow: hidden;
+      }
+      .expertise-tile--ai .tile-bg-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.28;
+      }
+      .expertise-tile--ai .tile-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(11,15,20,0.92) 0%, rgba(11,15,20,0.55) 55%, rgba(11,15,20,0.25) 100%);
+        pointer-events: none;
+      }
+      .expertise-tile--ai > *:not(.tile-bg-svg):not(.tile-overlay) {
+        position: relative;
+        z-index: 1;
+      }
+      .ai-edge {
+        stroke-dasharray: 80;
+        stroke-dashoffset: 80;
+        animation: ai-edge-draw 2.8s ease-in-out infinite;
+      }
+      .ai-edge:nth-child(2)  { animation-delay: 0.3s; }
+      .ai-edge:nth-child(3)  { animation-delay: 0.6s; }
+      .ai-edge:nth-child(4)  { animation-delay: 0.9s; }
+      .ai-edge:nth-child(5)  { animation-delay: 1.2s; }
+      .ai-edge:nth-child(6)  { animation-delay: 1.5s; }
+      .ai-edge:nth-child(7)  { animation-delay: 1.8s; }
+      .ai-edge:nth-child(8)  { animation-delay: 2.1s; }
+      @keyframes ai-edge-draw {
+        0%   { stroke-dashoffset: 80; opacity: 0.3; }
+        50%  { stroke-dashoffset: 0;  opacity: 1; }
+        100% { stroke-dashoffset: -80; opacity: 0.3; }
+      }
+      .ai-node {
+        animation: ai-node-glow 2.8s ease-in-out infinite;
+      }
+      .ai-node:nth-child(odd)  { animation-delay: 0.4s; }
+      .ai-node:nth-child(even) { animation-delay: 1.1s; }
+      @keyframes ai-node-glow {
+        0%,100% { opacity: 0.4; r: 5; }
+        50%     { opacity: 1;   r: 8; }
       }
       .expertise-tile--ehr {
         grid-area: ehr;
@@ -1289,21 +1372,6 @@
         grid-area: eval;
         background: #fff;
         border: 1px solid var(--line);
-      }
-      .expertise-tile-graphic {
-        color: #5fb3e6;
-        margin-bottom: 12px;
-      }
-      .expertise-tile-graphic svg {
-        display: block;
-      }
-      .expertise-tile-graphic--wave svg {
-        width: 110px;
-        height: auto;
-      }
-      .expertise-tile-graphic--net svg {
-        width: 76px;
-        height: auto;
       }
       .expertise-tile h3 {
         font-family: "Playfair Display", serif;
@@ -1340,7 +1408,7 @@
         margin: 0;
         font-size: 12.5px;
         line-height: 1.45;
-        color: var(--muted);
+        color: white;
       }
       @media (max-width: 768px) {
         .expertise-mosaic {
@@ -2450,6 +2518,10 @@
         .cta-particle,
         .cta-flow-dot,
         .cta-3d-float,
+        .hc-pulse,
+        .hc-dot,
+        .ai-edge,
+        .ai-node,
         .pf-lens,
         .pf-check,
         .pf-block-1,
@@ -3006,12 +3078,35 @@
         </div>
         <div class="expertise-mosaic">
           <div class="expertise-tile expertise-tile--healthcare">
-            <div class="expertise-tile-graphic expertise-tile-graphic--wave" aria-hidden="true">
-              <svg viewBox="0 0 190 70" fill="none">
-                <path d="M4 40h22l7-22 12 46 9-34 7 10h20l7-16 7 16h95" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-                <circle cx="183" cy="24" r="3.4" fill="currentColor" />
-              </svg>
-            </div>
+            <!-- healthcare background: stethoscope, cross, DNA, heartbeat, pills -->
+            <svg class="tile-bg-svg" viewBox="0 0 260 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <!-- large faint cross -->
+              <rect x="108" y="30" width="44" height="120" rx="8" fill="#5fb3e6"/>
+              <rect x="80" y="58" width="100" height="44" rx="8" fill="#5fb3e6"/>
+              <!-- stethoscope tube -->
+              <path d="M30 60 Q30 130 80 150 Q130 170 130 220" fill="none" stroke="#0b7ec9" stroke-width="7" stroke-linecap="round"/>
+              <circle cx="130" cy="232" r="18" fill="none" stroke="#0b7ec9" stroke-width="5"/>
+              <circle cx="130" cy="232" r="8" fill="#5fb3e6"/>
+              <circle cx="30" cy="58" r="7" fill="#5fb3e6"/>
+              <!-- DNA helix strands -->
+              <path d="M195 20 Q210 50 195 80 Q180 110 195 140 Q210 170 195 200" fill="none" stroke="#5fb3e6" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M225 20 Q210 50 225 80 Q240 110 225 140 Q210 170 225 200" fill="none" stroke="#0b7ec9" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="197" y1="38" x2="223" y2="38" stroke="#5fb3e6" stroke-width="2"/>
+              <line x1="197" y1="62" x2="223" y2="62" stroke="#5fb3e6" stroke-width="2"/>
+              <line x1="197" y1="100" x2="223" y2="100" stroke="#5fb3e6" stroke-width="2"/>
+              <line x1="197" y1="124" x2="223" y2="124" stroke="#5fb3e6" stroke-width="2"/>
+              <line x1="197" y1="162" x2="223" y2="162" stroke="#5fb3e6" stroke-width="2"/>
+              <line x1="197" y1="186" x2="223" y2="186" stroke="#5fb3e6" stroke-width="2"/>
+              <!-- ECG pulse line -->
+              <path class="hc-pulse" d="M0 255 H50 L65 215 L80 295 L95 175 L110 255 H155 L168 228 L182 272 L196 205 L210 255 H260" fill="none" stroke="#5fb3e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle class="hc-dot" cx="95" cy="175" r="4" fill="#5fb3e6"/>
+              <!-- pill shapes -->
+              <rect x="10" y="190" width="38" height="16" rx="8" fill="none" stroke="#5fb3e6" stroke-width="2"/>
+              <line x1="29" y1="190" x2="29" y2="206" stroke="#5fb3e6" stroke-width="2"/>
+              <rect x="10" y="215" width="28" height="12" rx="6" fill="none" stroke="#0b7ec9" stroke-width="1.8"/>
+              <line x1="24" y1="215" x2="24" y2="227" stroke="#0b7ec9" stroke-width="1.8"/>
+            </svg>
+            <div class="tile-overlay" aria-hidden="true"></div>
             <h3>Healthcare IT</h3>
             <p>Depth built one hospital interface at a time, not a marketing category we added last quarter.</p>
           </div>
@@ -3041,28 +3136,55 @@
             <p>Retrieval and structured output, designed around failure modes.</p>
           </div>
           <div class="expertise-tile expertise-tile--ai">
-            <div class="expertise-tile-graphic expertise-tile-graphic--net" aria-hidden="true">
-              <svg viewBox="0 0 120 120" fill="none">
-                <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-                  <line x1="20" y1="30" x2="55" y2="20" />
-                  <line x1="20" y1="30" x2="30" y2="75" />
-                  <line x1="55" y1="20" x2="95" y2="35" />
-                  <line x1="55" y1="20" x2="30" y2="75" />
-                  <line x1="30" y1="75" x2="70" y2="90" />
-                  <line x1="95" y1="35" x2="70" y2="90" />
-                  <line x1="95" y1="35" x2="100" y2="70" />
-                  <line x1="70" y1="90" x2="100" y2="70" />
-                </g>
-                <g fill="currentColor">
-                  <circle cx="20" cy="30" r="4" />
-                  <circle cx="55" cy="20" r="4" />
-                  <circle cx="95" cy="35" r="4" />
-                  <circle cx="30" cy="75" r="4" />
-                  <circle cx="70" cy="90" r="4" />
-                  <circle cx="100" cy="70" r="4" />
-                </g>
-              </svg>
-            </div>
+            <!-- AI background: neural network, circuit traces, data flow, brain outline -->
+            <svg class="tile-bg-svg" viewBox="0 0 260 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <!-- brain outline -->
+              <path d="M100 40 C60 40 30 65 30 100 C30 120 40 135 55 145 C45 155 40 168 42 182 C45 200 60 212 78 212 C82 225 92 234 105 236 C118 238 130 230 135 218 C148 218 160 210 165 198 C178 196 188 184 188 170 C196 162 200 150 198 136 C210 126 216 110 212 94 C208 72 190 55 168 50 C158 43 130 36 100 40Z" fill="none" stroke="#5fb3e6" stroke-width="2.5" stroke-linejoin="round"/>
+              <!-- brain hemisphere divider -->
+              <path d="M118 42 C120 80 122 140 120 236" fill="none" stroke="#0b7ec9" stroke-width="1.5" stroke-dasharray="5 4"/>
+              <!-- neural network nodes — input layer -->
+              <circle class="ai-node" cx="38"  cy="90"  r="5" fill="#5fb3e6"/>
+              <circle class="ai-node" cx="38"  cy="130" r="5" fill="#5fb3e6"/>
+              <circle class="ai-node" cx="38"  cy="170" r="5" fill="#5fb3e6"/>
+              <!-- hidden layer -->
+              <circle class="ai-node" cx="110" cy="75"  r="6" fill="#0b7ec9"/>
+              <circle class="ai-node" cx="110" cy="115" r="6" fill="#0b7ec9"/>
+              <circle class="ai-node" cx="110" cy="155" r="6" fill="#0b7ec9"/>
+              <circle class="ai-node" cx="110" cy="195" r="6" fill="#0b7ec9"/>
+              <!-- output layer -->
+              <circle class="ai-node" cx="200" cy="100" r="5" fill="#5fb3e6"/>
+              <circle class="ai-node" cx="200" cy="145" r="5" fill="#5fb3e6"/>
+              <circle class="ai-node" cx="200" cy="190" r="5" fill="#5fb3e6"/>
+              <!-- edges input→hidden -->
+              <g stroke="#0b7ec9" stroke-width="1" fill="none" opacity="0.7">
+                <line class="ai-edge" x1="43"  y1="90"  x2="104" y2="75" />
+                <line class="ai-edge" x1="43"  y1="90"  x2="104" y2="115" />
+                <line class="ai-edge" x1="43"  y1="130" x2="104" y2="115" />
+                <line class="ai-edge" x1="43"  y1="130" x2="104" y2="155" />
+                <line class="ai-edge" x1="43"  y1="170" x2="104" y2="155" />
+                <line class="ai-edge" x1="43"  y1="170" x2="104" y2="195" />
+                <line class="ai-edge" x1="43"  y1="90"  x2="104" y2="195" />
+                <line class="ai-edge" x1="43"  y1="170" x2="104" y2="75" />
+              </g>
+              <!-- edges hidden→output -->
+              <g stroke="#5fb3e6" stroke-width="1" fill="none" opacity="0.7">
+                <line class="ai-edge" x1="116" y1="75"  x2="195" y2="100" />
+                <line class="ai-edge" x1="116" y1="115" x2="195" y2="100" />
+                <line class="ai-edge" x1="116" y1="115" x2="195" y2="145" />
+                <line class="ai-edge" x1="116" y1="155" x2="195" y2="145" />
+                <line class="ai-edge" x1="116" y1="155" x2="195" y2="190" />
+                <line class="ai-edge" x1="116" y1="195" x2="195" y2="190" />
+                <line class="ai-edge" x1="116" y1="75"  x2="195" y2="190" />
+                <line class="ai-edge" x1="116" y1="195" x2="195" y2="100" />
+              </g>
+              <!-- circuit traces at bottom -->
+              <path d="M20 248 H70 V262 H110 V248 H160 V262 H200 V248 H240" fill="none" stroke="#0b7ec9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="70"  cy="248" r="3" fill="#5fb3e6"/>
+              <circle cx="110" cy="262" r="3" fill="#5fb3e6"/>
+              <circle cx="160" cy="248" r="3" fill="#5fb3e6"/>
+              <circle cx="200" cy="262" r="3" fill="#5fb3e6"/>
+            </svg>
+            <div class="tile-overlay" aria-hidden="true"></div>
             <h3>Applied AI</h3>
             <p>Models built to pass clinical review, not just a benchmark.</p>
           </div>
