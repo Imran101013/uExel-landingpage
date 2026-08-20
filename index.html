@@ -1361,31 +1361,37 @@
         grid-area: ehr;
         background: #fff;
         border: 1px solid var(--line);
+        border-radius: 0;
       }
       .expertise-tile--workflow {
         grid-area: workflow;
         background: #fff;
         border: 1px solid var(--line);
+        border-radius: 0;
       }
       .expertise-tile--hipaa {
         grid-area: hipaa;
         background: #fff;
         border: 1px solid var(--line);
+        border-radius: 0;
       }
       .expertise-tile--risk {
         grid-area: risk;
         background: #fff;
         border: 1px solid var(--line);
+        border-radius: 0;
       }
       .expertise-tile--llm {
         grid-area: llm;
         background: #fff;
         border: 1px solid var(--line);
+        border-radius: 0;
       }
       .expertise-tile--eval {
         grid-area: eval;
         background: #fff;
         border: 1px solid var(--line);
+        border-radius: 0;
       }
       .expertise-tile h3 {
         font-family: "Playfair Display", serif;
@@ -1401,7 +1407,7 @@
         color: rgba(255, 255, 255, 0.78);
       }
       .expertise-tile-icon {
-        display: inline-flex;
+        display: none;
         width: 18px;
         height: 18px;
         color: var(--blue);
@@ -1415,7 +1421,7 @@
         margin: 0 0 4px;
         font-family: "Jost", sans-serif;
         font-weight: 700;
-        font-size: 13.5px;
+        font-size: 16px;
         color: var(--ink);
       }
       .expertise-tile p {
@@ -1475,7 +1481,7 @@
         position: relative;
       }
       .aiauto-tile-icon {
-        display: inline-flex;
+        display: none;
         width: 30px;
         height: 30px;
         color: var(--blue);
@@ -1488,7 +1494,6 @@
         width: 100%;
         height: 100%;
       }
-      /* anchor tile — Healthcare, the lead vertical */
       .aiauto-tile--hc {
         grid-area: hc;
         background: linear-gradient(160deg, var(--navy), var(--navy-2));
@@ -1600,7 +1605,7 @@
       }
       .aiauto-tile--sm:hover .aiauto-tile-rule {
         transform: scaleX(1);
-        width: 56px;
+        width: 100px;
       }
       .aiauto-tile--sm p {
         margin: 0;
@@ -1820,15 +1825,6 @@
       .process-ring .ring-dot.done {
         fill: var(--blue);
       }
-      /* comet — travels along the ring's own circular path each time a
-         step is selected, arriving exactly as the ring finishes filling.
-         offset-path is sized/positioned relative to .process-visual's box
-         (31.5% = the ring's 45%-of-viewBox radius scaled by the SVG's own
-         70% footprint inside .process-visual), so it always tracks the
-         ring regardless of the container's actual pixel size. circle()'s
-         0% point sits at 3 o'clock and advances clockwise, so the JS maps
-         each step's fraction through a +75% offset to land the visual
-         start at 12 o'clock, matching where ring-progress itself begins. */
       .ring-comet {
         position: absolute;
         top: 0;
