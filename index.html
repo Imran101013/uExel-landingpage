@@ -2476,7 +2476,7 @@
         background: linear-gradient(160deg, rgba(13, 58, 92, 0.4), rgba(6, 26, 43, 0.4));
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 14px;
-        padding: 24px 20px 20px;
+        padding: 10px 10px 10px;
       }
       .why-proof-title {
         font-family: "Playfair Display", serif;
@@ -2553,7 +2553,6 @@
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 10px;
         flex: 1 1 0;
-        aspect-ratio: 1 / 1;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2565,12 +2564,6 @@
         max-height: 100%;
       }
       .why-proof-badge--mono img {
-        /* PSEB/D&B/PASHA ship as opaque white-card PNGs, not transparent —
-           brightness(0)+invert(1) alone turns the whole card into a blank
-           white square. Inverting first (white card -> black, dark ink ->
-           white) then screening that against the dark panel drops the
-           now-black card into the background while keeping the linework
-           as visible white marks. */
         filter: grayscale(1) invert(1);
         mix-blend-mode: screen;
         opacity: 0.9;
