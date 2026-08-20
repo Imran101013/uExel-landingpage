@@ -227,6 +227,7 @@
       .hero {
         background-color: var(--black);
         background-image:
+          linear-gradient(180deg, transparent 80%, var(--black) 100%),
           linear-gradient(
             100deg,
             rgba(10, 13, 17, 0.93) 0%,
@@ -234,9 +235,9 @@
             rgba(10, 13, 17, 0.82) 100%
           ),
           url("Hero-bg.jpg");
-        background-size: cover, cover;
-        background-position: center, center 35%;
-        background-repeat: no-repeat, no-repeat;
+        background-size: 100% 100%, cover, cover;
+        background-position: center, center, center 35%;
+        background-repeat: no-repeat, no-repeat, no-repeat;
         color: #fff;
         padding: 96px 0 70px;
         overflow: hidden;
@@ -473,7 +474,7 @@
         line-height: 1.6;
         color: var(--muted-2);
         max-width: 400px;
-        margin: 0 0 28px;
+        margin: 0 0 0;
       }
       .about-note a {
         color: var(--blue);
@@ -1240,7 +1241,7 @@
          discipline intro tiles anchor opposite corners, with the six
          capability tiles (two of them wide) filling the remaining cells. */
       .expertise-v2 {
-        background: var(--offwhite);
+        background: var(--blue-light);
         padding: 70px 0;
       }
       .expertise-mosaic {
@@ -1447,7 +1448,7 @@
          watermark classes (and their keyframes) already defined above
          for EXPERTISE, so no new motion vocabulary is introduced. */
       .ai-automation {
-        background: var(--ink);
+        background: var(--black);
         padding: 70px 0;
         overflow: hidden;
       }
@@ -1704,7 +1705,7 @@
         padding: 70px 0;
         /* soft brand-blue wash instead of flat offwhite, echoing the dot-grid
            tint already used inside the ring visual below */
-        background: linear-gradient(180deg, #ffffff 0%, var(--blue-light) 100%);
+        background: linear-gradient(180deg, var(--white) 0%, var(--blue-light) 100%);
       }
       .process-grid {
         display: flex;
@@ -1779,6 +1780,15 @@
           rgba(0, 0, 0, 0.9) 55%,
           transparent 78%
         );
+        pointer-events: none;
+      }
+      .pv-filler--corners {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.84;
+        transform: scale(1.05);
         pointer-events: none;
       }
       .process-ring {
@@ -2381,6 +2391,14 @@
         color: #fff;
         padding: 70px 0;
       }
+      .clients-strip {
+        background: var(--black);
+        color: #fff;
+        padding: 24px 0;
+        overflow: hidden;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
       .why-layout {
         display: grid;
         grid-template-columns: 42% 1fr;
@@ -2428,6 +2446,28 @@
         text-transform: uppercase;
         color: var(--muted-2);
       }
+      .why-stats--divided {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        margin: 0 0 30px;
+      }
+      .why-stats--divided > div {
+        padding-right: 18px;
+        margin-right: 18px;
+        border-right: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .why-stats--divided > div:last-child {
+        border-right: none;
+        padding-right: 0;
+        margin-right: 0;
+      }
+      .why-stats--divided .why-stat-num {
+        font-size: 28px;
+      }
+      .why-stats--divided .why-stat-label {
+        margin-top: 6px;
+      }
       .why-proof-caption {
         margin: 14px 0 0;
         font-size: 11.5px;
@@ -2450,17 +2490,34 @@
         color: var(--muted-2);
         margin: 0 0 12px;
       }
+      .why-clients-row {
+        display: flex;
+        align-items: center;
+      }
+      .why-clients-lede {
+        flex: 0 0 auto;
+        max-width: 200px;
+        font-family: "Playfair Display", serif;
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        color: white;
+        margin: 0;
+      }
       .why-clients-marquee-wrap {
+        flex: 1;
+        min-width: 0;
         overflow: hidden;
-        mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
-        -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+        mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
       }
       .why-clients-marquee {
         display: flex;
         align-items: center;
-        gap: 32px;
+        gap: 50px;
+        white-space: nowrap;
         width: max-content;
-        animation: scroll 22s linear infinite;
+        animation: scroll 26s linear infinite;
       }
       .why-clients-logo {
         display: flex;
@@ -2469,31 +2526,42 @@
         flex-shrink: 0;
       }
       .why-clients-logo img {
-        height: 36px;
+        height: 50px;
         width: auto;
-        max-width: 110px;
         object-fit: contain;
-        filter: grayscale(1) invert(1);
-        mix-blend-mode: screen;
-        opacity: 0.75;
+        opacity: 0.9;
       }
       .why-clients-logo img:hover {
         opacity: 1;
       }
+      @media (max-width: 768px) {
+        .why-clients-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+        }
+        .why-clients-lede {
+          max-width: none;
+        }
+        .why-clients-marquee-wrap {
+          width: 100%;
+        }
+      }
       .why-proof-badges {
         display: flex;
         flex-wrap: nowrap;
-        gap: 4px;
+        gap: 6px;
       }
       .why-proof-badge {
-        background: transparent;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 10px;
         flex: 1 1 0;
         aspect-ratio: 1 / 1;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 3px 3px;
+        padding: 6px;
       }
       .why-proof-badge img,
       .why-proof-badge svg {
@@ -2546,10 +2614,14 @@
         align-items: center;
         justify-content: center;
         background: linear-gradient(135deg, var(--blue-btn), #0a2e49);
-        font-size: 18px;
+        color: #fff;
         flex-shrink: 0;
         position: relative;
         z-index: 1;
+      }
+      .why-icon svg {
+        width: 20px;
+        height: 20px;
       }
       .why-title {
         font-family: "Playfair Display", serif;
@@ -3026,7 +3098,7 @@
           <p class="about-note">
             We're also building the next generation of engineers through
             <a href="https://sda.com.pk" target="_blank" rel="noopener">SDA Tech Hub</a>,
-            our training academy and startup studio in Gilgit-Baltistan.
+            our training academy and startup studio in Gilgit-Baltistan.</p>    
           </p>
           <a href="#contact" class="btn btn-outline">Meet The Team ↗</a>
         </div>
@@ -3058,7 +3130,7 @@
     </section>
 
 
-    <section class="clients" id="clients">
+    <!-- <section class="clients" id="clients">
       <div class="wrap">
         <div class="clients-row">
           <p class="clients-lede">
@@ -3119,7 +3191,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="work-with" id="work-with">
       <div class="wrap">
@@ -3133,7 +3205,6 @@
 
         <div class="work-split" id="workSplit">
           <div class="wwm-panel">
-            <span class="work-ghost" aria-hidden="true">01</span>
             <h3 class="work-title">Startups</h3>
             <span class="work-rule" aria-hidden="true"></span>
             <p>
@@ -3153,7 +3224,6 @@
           </div>
           <div class="work-divider"></div>
           <div class="wwm-panel wwm-panel--alt">
-            <span class="work-ghost" aria-hidden="true">02</span>
             <h3 class="work-title">Enterprises</h3>
             <span class="work-rule" aria-hidden="true"></span>
             <p>
@@ -3172,7 +3242,6 @@
           </div>
           <div class="work-divider"></div>
           <div class="wwm-panel">
-            <span class="work-ghost" aria-hidden="true">03</span>
             <h3 class="work-title">Governments &amp; NGOs</h3>
             <span class="work-rule" aria-hidden="true"></span>
             <p>
@@ -3288,140 +3357,6 @@
         </div>
       </div>
     </section>
-
-    <!-- <section class="expertise" id="expertise">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Our Expertise <span class="arrow">↘</span></h2>
-          <p class="lede">
-            Two disciplines we've committed to for years, stated honestly —
-            including where we're strong and where we bring in a specialist.
-            Everything else we build sits on top of these.
-          </p>
-        </div>
-
-        <div class="expertise-list" id="expertiseList">
-          <div class="expertise-panel-block">
-            <div class="expertise-panel">
-              <h3 class="expertise-panel-title">Healthcare IT</h3>
-              <p class="expertise-panel-desc">
-                Depth built one hospital interface at a time, not a
-                marketing category we added last quarter.
-              </p>
-              <span class="expertise-panel-rule" aria-hidden="true"></span>
-              <p class="expertise-panel-proof">
-                Production interfaces, maintained end to end.
-              </p>
-            </div>
-            <div class="expertise-panel-caps">
-              <div class="expertise-panel-cap">
-                <h4>EHR integration</h4>
-                <p>
-                  Epic, Cerner, Meditech and Athena interfaces — read,
-                  write, and the reconciliation rules in between.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>HL7 v2 &amp; FHIR R4</h4>
-                <p>
-                  Mapping layers, custom profiles, and replay tooling for
-                  when an upstream feed misbehaves.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>Clinical workflow design</h4>
-                <p>
-                  Intake, referral, and care-coordination flows shaped
-                  with people who've worked clinical-side.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>Device &amp; RPM pipelines</h4>
-                <p>
-                  DICOM, BLE, and continuous telemetry ingested with
-                  backpressure, dedup, and delivery auditing.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>HIPAA &amp; SOC 2 delivery</h4>
-                <p>
-                  Technical safeguards, audit trails, and evidence
-                  collection built into the first slice, not the last.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>Claims &amp; revenue cycle</h4>
-                <p>
-                  Eligibility checks, prior authorization, and 837/835
-                  exchange with payer-side integrations.
-                </p>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="expertise-panel-block expertise-panel-block--b">
-            <div class="expertise-panel-caps">
-              <div class="expertise-panel-cap">
-                <h4>Clinical risk models</h4>
-                <p>
-                  Deterioration, sepsis, and readmission scoring,
-                  validated prospectively before anyone acts on it.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>Clinical NLP &amp; extraction</h4>
-                <p>
-                  Notes, referrals, faxes, and prior-auth packets turned
-                  into structured data, with citations to the source.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>LLM application engineering</h4>
-                <p>
-                  Retrieval, tool use, and structured output — designed
-                  around the failure modes, not the happy path.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>Evaluation &amp; monitoring</h4>
-                <p>
-                  Gold-standard test sets, drift alerting, and a review
-                  queue that only surfaces what's uncertain.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>Ambient &amp; voice</h4>
-                <p>
-                  Scribing, triage, and patient-facing agents with
-                  escalation rules and defensible transcripts.
-                </p>
-              </div>
-              <div class="expertise-panel-cap">
-                <h4>MLOps &amp; governance</h4>
-                <p>
-                  Versioning, provenance, and model cards, so any output
-                  can be traced back to its inputs.
-                </p>
-              </div>
-            </div>
-            <div class="expertise-panel expertise-panel--ink">
-              <h3 class="expertise-panel-title">Applied AI</h3>
-              <p class="expertise-panel-desc">
-                Models built to pass clinical review, not just a
-                benchmark.
-              </p>
-              <span class="expertise-panel-rule" aria-hidden="true"></span>
-              <p class="expertise-panel-proof">
-                Every model shipped with an evaluation harness, not just
-                a demo.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section> -->
 
     <section class="expertise-v2" id="expertise-v2">
       <div class="wrap">
@@ -3678,6 +3613,20 @@
         <div class="process-grid">
           <div class="process-left">
           <div class="process-visual">
+            <svg class="pv-filler--corners" viewBox="0 0 200 200" aria-hidden="true">
+              <g fill="none" stroke="#0b7ec9" stroke-width="2.5" stroke-linecap="round">
+                <path d="M4 20 L4 4 L20 4" />
+                <path d="M180 4 L196 4 L196 20" />
+                <path d="M196 180 L196 196 L180 196" />
+                <path d="M20 196 L4 196 L4 180" />
+              </g>
+              <g fill="#0b7ec9" opacity="0.5">
+                <circle cx="18" cy="100" r="2.5" />
+                <circle cx="182" cy="100" r="2.5" />
+                <circle cx="100" cy="18" r="2.5" />
+                <circle cx="100" cy="182" r="2.5" />
+              </g>
+            </svg>
             <svg class="process-ring" viewBox="0 0 200 200" aria-hidden="true">
               <circle class="ring-bg" cx="100" cy="100" r="90" />
               <circle class="ring-progress" cx="100" cy="100" r="90" />
@@ -3939,7 +3888,7 @@
         <div class="why-rail">
           <h2 class="why-heading">Why Choose uExel</h2>
           <p class="why-lede">What working with us actually looks like — day one through launch and beyond.</p>
-          <div class="why-stats">
+          <div class="why-stats why-stats--divided">
             <div>
               <span class="why-stat-num">500+</span>
               <span class="why-stat-label">Talent pool</span>
@@ -3961,72 +3910,54 @@
             <h3 class="why-proof-title">Affiliation / Accreditation</h3>
             <div class="why-proof-badges">
               <div class="why-proof-badge why-proof-badge--mono"><img src="logos/pseb.png" alt="Pakistan Software Export Board (PSEB)" loading="lazy" /></div>
-              <div class="why-proof-badge"><img src="logos/secp.png" alt="Securities and Exchange Commission of Pakistan (SECP)" loading="lazy" /></div>
-              <div class="why-proof-badge">
-                <svg viewBox="0 0 220 140" width="72" height="45" role="img" aria-label="ISO">
-                  <g fill="none" stroke="#0b7ec9" stroke-width="5" stroke-linecap="round">
-                    <path d="M35 40 A75 30 0 0 1 185 40" />
-                    <path d="M35 40 A75 12 0 0 1 185 40" opacity="0.55" />
-                    <line x1="60" y1="14" x2="60" y2="40" />
-                    <line x1="110" y1="6" x2="110" y2="40" />
-                    <line x1="160" y1="14" x2="160" y2="40" />
-                    <path d="M35 100 A75 30 0 0 0 185 100" />
-                    <path d="M35 100 A75 12 0 0 0 185 100" opacity="0.55" />
-                    <line x1="60" y1="126" x2="60" y2="100" />
-                    <line x1="110" y1="134" x2="110" y2="100" />
-                    <line x1="160" y1="126" x2="160" y2="100" />
-                  </g>
-                  <text x="110" y="85" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="46" text-anchor="middle" fill="#0b7ec9">ISO</text>
-                </svg>
-              </div>
+              <div class="why-proof-badge why-proof-badge--mono"><img src="logos/secp.png" alt="Securities and Exchange Commission of Pakistan (SECP)" loading="lazy" /></div>
+              <div class="why-proof-badge why-proof-badge--mono"><img src="logos/iso.webp" alt="ISO 9001 Certification" loading="lazy" /></div>
               <div class="why-proof-badge why-proof-badge--mono"><img src="logos/dnb.png" alt="D&amp;B D-U-N-S Registered" loading="lazy" /></div>
               <div class="why-proof-badge why-proof-badge--mono"><img src="logos/pasha.png" alt="P@SHA — Pakistan IT Industry Association" loading="lazy" /></div>
-            </div>
-          </div>
-          <div class="why-proof">
-            <h3 class="why-proof-title">Clients &amp; Partners</h3>
-            <div class="why-clients-marquee-wrap">
-              <div class="why-clients-marquee">
-                <span class="why-clients-logo"><img src="logos/odoo.png" alt="Odoo" loading="lazy" /></span>
-                <span class="why-clients-logo"><img src="logos/uconnect.png" alt="uConnect" loading="lazy" /></span>
-                <span class="why-clients-logo"><img src="logos/medit360.webp" alt="MedIT360" loading="lazy" /></span>
-                <span class="why-clients-logo"><img src="logos/execudea.png" alt="Execudea" loading="lazy" /></span>
-                <span class="why-clients-logo"><img src="logos/greensquad.png" alt="GreenSquad" loading="lazy" /></span>
-                <span class="why-clients-logo"><img src="logos/sdatechhub.png" alt="SDA Tech Hub" loading="lazy" /></span>
-                <span class="why-clients-logo" aria-hidden="true"><img src="logos/odoo.png" alt="" loading="lazy" /></span>
-                <span class="why-clients-logo" aria-hidden="true"><img src="logos/uconnect.png" alt="" loading="lazy" /></span>
-                <span class="why-clients-logo" aria-hidden="true"><img src="logos/medit360.webp" alt="" loading="lazy" /></span>
-                <span class="why-clients-logo" aria-hidden="true"><img src="logos/execudea.png" alt="" loading="lazy" /></span>
-                <span class="why-clients-logo" aria-hidden="true"><img src="logos/greensquad.png" alt="" loading="lazy" /></span>
-                <span class="why-clients-logo" aria-hidden="true"><img src="logos/sdatechhub.png" alt="" loading="lazy" /></span>
-              </div>
             </div>
           </div>
         </div>
         <ol class="why-list">
           <li class="why-item">
-            <div class="why-icon">⚡</div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2 5 14h6l-1 8 8-12h-6l1-8z" />
+              </svg>
+            </div>
             <div class="why-item-body">
               <h3 class="why-title">Fast Turnaround</h3>
               <p class="why-desc">Agile delivery with no bloat — we ship working software in weeks, not quarters.</p>
             </div>
           </li>
           <li class="why-item">
-            <div class="why-icon">🔒</div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+            </div>
             <div class="why-item-body">
               <h3 class="why-title">Compliance-Ready</h3>
               <p class="why-desc">Deep experience building for regulated industries, from HIPAA to clinical infrastructure.</p>
             </div>
           </li>
           <li class="why-item">
-            <div class="why-icon">💬</div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 5h16v11H9l-4 4V5z" />
+              </svg>
+            </div>
             <div class="why-item-body">
               <h3 class="why-title">Direct Access</h3>
               <p class="why-desc">You talk to the engineers building your product, not a layer of account managers.</p>
             </div>
           </li>
           <li class="why-item">
-            <div class="why-icon">🛠</div>
+            <div class="why-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.7 6.3a4 4 0 00-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 005.4-5.4l-2.6 2.6-2-2 2.6-2.6z" />
+              </svg>
+            </div>
             <div class="why-item-body">
               <h3 class="why-title">Ongoing Support</h3>
               <p class="why-desc">Launch is a milestone, not an exit — we stay on for monitoring, fixes, and iteration.</p>
@@ -4035,6 +3966,30 @@
         </ol>
       </div>
     </section>
+
+    <div class="clients-strip">
+      <div class="wrap">
+        <div class="why-clients-row">
+          <p class="why-clients-lede">Clients &amp; Partners</p>
+          <div class="why-clients-marquee-wrap">
+            <div class="why-clients-marquee">
+              <span class="why-clients-logo"><img src="logos/odoo.png" alt="Odoo" loading="lazy" /></span>
+              <span class="why-clients-logo"><img src="logos/uconnect.png" alt="uConnect" loading="lazy" /></span>
+              <span class="why-clients-logo"><img src="logos/medit360.webp" alt="MedIT360" loading="lazy" /></span>
+              <span class="why-clients-logo"><img src="logos/execudea.png" alt="Execudea" loading="lazy" /></span>
+              <span class="why-clients-logo"><img src="logos/greensquad.png" alt="GreenSquad" loading="lazy" /></span>
+              <span class="why-clients-logo"><img src="logos/sdatechhub.png" alt="SDA Tech Hub" loading="lazy" /></span>
+              <span class="why-clients-logo" aria-hidden="true"><img src="logos/odoo.png" alt="" loading="lazy" /></span>
+              <span class="why-clients-logo" aria-hidden="true"><img src="logos/uconnect.png" alt="" loading="lazy" /></span>
+              <span class="why-clients-logo" aria-hidden="true"><img src="logos/medit360.webp" alt="" loading="lazy" /></span>
+              <span class="why-clients-logo" aria-hidden="true"><img src="logos/execudea.png" alt="" loading="lazy" /></span>
+              <span class="why-clients-logo" aria-hidden="true"><img src="logos/greensquad.png" alt="" loading="lazy" /></span>
+              <span class="why-clients-logo" aria-hidden="true"><img src="logos/sdatechhub.png" alt="" loading="lazy" /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section class="cta-banner" id="contact">      <div class="wrap cta-grid">
         <div class="cta-copy">
@@ -4526,5 +4481,8 @@
         setTimeout(runOnce, 1200);
       })();
     </script>
-  </body>
+  <!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=28400563-6356-461b-a716-5ac6cb763cc3"></script>
+<!-- impeccable-live-end -->
+</body>
 </html>
