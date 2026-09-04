@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -972,6 +972,41 @@
         opacity: 1;
         transform: translateY(0);
       }
+      /* On real hover devices, swap the description for the tag list in
+         place: both are grid-stacked onto the same cell so the crossfade
+         doesn't shift panel height or layout. Touch/no-hover devices keep
+         the description and tags both visible, as in the base layout. */
+      @media (hover: hover) and (pointer: fine) {
+        .wwm-pre.wwm-in {
+          display: grid;
+        }
+        .wwm-pre.wwm-in p,
+        .wwm-pre.wwm-in .tag-list {
+          grid-row: 3;
+          grid-column: 1;
+          align-self: start;
+        }
+        .wwm-pre.wwm-in p {
+          transition: opacity 0.3s ease;
+        }
+        .wwm-pre.wwm-in .tag-list {
+          opacity: 0;
+          pointer-events: none;
+          transform: translateY(18px);
+          transition:
+            opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .wwm-pre.wwm-in:hover p {
+          opacity: 0;
+          pointer-events: none;
+        }
+        .wwm-pre.wwm-in:hover .tag-list {
+          opacity: 1;
+          pointer-events: auto;
+          transform: translateY(0);
+        }
+      }
 
       /* ===== FEATURED WORK ===== */
       .featured {
@@ -1240,207 +1275,285 @@
       /* ===== EXPERTISE (VARIANT B) — an asymmetric bento mosaic: the two
          discipline intro tiles anchor opposite corners, with the six
          capability tiles (two of them wide) filling the remaining cells. */
+      /* ===== EXPERTISE (VARIANT C) — "engineering dashboard": each
+         discipline is its own numbered spec sheet (bracketed index +
+         status tag over a hairline rule), followed by a bento grid of a
+         dark hero "domain" card and monospace capability cards with
+         badge/meta rows, mirroring an ops-console readout rather than a
+         marketing tile. */
       .expertise-v2 {
+        --dash-bg: #141a21;
+        --dash-line: rgba(255, 255, 255, 0.09);
+        --dash-text-dim: #8791a0;
+        --dash-cyan: #2dd4e0;
         background: var(--blue-light);
         padding: 70px 0;
       }
-      .expertise-mosaic {
+      .expertise-v2 .lede {
+        max-width: 460px;
+      }
+      .xg-block {
         margin-top: 50px;
+      }
+      .xg-block + .xg-block {
+        margin-top: 56px;
+      }
+      
+      .xg-eyebrow {
+        font-family: "JetBrains Mono", "Jost", monospace;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+      }
+      .xg-bracket {
+        color: var(--blue);
+        font-weight: 600;
+        margin-right: 8px;
+      }
+      .xg-status {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted-2);
+        opacity: 0.8;
+      }
+      .xg-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        grid-auto-rows: minmax(150px, auto);
+      }
+      .xg-grid--hc {
         grid-template-areas:
           "hc hc ehr ehr"
-          "hc hc workflow hipaa"
+          "hc hc workflow hipaa";
+      }
+      .xg-grid--ai {
+        grid-template-areas:
           "risk llm ai ai"
           "eval eval ai ai";
-        gap: 13.6px;
-        grid-auto-rows: minmax(120px, auto);
       }
-      .expertise-tile {
-        border-radius: 12px;
-        padding: 17px;
+      .xg-hero,
+      .xg-cap {
+        position: relative;
+        border-radius: 8px;
+        background: var(--dash-bg);
+        border: 1px solid var(--dash-line);
+        border-left: 3px solid transparent;
+        padding: 24px 26px;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
+        transition:
+          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.4s ease,
+          border-left-color 0.4s ease,
+          box-shadow 0.45s ease,
+          background 0.4s ease;
       }
-      .expertise-tile--healthcare {
+      /* top scan-line draws in on hover, echoing the site's other
+         hover-rule reveals (.wwm-panel .work-rule, .about-tile-photo) */
+      .xg-hero::before,
+      .xg-cap::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--dash-cyan), transparent);
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+      }
+      .xg-hero:hover,
+      .xg-cap:hover {
+        transform: translateY(-5px);
+        border-color: rgba(45, 212, 224, 0.4);
+        background: #182029;
+        box-shadow: 0 18px 40px -18px rgba(45, 212, 224, 0.45);
+      }
+      .xg-hero:hover::before,
+      .xg-cap:hover::before {
+        transform: scaleX(1);
+      }
+      .xg-hero {
+        border-left-color: var(--dash-cyan);
+        justify-content: space-between;
+      }
+      .xg-hero:hover {
+        border-left-color: #fff;
+        box-shadow: 0 22px 48px -16px rgba(45, 212, 224, 0.55);
+      }
+      .xg-cap:hover {
+        border-left-color: var(--dash-cyan);
+      }
+      .xg-hero--hc {
         grid-area: hc;
-        background: linear-gradient(160deg, var(--navy), var(--navy-2));
-        color: #fff;
-        justify-content: end;
-        position: relative;
-        overflow: hidden;
       }
-      .expertise-tile--healthcare .tile-bg-svg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        opacity: 0.28;
-      }
-      .expertise-tile--healthcare .tile-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(10,46,73,0.92) 0%, rgba(10,46,73,0.55) 55%, rgba(13,58,92,0.25) 100%);
-        pointer-events: none;
-      }
-      .expertise-tile--healthcare > *:not(.tile-bg-svg):not(.tile-overlay) {
-        position: relative;
-        z-index: 1;
-      }
-      .hc-pulse {
-        stroke-dasharray: 420;
-        stroke-dashoffset: 420;
-        animation: hc-draw 3s ease-in-out infinite;
-      }
-      @keyframes hc-draw {
-        0%   { stroke-dashoffset: 420; opacity: 0.6; }
-        50%  { stroke-dashoffset: 0;   opacity: 1; }
-        100% { stroke-dashoffset: -420; opacity: 0.6; }
-      }
-      .hc-dot {
-        animation: hc-dot-pulse 3s ease-in-out infinite;
-      }
-      @keyframes hc-dot-pulse {
-        0%,100% { r: 4; opacity: 0.5; }
-        50%     { r: 7; opacity: 1; }
-      }
-      .expertise-tile--ai {
+      .xg-hero--ai {
         grid-area: ai;
-        background: var(--ink);
-        color: #fff;
-        justify-content: end;
-        position: relative;
-        overflow: hidden;
       }
-      .expertise-tile--ai .tile-bg-svg {
+      .xg-hero-watermark {
         position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        opacity: 0.28;
-      }
-      .expertise-tile--ai .tile-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to top, rgba(11,15,20,0.92) 0%, rgba(11,15,20,0.55) 55%, rgba(11,15,20,0.25) 100%);
+        top: 10px;
+        right: 6px;
+        width: 46%;
+        height: auto;
+        max-height: 70%;
+        opacity: 0.5;
         pointer-events: none;
       }
-      .expertise-tile--ai > *:not(.tile-bg-svg):not(.tile-overlay) {
+      .xg-hero-eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dash-cyan);
+      }
+      .xg-pill {
         position: relative;
         z-index: 1;
-      }
-      .ai-edge {
-        stroke-dasharray: 80;
-        stroke-dashoffset: 80;
-        animation: ai-edge-draw 2.8s ease-in-out infinite;
-      }
-      .ai-edge:nth-child(2)  { animation-delay: 0.3s; }
-      .ai-edge:nth-child(3)  { animation-delay: 0.6s; }
-      .ai-edge:nth-child(4)  { animation-delay: 0.9s; }
-      .ai-edge:nth-child(5)  { animation-delay: 1.2s; }
-      .ai-edge:nth-child(6)  { animation-delay: 1.5s; }
-      .ai-edge:nth-child(7)  { animation-delay: 1.8s; }
-      .ai-edge:nth-child(8)  { animation-delay: 2.1s; }
-      @keyframes ai-edge-draw {
-        0%   { stroke-dashoffset: 80; opacity: 0.3; }
-        50%  { stroke-dashoffset: 0;  opacity: 1; }
-        100% { stroke-dashoffset: -80; opacity: 0.3; }
-      }
-      .ai-node {
-        animation: ai-node-glow 2.8s ease-in-out infinite;
-      }
-      .ai-node:nth-child(odd)  { animation-delay: 0.4s; }
-      .ai-node:nth-child(even) { animation-delay: 1.1s; }
-      @keyframes ai-node-glow {
-        0%,100% { opacity: 0.4; r: 5; }
-        50%     { opacity: 1;   r: 8; }
-      }
-      .expertise-tile--ehr {
-        grid-area: ehr;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 0;
-      }
-      .expertise-tile--workflow {
-        grid-area: workflow;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 0;
-      }
-      .expertise-tile--hipaa {
-        grid-area: hipaa;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 0;
-      }
-      .expertise-tile--risk {
-        grid-area: risk;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 0;
-      }
-      .expertise-tile--llm {
-        grid-area: llm;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 0;
-      }
-      .expertise-tile--eval {
-        grid-area: eval;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 0;
-      }
-      .expertise-tile h3 {
-        font-family: "Playfair Display", serif;
-        font-size: 19px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 5px 11px;
+        border-radius: 20px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        margin: 0 0 6px;
+        white-space: nowrap;
+        background: rgba(45, 212, 224, 0.1);
+        border: 1px solid rgba(45, 212, 224, 0.3);
+        color: var(--dash-cyan);
+      }
+      .xg-dot {
+        width: 6px;
+        height: 6px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: currentColor;
+        box-shadow: 0 0 0 3px rgba(45, 212, 224, 0.22);
+      }
+      .xg-hero-title {
+        position: relative;
+        z-index: 1;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(26px, 3vw, 34px);
+        text-transform: uppercase;
         color: #fff;
+        margin: 22px 0 10px;
       }
-      .expertise-tile--healthcare p,
-      .expertise-tile--ai p {
+      .xg-hero-desc {
+        position: relative;
+        z-index: 1;
         margin: 0;
-        font-size: 12.5px;
-        color: rgba(255, 255, 255, 0.78);
+        color: var(--dash-text-dim);
+        font-size: 14px;
+        line-height: 1.55;
+        max-width: 34ch;
       }
-      .expertise-tile-icon {
-        display: none;
-        width: 18px;
-        height: 18px;
-        color: var(--blue);
-        margin-bottom: 8px;
+      .xg-hero-rule {
+        position: relative;
+        z-index: 1;
+        height: 1px;
+        background: var(--dash-line);
+        margin: 22px 0 14px;
       }
-      .expertise-tile-icon svg {
-        width: 100%;
-        height: 100%;
+      .xg-stat-label {
+        color: var(--dash-text-dim);
+        letter-spacing: 0.05em;
       }
-      .expertise-tile h4 {
-        margin: 0 0 4px;
+      .xg-stat-value {
+        color: #fff;
+        font-weight: 600;
+        margin-left: 5px;
+      }
+      .xg-stat-value--accent {
+        color: var(--dash-cyan);
+      }
+      .xg-cap--ehr {
+        grid-area: ehr;
+      }
+      .xg-cap--workflow {
+        grid-area: workflow;
+      }
+      .xg-cap--hipaa {
+        grid-area: hipaa;
+      }
+      .xg-cap--risk {
+        grid-area: risk;
+      }
+      .xg-cap--llm {
+        grid-area: llm;
+      }
+      .xg-cap--eval {
+        grid-area: eval;
+      }
+      .xg-cap-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .xg-cap-title {
+        display: flex;
+        align-items: baseline;
+        gap: 9px;
+        margin: 0;
         font-family: "Jost", sans-serif;
         font-weight: 700;
-        font-size: 16px;
-        color: var(--ink);
+        font-size: 15.5px;
+        color: #fff;
       }
-      .expertise-tile p {
-        margin: 0;
-        font-size: 12.5px;
-        line-height: 1.45;
-        color: white;
+      .xg-badge {
+        flex-shrink: 0;
+        padding: 3px 9px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9.5px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--dash-text-dim);
+      }
+      .xg-cap-desc {
+        flex: 1;
+        margin: 12px 0 0;
+        font-size: 13.5px;
+        line-height: 1.55;
+        color: var(--dash-text-dim);
+      }
+      .xg-cap-rule {
+        height: 1px;
+        background: var(--dash-line);
+        margin: 16px 0 10px;
+      }
+      .xg-meta-accent {
+        color: var(--dash-cyan);
       }
       @media (max-width: 768px) {
-        .expertise-mosaic {
+        .xg-grid--hc,
+        .xg-grid--ai {
           grid-template-columns: 1fr;
+        }
+        .xg-grid--hc {
           grid-template-areas:
             "hc"
             "ehr"
             "workflow"
-            "hipaa"
-            "ai"
+            "hipaa";
+        }
+        .xg-grid--ai {
+          grid-template-areas:
             "risk"
             "llm"
+            "ai"
             "eval";
         }
       }
@@ -3359,122 +3472,85 @@
             work itself.
           </p>
         </div>
-        <div class="expertise-mosaic">
-          <div class="expertise-tile expertise-tile--healthcare">
-            <!-- healthcare background: stethoscope, cross, DNA, heartbeat, pills -->
-            <svg class="tile-bg-svg" viewBox="0 0 260 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <!-- large faint cross -->
-              <rect x="108" y="30" width="44" height="120" rx="8" fill="#5fb3e6"/>
-              <rect x="80" y="58" width="100" height="44" rx="8" fill="#5fb3e6"/>
-              <!-- stethoscope tube -->
-              <path d="M30 60 Q30 130 80 150 Q130 170 130 220" fill="none" stroke="#0b7ec9" stroke-width="7" stroke-linecap="round"/>
-              <circle cx="130" cy="232" r="18" fill="none" stroke="#0b7ec9" stroke-width="5"/>
-              <circle cx="130" cy="232" r="8" fill="#5fb3e6"/>
-              <circle cx="30" cy="58" r="7" fill="#5fb3e6"/>
-              <!-- DNA helix strands -->
-              <path d="M195 20 Q210 50 195 80 Q180 110 195 140 Q210 170 195 200" fill="none" stroke="#5fb3e6" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M225 20 Q210 50 225 80 Q240 110 225 140 Q210 170 225 200" fill="none" stroke="#0b7ec9" stroke-width="2.5" stroke-linecap="round"/>
-              <line x1="197" y1="38" x2="223" y2="38" stroke="#5fb3e6" stroke-width="2"/>
-              <line x1="197" y1="62" x2="223" y2="62" stroke="#5fb3e6" stroke-width="2"/>
-              <line x1="197" y1="100" x2="223" y2="100" stroke="#5fb3e6" stroke-width="2"/>
-              <line x1="197" y1="124" x2="223" y2="124" stroke="#5fb3e6" stroke-width="2"/>
-              <line x1="197" y1="162" x2="223" y2="162" stroke="#5fb3e6" stroke-width="2"/>
-              <line x1="197" y1="186" x2="223" y2="186" stroke="#5fb3e6" stroke-width="2"/>
-              <!-- ECG pulse line -->
-              <path class="hc-pulse" d="M0 255 H50 L65 215 L80 295 L95 175 L110 255 H155 L168 228 L182 272 L196 205 L210 255 H260" fill="none" stroke="#5fb3e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle class="hc-dot" cx="95" cy="175" r="4" fill="#5fb3e6"/>
-              <!-- pill shapes -->
-              <rect x="10" y="190" width="38" height="16" rx="8" fill="none" stroke="#5fb3e6" stroke-width="2"/>
-              <line x1="29" y1="190" x2="29" y2="206" stroke="#5fb3e6" stroke-width="2"/>
-              <rect x="10" y="215" width="28" height="12" rx="6" fill="none" stroke="#0b7ec9" stroke-width="1.8"/>
-              <line x1="24" y1="215" x2="24" y2="227" stroke="#0b7ec9" stroke-width="1.8"/>
-            </svg>
-            <div class="tile-overlay" aria-hidden="true"></div>
-            <h3>Healthcare IT</h3>
-            <p>Depth built one hospital interface at a time, not a marketing category we added last quarter.</p>
+
+        <div class="xg-block">
+          <div class="xg-grid xg-grid--hc">
+            <div class="xg-hero xg-hero--hc">
+              <svg class="xg-hero-watermark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <circle cx="50" cy="50" r="46" stroke="#5fb3e6" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
+                <rect x="40" y="20" width="20" height="60" rx="4" fill="#5fb3e6" opacity="0.4"/>
+                <rect x="20" y="40" width="60" height="20" rx="4" fill="#5fb3e6" opacity="0.4"/>
+              </svg>
+              <h3 class="xg-hero-title">Healthcare IT</h3>
+              <p class="xg-hero-desc">Depth built one hospital interface at a time, not a marketing category we added last quarter.</p>
+              <div class="xg-hero-rule"></div>
+            </div>
+            <div class="xg-cap xg-cap--ehr">
+              <div class="xg-cap-top">
+                <h4 class="xg-cap-title">EHR integration</h4>
+              </div>
+              <p class="xg-cap-desc">Epic, Cerner, Meditech and Athena interfaces — read, write, and the reconciliation rules in between.</p>
+              <div class="xg-cap-rule"></div>
+            </div>
+            <div class="xg-cap xg-cap--workflow">
+              <div class="xg-cap-top">
+                <h4 class="xg-cap-title">Clinical workflow design</h4>
+              </div>
+              <p class="xg-cap-desc">Intake, referral, and care-coordination flows shaped with people who've worked clinical-side.</p>
+              <div class="xg-cap-rule"></div>
+            </div>
+            <div class="xg-cap xg-cap--hipaa">
+              <div class="xg-cap-top">
+                <h4 class="xg-cap-title">HIPAA &amp; SOC 2</h4>
+              </div>
+              <p class="xg-cap-desc">Technical safeguards and audit trails built into the first slice.</p>
+              <div class="xg-cap-rule"></div>
+            </div>
           </div>
-          <div class="expertise-tile expertise-tile--ehr">
-            <span class="expertise-tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 14.5l5-5" /><path d="M8 16a3.5 3.5 0 0 1 0-5l2-2a3.5 3.5 0 0 1 5 0" /><path d="M16 8a3.5 3.5 0 0 1 0 5l-2 2a3.5 3.5 0 0 1-5 0" /></svg></span>
-            <h4>EHR integration</h4>
-            <p>Epic, Cerner, Meditech and Athena interfaces — read, write, and the reconciliation rules in between.</p>
-          </div>
-          <div class="expertise-tile expertise-tile--workflow">
-            <span class="expertise-tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.5" cy="12" r="2" /><circle cx="12" cy="5.5" r="2" /><circle cx="12" cy="18.5" r="2" /><circle cx="19.5" cy="12" r="2" /><path d="M6.3 11.1L10.2 6.9M6.3 12.9L10.2 17.1M13.8 6.9L17.7 11.1M13.8 17.1L17.7 12.9" /></svg></span>
-            <h4>Clinical workflow design</h4>
-            <p>Intake, referral, and care-coordination flows shaped with people who've worked clinical-side.</p>
-          </div>
-          <div class="expertise-tile expertise-tile--hipaa">
-            <span class="expertise-tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l7 3v5.2c0 4.4-2.9 7.9-7 8.8-4.1-.9-7-4.4-7-8.8V6.5l7-3z" /><path d="M9 12.2l2.1 2.1 4-4.3" /></svg></span>
-            <h4>HIPAA &amp; SOC 2</h4>
-            <p>Technical safeguards and audit trails built into the first slice.</p>
-          </div>
-          <div class="expertise-tile expertise-tile--risk">
-            <span class="expertise-tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h3.2l2-5 2.6 8.5 2.4-11 2 7.5H21" /></svg></span>
-            <h4>Clinical risk models</h4>
-            <p>Deterioration and readmission scoring, validated prospectively.</p>
-          </div>
-          <div class="expertise-tile expertise-tile--llm">
-            <span class="expertise-tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v10H9.5L5.5 19v-3.5H4v-10z" /><circle cx="9" cy="10.3" r="1" fill="currentColor" stroke="none" /><circle cx="12.5" cy="10.3" r="1" fill="currentColor" stroke="none" /><circle cx="16" cy="10.3" r="1" fill="currentColor" stroke="none" /></svg></span>
-            <h4>LLM application engineering</h4>
-            <p>Retrieval and structured output, designed around failure modes.</p>
-          </div>
-          <div class="expertise-tile expertise-tile--ai">
-            <!-- AI background: neural network, circuit traces, data flow, brain outline -->
-            <svg class="tile-bg-svg" viewBox="0 0 260 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <!-- brain outline -->
-              <path d="M100 40 C60 40 30 65 30 100 C30 120 40 135 55 145 C45 155 40 168 42 182 C45 200 60 212 78 212 C82 225 92 234 105 236 C118 238 130 230 135 218 C148 218 160 210 165 198 C178 196 188 184 188 170 C196 162 200 150 198 136 C210 126 216 110 212 94 C208 72 190 55 168 50 C158 43 130 36 100 40Z" fill="none" stroke="#5fb3e6" stroke-width="2.5" stroke-linejoin="round"/>
-              <!-- brain hemisphere divider -->
-              <path d="M118 42 C120 80 122 140 120 236" fill="none" stroke="#0b7ec9" stroke-width="1.5" stroke-dasharray="5 4"/>
-              <!-- neural network nodes — input layer -->
-              <circle class="ai-node" cx="38"  cy="90"  r="5" fill="#5fb3e6"/>
-              <circle class="ai-node" cx="38"  cy="130" r="5" fill="#5fb3e6"/>
-              <circle class="ai-node" cx="38"  cy="170" r="5" fill="#5fb3e6"/>
-              <!-- hidden layer -->
-              <circle class="ai-node" cx="110" cy="75"  r="6" fill="#0b7ec9"/>
-              <circle class="ai-node" cx="110" cy="115" r="6" fill="#0b7ec9"/>
-              <circle class="ai-node" cx="110" cy="155" r="6" fill="#0b7ec9"/>
-              <circle class="ai-node" cx="110" cy="195" r="6" fill="#0b7ec9"/>
-              <!-- output layer -->
-              <circle class="ai-node" cx="200" cy="100" r="5" fill="#5fb3e6"/>
-              <circle class="ai-node" cx="200" cy="145" r="5" fill="#5fb3e6"/>
-              <circle class="ai-node" cx="200" cy="190" r="5" fill="#5fb3e6"/>
-              <!-- edges input→hidden -->
-              <g stroke="#0b7ec9" stroke-width="1" fill="none" opacity="0.7">
-                <line class="ai-edge" x1="43"  y1="90"  x2="104" y2="75" />
-                <line class="ai-edge" x1="43"  y1="90"  x2="104" y2="115" />
-                <line class="ai-edge" x1="43"  y1="130" x2="104" y2="115" />
-                <line class="ai-edge" x1="43"  y1="130" x2="104" y2="155" />
-                <line class="ai-edge" x1="43"  y1="170" x2="104" y2="155" />
-                <line class="ai-edge" x1="43"  y1="170" x2="104" y2="195" />
-                <line class="ai-edge" x1="43"  y1="90"  x2="104" y2="195" />
-                <line class="ai-edge" x1="43"  y1="170" x2="104" y2="75" />
-              </g>
-              <!-- edges hidden→output -->
-              <g stroke="#5fb3e6" stroke-width="1" fill="none" opacity="0.7">
-                <line class="ai-edge" x1="116" y1="75"  x2="195" y2="100" />
-                <line class="ai-edge" x1="116" y1="115" x2="195" y2="100" />
-                <line class="ai-edge" x1="116" y1="115" x2="195" y2="145" />
-                <line class="ai-edge" x1="116" y1="155" x2="195" y2="145" />
-                <line class="ai-edge" x1="116" y1="155" x2="195" y2="190" />
-                <line class="ai-edge" x1="116" y1="195" x2="195" y2="190" />
-                <line class="ai-edge" x1="116" y1="75"  x2="195" y2="190" />
-                <line class="ai-edge" x1="116" y1="195" x2="195" y2="100" />
-              </g>
-              <!-- circuit traces at bottom -->
-              <path d="M20 248 H70 V262 H110 V248 H160 V262 H200 V248 H240" fill="none" stroke="#0b7ec9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="70"  cy="248" r="3" fill="#5fb3e6"/>
-              <circle cx="110" cy="262" r="3" fill="#5fb3e6"/>
-              <circle cx="160" cy="248" r="3" fill="#5fb3e6"/>
-              <circle cx="200" cy="262" r="3" fill="#5fb3e6"/>
-            </svg>
-            <div class="tile-overlay" aria-hidden="true"></div>
-            <h3>Applied AI</h3>
-            <p>Models built to pass clinical review, not just a benchmark.</p>
-          </div>
-          <div class="expertise-tile expertise-tile--eval">
-            <span class="expertise-tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6" /><path d="M8 10.5l1.8 1.8L13.5 8" /><path d="M15.3 15.3L20 20" /></svg></span>
-            <h4>Evaluation &amp; monitoring</h4>
-            <p>Gold-standard test sets and a review queue that only surfaces what's uncertain.</p>
+        </div>
+
+        <div class="xg-block">
+          <div class="xg-grid xg-grid--ai">
+            <div class="xg-cap xg-cap--risk">
+              <div class="xg-cap-top">
+                <h4 class="xg-cap-title">Clinical risk models</h4>
+              </div>
+              <p class="xg-cap-desc">Deterioration and readmission scoring, validated prospectively.</p>
+              <div class="xg-cap-rule"></div>
+            </div>
+            <div class="xg-cap xg-cap--llm">
+              <div class="xg-cap-top">
+                <h4 class="xg-cap-title">LLM application engineering</h4>
+              </div>
+              <p class="xg-cap-desc">Retrieval and structured output, designed around failure modes.</p>
+              <div class="xg-cap-rule"></div>
+            </div>
+            <div class="xg-hero xg-hero--ai">
+              <svg class="xg-hero-watermark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                <g stroke="#5fb3e6" stroke-width="1" opacity="0.5">
+                  <line x1="30" y1="30" x2="65" y2="20"/>
+                  <line x1="30" y1="30" x2="25" y2="65"/>
+                  <line x1="65" y1="20" x2="80" y2="55"/>
+                  <line x1="25" y1="65" x2="55" y2="80"/>
+                  <line x1="80" y1="55" x2="55" y2="80"/>
+                </g>
+                <circle cx="30" cy="30" r="5" fill="#5fb3e6" opacity="0.55"/>
+                <circle cx="65" cy="20" r="4" fill="#5fb3e6" opacity="0.55"/>
+                <circle cx="25" cy="65" r="4" fill="#5fb3e6" opacity="0.55"/>
+                <circle cx="80" cy="55" r="5" fill="#5fb3e6" opacity="0.55"/>
+                <circle cx="55" cy="80" r="4" fill="#5fb3e6" opacity="0.55"/>
+              </svg>
+              <h3 class="xg-hero-title">Applied AI</h3>
+              <p class="xg-hero-desc">Models built to pass clinical review, not just a benchmark. Grounded strictly in validated multi-center cohorts.</p>
+              <div class="xg-hero-rule"></div>
+            </div>
+            <div class="xg-cap xg-cap--eval">
+              <div class="xg-cap-top">
+                <h4 class="xg-cap-title">Evaluation &amp; monitoring</h4>
+              </div>
+              <p class="xg-cap-desc">Gold-standard test sets and a review queue that only surfaces what's uncertain.</p>
+              <div class="xg-cap-rule"></div>
+            </div>
           </div>
         </div>
       </div>
