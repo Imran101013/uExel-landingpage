@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -1555,6 +1555,174 @@
             "llm"
             "ai"
             "eval";
+        }
+      }
+
+      .xr-radar {
+        --density: 1.25;
+        font-family: "Share Tech Mono", monospace;
+        padding: calc(48px * var(--density)) calc(40px * var(--density));
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: calc(40px * var(--density));
+      }
+      .xr-head {
+        grid-column: 1 / -1;
+        position: static;
+        background: none;
+        backdrop-filter: none;
+        border-bottom: none;
+        z-index: auto;
+      }
+      .xr-title {
+        font-family: "Share Tech Mono", monospace;
+        text-transform: uppercase;
+        font-size: clamp(26px, 3.2vw, 38px);
+        color: var(--ink);
+        margin: 10px 0 14px;
+      }
+      .xr-lede {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--muted);
+        max-width: 62ch;
+        margin: 0 0 calc(40px * var(--density));
+      }
+      .xr-console-label {
+        font-size: 16px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--blue-dark);
+        margin-bottom: calc(20px * var(--density));
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--blue-pale);
+      }
+      .xr-ring {
+        position: relative;
+        width: 100%;
+        max-width: 380px;
+        aspect-ratio: 1;
+        margin: 0 auto;
+        border-radius: 50%;
+        border: 1px solid var(--blue-pale);
+      }
+      .xr-ring-rings {
+        position: absolute;
+        inset: 14%;
+        border-radius: 50%;
+        border: 1px dashed rgba(11, 126, 201, 0.22);
+      }
+      .xr-ring-sweep {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        background: conic-gradient(from 0deg, rgba(11, 126, 201, 0.22), transparent 26%, transparent 100%);
+        animation: xr-sweep 6s linear infinite;
+      }
+      @keyframes xr-sweep {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .xr-hub {
+        position: absolute;
+        inset: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid var(--blue-pale);
+        box-shadow: 0 10px 26px -14px rgba(11, 126, 201, 0.3);
+        padding: 12px;
+      }
+      .xr-hub h3 {
+        font-family: "Playfair Display", serif;
+        text-transform: uppercase;
+        font-size: 17px;
+        color: var(--ink);
+        margin: 0 0 6px;
+      }
+      .xr-hub p {
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 0;
+      }
+      .xr-blip {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: min(46vw, 150px);
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid var(--blue-pale);
+        border-radius: 8px;
+        text-align: left;
+        box-shadow: 0 10px 24px -16px rgba(11, 126, 201, 0.35);
+        transform: rotate(calc(360deg / 3 * var(--i))) translate(130px) rotate(calc(-360deg / 3 * var(--i)));
+      }
+      .xr-blip-dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 0 4px rgba(11, 126, 201, 0.18);
+        margin-bottom: 8px;
+        animation: xr-blip-pulse 2.4s ease-in-out infinite;
+      }
+      @keyframes xr-blip-pulse {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      .xr-blip h4 {
+        font-size: 12.5px;
+        color: var(--ink);
+        margin: 0 0 4px;
+      }
+      .xr-blip p {
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 0;
+      }
+      @media (max-width: 860px) {
+        .xr-radar {
+          grid-template-columns: 1fr;
+          row-gap: calc(56px * var(--density));
+        }
+        .xr-ring {
+          width: auto;
+          height: auto;
+          aspect-ratio: auto;
+          max-width: none;
+          border: none;
+        }
+        .xr-ring-rings,
+        .xr-ring-sweep {
+          display: none;
+        }
+        .xr-hub {
+          position: static;
+          inset: auto;
+          border-radius: 10px;
+          margin-bottom: 14px;
+          padding: 18px;
+        }
+        .xr-blip {
+          position: static;
+          transform: none !important;
+          width: auto;
+          margin-bottom: 10px;
         }
       }
 
@@ -3464,92 +3632,39 @@
 
     <section class="expertise-v2" id="expertise-v2">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Our Expertise <span class="arrow">↘</span></h2>
-          <p class="lede">
-            The same two disciplines, narrowed to the three capabilities
-            that carry the most weight and paired with the shape of the
-            work itself.
-          </p>
-        </div>
+        <div class="xr-radar">
+          <header class="xr-head">
+            <h2 class="xr-title">Our Expertise</h2>
+            <p class="xr-lede">The same two disciplines, narrowed to the three capabilities that carry the most weight and paired with the shape of the work itself.</p>
+          </header>
 
-        <div class="xg-block">
-          <div class="xg-grid xg-grid--hc">
-            <div class="xg-hero xg-hero--hc">
-              <svg class="xg-hero-watermark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <circle cx="50" cy="50" r="46" stroke="#5fb3e6" stroke-width="1" stroke-dasharray="3 5" opacity="0.5"/>
-                <rect x="40" y="20" width="20" height="60" rx="4" fill="#5fb3e6" opacity="0.4"/>
-                <rect x="20" y="40" width="60" height="20" rx="4" fill="#5fb3e6" opacity="0.4"/>
-              </svg>
-              <h3 class="xg-hero-title">Healthcare IT</h3>
-              <p class="xg-hero-desc">Depth built one hospital interface at a time, not a marketing category we added last quarter.</p>
-              <div class="xg-hero-rule"></div>
-            </div>
-            <div class="xg-cap xg-cap--ehr">
-              <div class="xg-cap-top">
-                <h4 class="xg-cap-title">EHR integration</h4>
+          <div class="xr-console">
+            <div class="xr-console-label">Healthcare IT</div>
+            <div class="xr-ring">
+              <div class="xr-ring-sweep" aria-hidden="true"></div>
+              <div class="xr-ring-rings" aria-hidden="true"></div>
+              <div class="xr-hub">
+                <h3>Healthcare IT</h3>
+                <p>Depth built one hospital interface at a time, not a marketing category we added last quarter.</p>
               </div>
-              <p class="xg-cap-desc">Epic, Cerner, Meditech and Athena interfaces — read, write, and the reconciliation rules in between.</p>
-              <div class="xg-cap-rule"></div>
-            </div>
-            <div class="xg-cap xg-cap--workflow">
-              <div class="xg-cap-top">
-                <h4 class="xg-cap-title">Clinical workflow design</h4>
-              </div>
-              <p class="xg-cap-desc">Intake, referral, and care-coordination flows shaped with people who've worked clinical-side.</p>
-              <div class="xg-cap-rule"></div>
-            </div>
-            <div class="xg-cap xg-cap--hipaa">
-              <div class="xg-cap-top">
-                <h4 class="xg-cap-title">HIPAA &amp; SOC 2</h4>
-              </div>
-              <p class="xg-cap-desc">Technical safeguards and audit trails built into the first slice.</p>
-              <div class="xg-cap-rule"></div>
+              <div class="xr-blip" style="--i:0"><span class="xr-blip-dot"></span><h4>EHR integration</h4><p>Epic, Cerner, Meditech and Athena interfaces — read, write, and the reconciliation rules in between.</p></div>
+              <div class="xr-blip" style="--i:1"><span class="xr-blip-dot"></span><h4>Clinical workflow design</h4><p>Intake, referral, and care-coordination flows shaped with people who've worked clinical-side.</p></div>
+              <div class="xr-blip" style="--i:2"><span class="xr-blip-dot"></span><h4>HIPAA &amp; SOC 2</h4><p>Technical safeguards and audit trails built into the first slice.</p></div>
             </div>
           </div>
-        </div>
 
-        <div class="xg-block">
-          <div class="xg-grid xg-grid--ai">
-            <div class="xg-cap xg-cap--risk">
-              <div class="xg-cap-top">
-                <h4 class="xg-cap-title">Clinical risk models</h4>
+          <div class="xr-console">
+            <div class="xr-console-label">Applied AI</div>
+            <div class="xr-ring">
+              <div class="xr-ring-sweep" aria-hidden="true"></div>
+              <div class="xr-ring-rings" aria-hidden="true"></div>
+              <div class="xr-hub">
+                <h3>Applied AI</h3>
+                <p>Models built to pass clinical review, not just a benchmark. Grounded strictly in validated multi-center cohorts.</p>
               </div>
-              <p class="xg-cap-desc">Deterioration and readmission scoring, validated prospectively.</p>
-              <div class="xg-cap-rule"></div>
-            </div>
-            <div class="xg-cap xg-cap--llm">
-              <div class="xg-cap-top">
-                <h4 class="xg-cap-title">LLM application engineering</h4>
-              </div>
-              <p class="xg-cap-desc">Retrieval and structured output, designed around failure modes.</p>
-              <div class="xg-cap-rule"></div>
-            </div>
-            <div class="xg-hero xg-hero--ai">
-              <svg class="xg-hero-watermark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                <g stroke="#5fb3e6" stroke-width="1" opacity="0.5">
-                  <line x1="30" y1="30" x2="65" y2="20"/>
-                  <line x1="30" y1="30" x2="25" y2="65"/>
-                  <line x1="65" y1="20" x2="80" y2="55"/>
-                  <line x1="25" y1="65" x2="55" y2="80"/>
-                  <line x1="80" y1="55" x2="55" y2="80"/>
-                </g>
-                <circle cx="30" cy="30" r="5" fill="#5fb3e6" opacity="0.55"/>
-                <circle cx="65" cy="20" r="4" fill="#5fb3e6" opacity="0.55"/>
-                <circle cx="25" cy="65" r="4" fill="#5fb3e6" opacity="0.55"/>
-                <circle cx="80" cy="55" r="5" fill="#5fb3e6" opacity="0.55"/>
-                <circle cx="55" cy="80" r="4" fill="#5fb3e6" opacity="0.55"/>
-              </svg>
-              <h3 class="xg-hero-title">Applied AI</h3>
-              <p class="xg-hero-desc">Models built to pass clinical review, not just a benchmark. Grounded strictly in validated multi-center cohorts.</p>
-              <div class="xg-hero-rule"></div>
-            </div>
-            <div class="xg-cap xg-cap--eval">
-              <div class="xg-cap-top">
-                <h4 class="xg-cap-title">Evaluation &amp; monitoring</h4>
-              </div>
-              <p class="xg-cap-desc">Gold-standard test sets and a review queue that only surfaces what's uncertain.</p>
-              <div class="xg-cap-rule"></div>
+              <div class="xr-blip" style="--i:0"><span class="xr-blip-dot"></span><h4>Clinical risk models</h4><p>Deterioration and readmission scoring, validated prospectively.</p></div>
+              <div class="xr-blip" style="--i:1"><span class="xr-blip-dot"></span><h4>LLM application engineering</h4><p>Retrieval and structured output, designed around failure modes.</p></div>
+              <div class="xr-blip" style="--i:2"><span class="xr-blip-dot"></span><h4>Evaluation &amp; monitoring</h4><p>Gold-standard test sets and a review queue that only surfaces what's uncertain.</p></div>
             </div>
           </div>
         </div>
@@ -4548,8 +4663,5 @@
         setTimeout(runOnce, 1200);
       })();
     </script>
-  <!-- impeccable-live-start -->
-<script src="http://localhost:8400/live.js?token=28400563-6356-461b-a716-5ac6cb763cc3"></script>
-<!-- impeccable-live-end -->
-</body>
+  </body>
 </html>
