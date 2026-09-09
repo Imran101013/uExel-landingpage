@@ -2,35 +2,35 @@
 name: uExel
 description: A software consulting & product engineering partner, with a lead specialty in Healthcare IT
 colors:
-  signal-blue: "#0b7ec9"
-  signal-blue-btn: "#0972b8"
-  signal-blue-dark: "#075a93"
-  frost-sky: "#eaf4fd"
-  soft-sky: "#cfe6fa"
+  signal-blue: "#096dd9"
+  signal-blue-btn: "#1d4ed8"
+  signal-blue-dark: "#1e40af"
+  frost-sky: "#cee2f7"
+  soft-sky: "#dae9f9"
   deep-navy: "#0d3a5c"
   midnight-navy: "#0a2e49"
   near-black: "#0a0d11"
-  ink: "#0b0f14"
+  ink: "#000000"
   offwhite: "#f5f8fc"
   white: "#ffffff"
-  slate: "#5b6472"
-  steel-gray: "#8b96a3"
+  slate: "#374151"
+  steel-gray: "#4b5563"
   signal-blue-tint: "#5fb3e6"
   muted-on-dark: "#9aa2ab"
 typography:
   display:
-    fontFamily: "Abel, Inter, sans-serif"
+    fontFamily: "Fraunces, Inter, serif"
     fontSize: "clamp(50px, 9vw, 90px)"
     fontWeight: 400
     lineHeight: 0.98
     letterSpacing: "0.005em"
   headline:
-    fontFamily: "Abel, Inter, sans-serif"
+    fontFamily: "Fraunces, Inter, serif"
     fontSize: "clamp(34px, 5vw, 50px)"
     fontWeight: 400
     letterSpacing: "0.01em"
   title:
-    fontFamily: "Abel, Inter, sans-serif"
+    fontFamily: "Fraunces, Inter, serif"
     fontSize: "32px"
     fontWeight: 400
     lineHeight: 1.05
@@ -44,6 +44,11 @@ typography:
     fontSize: "13px"
     fontWeight: 600
     letterSpacing: "0.18em"
+  technical:
+    fontFamily: "'IBM Plex Mono', monospace"
+    fontSize: "12px"
+    fontWeight: 500
+    letterSpacing: "0.04em"
 rounded:
   pill: "999px"
   card: "10px"
@@ -93,7 +98,7 @@ The system rejects decorative color: outside the signal-blue accent and its navy
 
 **Key Characteristics:**
 - Near-black + navy base, one signal-blue accent, no other hues
-- Abel (condensed uppercase display) for numerals and headings, Inter for body copy
+- Fraunces (serif display) for numerals and headings, Inter for body copy, IBM Plex Mono for technical/label accents (Our Expertise radar, AI & Automation eyebrows)
 - Tilted "fanned" cards as the recurring signature motif (expertise cards, service flip-cards)
 - Pill-shaped CTAs contrast deliberately with sharp-cornered data tags — soft/human vs. precise/technical
 - Flat by default; shadow appears only on a small set of elevated interactive surfaces
@@ -103,33 +108,34 @@ The system rejects decorative color: outside the signal-blue accent and its navy
 A near-monochrome dark/light system anchored by a single blue accent; no secondary or tertiary hue family exists.
 
 ### Primary
-- **Signal Blue** (#0b7ec9): the one accent color in the system — links, arrow glyphs (↘), stat numbers, card index numbers, active states. Used sparingly against dark backgrounds so it reads as a highlight, not a fill.
-- **Signal Blue (Button)** (#0972b8): a deliberately darker sibling of Signal Blue, used only where white text sits directly on the fill (primary CTA background, testimonial avatar gradient) — plain Signal Blue only clears ~4.3:1 against white text, this variant clears 4.5:1+ AA.
-- **Signal Blue (Dark)** (#075a93): the CTA hover/pressed state, one step darker still than the button variant so hover remains visually distinct.
+- **Signal Blue** (#096dd9): the one accent color in the system — links, arrow glyphs (↘), stat numbers, card index numbers, active states. Used sparingly against dark backgrounds so it reads as a highlight, not a fill.
+- **Signal Blue (Button)** (#1d4ed8): a deliberately darker sibling of Signal Blue, used only where white text sits directly on the fill (primary CTA background, testimonial avatar gradient) — plain Signal Blue only clears ~4.3:1 against white text, this variant clears 4.5:1+ AA.
+- **Signal Blue (Dark)** (#1e40af): the CTA hover/pressed state, one step darker still than the button variant so hover remains visually distinct.
 - **Signal Blue (Tint)** (#5fb3e6): a lightened variant used specifically for index numerals ("001", "002") sitting on a dark-navy card face (dark expertise cards, flip-card fronts) — plain Signal Blue's own radial-gradient highlight on those faces is close enough in value that the plain accent nearly disappears into it; the tint keeps the numeral legible.
 
 ### Neutral
 - **Near-Black** (#0a0d11): the base surface for dark sections — header, hero, Featured Work, footer.
-- **Ink** (#0b0f14): default heading/body text color on light surfaces; nearly indistinguishable from Near-Black but kept as a separate token for text vs. surface roles.
+- **Ink** (#000000): default heading/body text color on light surfaces; nearly indistinguishable from Near-Black but kept as a separate token for text vs. surface roles.
 - **Deep Navy** (#0d3a5c) / **Midnight Navy** (#0a2e49): the gradient pair behind dark expertise cards, flip-card fronts, and the testimonial avatar circles — the system's only non-blue, non-black hue family, always used as a diagonal gradient rather than a flat fill.
-- **Frost Sky** (#eaf4fd): the tinted section background for "We Work With" and "Our Expertise" — the lightest way the page varies from pure white without introducing a new hue.
-- **Soft Sky** (#cfe6fa): a pale accent used only as the tag-chip border, tying chips back to the blue family without adding contrast weight.
+- **Frost Sky** (#cee2f7): the tinted section background for "We Work With" and "Our Expertise" — the lightest way the page varies from pure white without introducing a new hue.
+- **Soft Sky** (#dae9f9): a pale accent used only as the tag-chip border, tying chips back to the blue family without adding contrast weight.
 - **Offwhite** (#f5f8fc): the marquee strip's background, one step off pure white.
-- **Slate** (#5b6472): default body copy on light backgrounds.
-- **Steel Gray** (#8b96a3): secondary/label text on light or near-black chrome — eyebrows, unfilled placeholder state.
+- **Slate** (#374151): default body copy on light backgrounds.
+- **Steel Gray** (#4b5563): secondary/label text on light or near-black chrome — eyebrows, unfilled placeholder state.
 - **Muted (On Dark)** (#9aa2ab): default secondary/body copy specifically on dark-section surfaces (Why Choose uExel, testimonial ledes, footer body text) — a touch lighter than Steel Gray so paragraph text stays readable against Near-Black without competing with Steel Gray's label role.
 
 ### Named Rules
 **The One Accent Rule.** Signal Blue is the only hue in the system besides navy and near-black/white. If a new UI element needs color emphasis, reach for Signal Blue or a tint of it before introducing anything else.
 
-**The Text-on-Fill Rule.** Any white text sitting directly on a blue fill uses the darker Signal Blue (Button) variant (#0972b8), never plain Signal Blue (#0b7ec9) — the plain accent is calibrated for text/icons *on* dark or light neutral backgrounds, not as a background *under* white text.
+**The Text-on-Fill Rule.** Any white text sitting directly on a blue fill uses the darker Signal Blue (Button) variant (#1d4ed8), never plain Signal Blue (#096dd9) — the plain accent is calibrated for text/icons *on* dark or light neutral backgrounds, not as a background *under* white text.
 
 ## Typography
 
-**Display Font:** Abel (with Inter, sans-serif fallback)
+**Display Font:** Fraunces (with Inter, serif fallback)
 **Body Font:** Inter (with -apple-system, BlinkMacSystemFont, "Segoe UI", Arial fallback)
+**Technical/Label Font:** IBM Plex Mono (with monospace fallback)
 
-**Character:** Abel is a condensed, uppercase-leaning geometric face used exclusively for numerals and headings — it's what gives the page its "stamped/engineered" feel. Inter carries every sentence of actual reading, kept plain and highly legible in contrast to Abel's stylization.
+**Character:** Fraunces is a serif display face with optical-size and weight range used exclusively for numerals and headings (set uppercase via CSS `text-transform`, not by the glyph shapes themselves) — it gives the page a more editorial, confident-engineering-firm feel than a purely geometric sans would. Inter carries every sentence of actual reading, kept plain and highly legible in contrast to Fraunces's stylization. IBM Plex Mono is reserved for technical UI chrome — eyebrows, status pills, and the "Our Expertise" radar's labels/index — where a monospace face signals "instrumentation" rather than prose.
 
 ### Hierarchy
 - **Display** (400, `clamp(50px, 9vw, 90px)`, line-height 0.98): the hero headline only.
@@ -137,9 +143,10 @@ A near-monochrome dark/light system anchored by a single blue accent; no seconda
 - **Title** (400, 32px, line-height 1.05): expertise-card and flip-card titles; set with tight leading so a two-line title (service name + index number) reads as one unit.
 - **Body** (400, 17px, line-height 1.6): default paragraph text.
 - **Label** (600, 13px, letter-spacing 0.18em, uppercase): eyebrow labels and section micro-copy.
+- **Technical** (500, 12px, letter-spacing 0.04em): monospace UI chrome — status pills, radar labels/index, AI & Automation eyebrows.
 
 ### Named Rules
-**The All-Caps Numerals Rule.** Every numeral that isn't a live statistic sits in Abel and is treated as a graphic element (card index "001.", stat counters, work-item index) — never render a number in Inter when it's meant to carry visual weight.
+**The All-Caps Numerals Rule.** Every numeral that isn't a live statistic sits in Fraunces and is treated as a graphic element (card index "001.", stat counters, work-item index) — never render a number in Inter when it's meant to carry visual weight.
 
 ## Layout
 
@@ -150,7 +157,7 @@ Content is capped at 1280px (`--maxw`) and centered with 40px side padding (the 
 Flat by default. Most surfaces — cards, sections, the sticky header — carry no shadow at all and rely on flat color contrast (dark section vs. light section, white card vs. tinted background) for separation. Shadow is reserved for a small, deliberate set of elevated/interactive surfaces: the primary CTA's colored glow and the flip-cards' lift off the page. Rotation, not shadow, is this system's primary depth cue — tilted cards read as "scattered on top of" the flat background purely through overlap and angle.
 
 ### Shadow Vocabulary
-- **CTA Glow** (`box-shadow: 0 10px 30px -8px rgba(11, 126, 201, 0.55)`): a colored (not neutral) shadow under the primary button, tinted to match Signal Blue rather than a generic dark shadow.
+- **CTA Glow** (`box-shadow: 0 10px 30px -8px rgba(9, 109, 217, 0.55)`): a colored (not neutral) shadow under the primary button, tinted to match Signal Blue rather than a generic dark shadow.
 - **Card Lift** (`box-shadow: 0 30px 60px -25px rgba(11, 15, 20, 0.25)`): the diffuse lift under flip-cards and expertise cards — large spread, negative offset, low opacity, so it reads as ambient depth rather than a hard drop shadow.
 
 ### Named Rules
@@ -167,7 +174,7 @@ Two deliberately opposed corner languages coexist. CTAs and links are fully pill
 
 ### Buttons
 - **Shape:** fully pill-shaped (`border-radius: 999px`), 16px/34px padding, uppercase 14px/700-weight label text with 0.06em letter-spacing.
-- **Primary:** Signal Blue (Button) fill (#0972b8), white text, tinted glow shadow. Hover: darkens to Signal Blue (Dark) (#075a93) and lifts 2px (`translateY(-2px)`).
+- **Primary:** Signal Blue (Button) fill (#1d4ed8), white text, tinted glow shadow. Hover: darkens to Signal Blue (Dark) (#1e40af) and lifts 2px (`translateY(-2px)`).
 - **Ghost:** white fill, ink text; hover fills with Frost Sky.
 - **Outline:** transparent fill, 1.5px white-alpha border, white text; hover fills with a faint white wash (`rgba(255,255,255,0.08)`).
 
@@ -195,10 +202,10 @@ The system's one unmistakable custom pattern: any card grouping meant to feel "c
 
 ### Do:
 - **Do** keep Signal Blue as the only accent hue; reach for a tint/shade of it (Frost Sky, Soft Sky, the darker button variant) before introducing a new color.
-- **Do** use the darker Signal Blue (Button) variant (#0972b8), not plain Signal Blue, anywhere white text sits directly on a blue fill.
+- **Do** use the darker Signal Blue (Button) variant (#1d4ed8), not plain Signal Blue, anywhere white text sits directly on a blue fill.
 - **Do** keep the tilted-card motif (±8°, alternating direction) for any new "browsable options" card grouping — it's the system's signature, not a one-off.
 - **Do** default new surfaces to no shadow; add one of the two named shadows only for genuinely floating/elevated elements.
-- **Do** use Abel for numerals and headings, Inter for everything read as a sentence — never swap the pairing's roles.
+- **Do** use Fraunces for numerals and headings, Inter for everything read as a sentence, IBM Plex Mono for technical/instrumentation labels — never swap the pairing's roles.
 
 ### Don't:
 - **Don't** introduce a second accent hue (a green success color, an orange warning color, etc.) without a deliberate decision — the system currently has none, on purpose.

@@ -7,25 +7,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --ink: #0b0f14;
+        --ink: #000000;
         --black: #0a0d11;
         --navy: #0d3a5c;
         --navy-2: #0a2e49;
-        --blue: #0b7ec9;
-        --blue-btn: #0972b8;
-        --blue-dark: #075a93;
-        --blue-light: #eaf4fd;
-        --blue-pale: #cfe6fa;
+        --blue: #096dd9;
+        --blue-btn: #1d4ed8;
+        --blue-dark: #1e40af;
+        --blue-light: #cee2f7;
+        --blue-pale: #dae9f9;
         --offwhite: #f5f8fc;
         --white: #ffffff;
-        --muted: #5b6472;
-        --muted-2: #8b96a3;
-        --line: rgba(11, 15, 20, 0.1);
+        --muted: #374151;
+        --muted-2: #4b5563;
+        --line: #e5e7eb;
         --line-light: rgba(255, 255, 255, 0.14);
         --radius: 22px;
         --maxw: 1280px;
@@ -39,7 +39,7 @@
       body {
         margin: 0;
         font-family:
-          "Jost",
+          "Inter",
           -apple-system,
           BlinkMacSystemFont,
           "Segoe UI",
@@ -54,7 +54,7 @@
       h2,
       h3,
       .display {
-        font-family: "Playfair Display", "Jost", serif;
+        font-family: "Fraunces", "Inter", serif;
         text-transform: uppercase;
         letter-spacing: 0.01em;
         color: var(--ink);
@@ -105,7 +105,7 @@
           transform 0.25s ease,
           box-shadow 0.25s ease,
           background 0.25s ease;
-        font-family: "Jost", sans-serif;
+        font-family: "Inter", sans-serif;
       }
       .btn-primary {
         align-items: center;
@@ -114,7 +114,7 @@
            touch darker so it passes 4.5:1 AA while staying visually on-brand */
         background: var(--blue-btn);
         color: #fff;
-        box-shadow: 0 10px 30px -8px rgba(11, 126, 201, 0.55);
+        box-shadow: 0 10px 30px -8px rgba(9, 109, 217, 0.55);
       }
       .btn-primary:hover {
         background: var(--blue-dark);
@@ -253,7 +253,7 @@
       }
       .hero-orb-1 {
         width: 560px; height: 560px;
-        background: radial-gradient(circle, rgba(11,126,201,0.28), transparent 70%);
+        background: radial-gradient(circle, rgba(9,109,217,0.28), transparent 70%);
         top: -140px; right: -80px;
         animation: hero-orb-in 3s 0.4s cubic-bezier(0.4,0,0.2,1) forwards, hero-orb-pulse 14s 3.4s ease-in-out infinite;
       }
@@ -275,7 +275,7 @@
         position: absolute;
         bottom: 0; left: 0; right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(11,126,201,0.6) 40%, rgba(255,255,255,0.35) 50%, rgba(11,126,201,0.6) 60%, transparent);
+        background: linear-gradient(90deg, transparent, rgba(9,109,217,0.6) 40%, rgba(255,255,255,0.35) 50%, rgba(9,109,217,0.6) 60%, transparent);
         background-size: 200% 100%;
         animation: hero-shimmer-move 7s linear infinite;
       }
@@ -288,7 +288,7 @@
         position: absolute;
         inset: 0;
         pointer-events: none;
-        background-image: radial-gradient(circle, rgba(11,126,201,0.14) 1px, transparent 1px);
+        background-image: radial-gradient(circle, rgba(9,109,217,0.14) 1px, transparent 1px);
         background-size: 40px 40px;
         mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, rgba(0,0,0,0.45) 0%, transparent 100%);
         -webkit-mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, rgba(0,0,0,0.45) 0%, transparent 100%);
@@ -385,7 +385,7 @@
         flex-wrap:   nowrap;
       }
       .stat-num {
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: 40px;
         font-weight: 600;
         color: var(--blue);
@@ -415,7 +415,7 @@
         opacity: 0.75;
       }
       .badge-row .badge {
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: 22px;
         color: #aeb6bf;
         letter-spacing: 0.02em;
@@ -545,7 +545,7 @@
       }
       .about-tile-badge b {
         display: block;
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-weight: 400;
         font-size: 26px;
         color: #fff;
@@ -587,7 +587,7 @@
         height: 8px;
         border-radius: 50%;
         background: var(--blue);
-        box-shadow: 0 0 0 5px rgba(11, 126, 201, 0.28);
+        box-shadow: 0 0 0 5px rgba(9, 109, 217, 0.28);
         animation: about-pin-pulse 2.6s ease-in-out infinite;
       }
       .about-pin-2 {
@@ -613,7 +613,7 @@
         bottom: 18px;
         z-index: 1;
         margin: 0;
-        font-family: "Playfair Display", serif;
+        font-family: "Inter", sans-serif;
         font-size: 15px;
         line-height: 1.3;
         color: #fff;
@@ -648,7 +648,7 @@
         margin-bottom: 11px;
       }
       .about-code-line--accent {
-        background: rgba(11, 126, 201, 0.55);
+        background: rgba(9, 109, 217, 0.55);
       }
       @media (max-width: 900px) {
         .about-grid {
@@ -828,24 +828,24 @@
         position: absolute;
         top: -0.15em;
         right: 0.05em;
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: clamp(110px, 12vw, 170px);
         line-height: 1;
         color: transparent;
-        -webkit-text-stroke: 1.5px rgba(11, 126, 201, 0.16);
+        -webkit-text-stroke: 1.5px rgba(9, 109, 217, 0.16);
         pointer-events: none;
         transition:
           -webkit-text-stroke-color 0.5s ease,
           transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .wwm-panel:hover .work-ghost {
-        -webkit-text-stroke-color: rgba(11, 126, 201, 0.4);
+        -webkit-text-stroke-color: rgba(9, 109, 217, 0.4);
         transform: translateY(-6px);
       }
       .work-num {
         position: relative;
         z-index: 1;
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: 20px;
         color: var(--blue);
       }
@@ -1069,7 +1069,7 @@
         display: block;
       }
       .case-card-title {
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: clamp(16px, 2vw, 18px);
         color: #fff;
         margin: 0 0 10px;
@@ -1123,7 +1123,7 @@
         z-index: 0;
         background-image: radial-gradient(
           circle,
-          rgba(11, 126, 201, 0.4) 1px,
+          rgba(9, 109, 217, 0.4) 1px,
           transparent 1px
         );
         background-size: 16px 16px;
@@ -1142,7 +1142,7 @@
         position: relative;
         z-index: 1;
         display: block;
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: 13px;
         letter-spacing: 0.1em;
         color: #5fb3e6;
@@ -1151,7 +1151,7 @@
       .expertise-panel-title {
         position: relative;
         z-index: 1;
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: clamp(24px, 2.6vw, 30px);
         color: #fff;
         text-transform: uppercase;
@@ -1182,7 +1182,7 @@
         margin: 0;
         font-size: 13.5px;
         line-height: 1.5;
-        color: #eaf4fd;
+        color: #cee2f7;
         max-width: 26ch;
       }
       .expertise-panel-caps {
@@ -1203,7 +1203,7 @@
       }
       .expertise-panel-cap h4 {
         margin: 0 0 6px;
-        font-family: "Jost", sans-serif;
+        font-family: "Inter", sans-serif;
         font-weight: 700;
         font-size: 15.5px;
         color: var(--ink);
@@ -1300,7 +1300,7 @@
       }
       
       .xg-eyebrow {
-        font-family: "JetBrains Mono", "Jost", monospace;
+        font-family: "IBM Plex Mono", "Inter", monospace;
         font-size: 12px;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -1312,7 +1312,7 @@
         margin-right: 8px;
       }
       .xg-status {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 11px;
         letter-spacing: 0.14em;
         text-transform: uppercase;
@@ -1408,7 +1408,7 @@
         pointer-events: none;
       }
       .xg-hero-eyebrow {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 11px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -1422,7 +1422,7 @@
         gap: 7px;
         padding: 5px 11px;
         border-radius: 20px;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 10px;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -1442,7 +1442,7 @@
       .xg-hero-title {
         position: relative;
         z-index: 1;
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: clamp(26px, 3vw, 34px);
         text-transform: uppercase;
         color: #fff;
@@ -1505,7 +1505,7 @@
         align-items: baseline;
         gap: 9px;
         margin: 0;
-        font-family: "Jost", sans-serif;
+        font-family: "Inter", sans-serif;
         font-weight: 700;
         font-size: 15.5px;
         color: #fff;
@@ -1516,7 +1516,7 @@
         border-radius: 4px;
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.14);
-        font-family: "JetBrains Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 9.5px;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -1560,11 +1560,11 @@
 
       .xr-radar {
         --density: 1.25;
-        font-family: "Share Tech Mono", monospace;
-        padding: calc(48px * var(--density)) calc(40px * var(--density));
+        font-family: "IBM Plex Mono", monospace;
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: calc(40px * var(--density));
+        gap: 40px;
       }
       .xr-head {
         grid-column: 1 / -1;
@@ -1573,51 +1573,62 @@
         backdrop-filter: none;
         border-bottom: none;
         z-index: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: wrap;
       }
       .xr-title {
-        font-family: "Share Tech Mono", monospace;
+        font-family: "IBM Plex Mono", monospace;
         text-transform: uppercase;
         font-size: clamp(26px, 3.2vw, 38px);
         color: var(--ink);
-        margin: 10px 0 14px;
+        margin: 0 0 14px;
       }
       .xr-lede {
+        font-family: "Inter", sans-serif;
         font-size: 14px;
         line-height: 1.6;
         color: var(--muted);
         max-width: 62ch;
         margin: 0 0 calc(40px * var(--density));
       }
+      .xr-console {
+        display: grid;
+        gap: calc(42px * var(--density));
+      }
       .xr-console-label {
-        font-size: 16px;
+        font-family: "Fraunces", serif;
+        font-size: 18px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--blue-dark);
-        margin-bottom: calc(20px * var(--density));
+        margin-bottom: calc(18px * var(--density));
         padding-bottom: 8px;
         border-bottom: 1px solid var(--blue-pale);
       }
       .xr-ring {
         position: relative;
         width: 100%;
-        max-width: 380px;
+        max-width: 420px;
         aspect-ratio: 1;
         margin: 0 auto;
         border-radius: 50%;
-        border: 1px solid var(--blue-pale);
+        border: 4px solid var(--blue-pale);
       }
       .xr-ring-rings {
         position: absolute;
-        inset: 14%;
+        inset: calc(14% * var(--density) / 1.25);
         border-radius: 50%;
-        border: 1px dashed rgba(11, 126, 201, 0.22);
+        border: 3px dashed rgba(9, 109, 217, 0.22);
       }
       .xr-ring-sweep {
         position: absolute;
-        inset: 0;
+        inset: 1%;
         border-radius: 50%;
         overflow: hidden;
-        background: conic-gradient(from 0deg, rgba(11, 126, 201, 0.22), transparent 26%, transparent 100%);
+        background: conic-gradient(from 0deg, rgba(9, 109, 217, 0.22), transparent 26%, transparent 100%);
         animation: xr-sweep 6s linear infinite;
       }
       @keyframes xr-sweep {
@@ -1627,7 +1638,7 @@
       }
       .xr-hub {
         position: absolute;
-        inset: 30%;
+        inset: 24%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1636,44 +1647,172 @@
         border-radius: 50%;
         background: #fff;
         border: 1px solid var(--blue-pale);
-        box-shadow: 0 10px 26px -14px rgba(11, 126, 201, 0.3);
-        padding: 12px;
+        box-shadow: 0 10px 26px -14px rgba(9, 109, 217, 0.3);
+        padding: calc(14px * var(--density));
       }
       .xr-hub h3 {
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         text-transform: uppercase;
         font-size: 17px;
         color: var(--ink);
         margin: 0 0 6px;
       }
       .xr-hub p {
+        font-family: "Inter", sans-serif;
         font-size: 10.5px;
         line-height: 1.4;
         color: var(--muted);
         margin: 0;
       }
-      .xr-blip {
+      .xr-blip-ehr {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        width: min(46vw, 150px);
+        top: 39%;
+        left: -73%;
+        width: min(46vw, 230px);
         padding: 12px 14px;
         background: #fff;
         border: 1px solid var(--blue-pale);
-        border-radius: 8px;
+        border-radius: 12px;
         text-align: left;
-        box-shadow: 0 10px 24px -16px rgba(11, 126, 201, 0.35);
-        transform: rotate(calc(360deg / 3 * var(--i))) translate(130px) rotate(calc(-360deg / 3 * var(--i)));
+        box-shadow: 0 10px 24px -16px rgba(9, 109, 217, 0.35);
+        transform: rotate(calc(360deg / 3 * var(--i))) translate(160px) rotate(calc(-360deg / 3 * var(--i)));
       }
-      .xr-blip-dot {
-        display: inline-block;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--blue);
-        box-shadow: 0 0 0 4px rgba(11, 126, 201, 0.18);
-        margin-bottom: 8px;
-        animation: xr-blip-pulse 2.4s ease-in-out infinite;
+      .xr-blip-ehr h4 {
+        font-size: 12.5px;
+        color: var(--ink);
+        margin: 0 0 4px;
+      }
+      .xr-blip-ehr p {
+        font-family: "Inter", sans-serif;
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 0;
+      }
+      .xr-blip-workflow {
+        position: absolute;
+        top: 44%;
+        left: 65%;
+        width: min(46vw, 230px);
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid var(--blue-pale);
+        border-radius: 12px;
+        text-align: left;
+        box-shadow: 0 10px 24px -16px rgba(9, 109, 217, 0.35);
+        transform: rotate(calc(360deg / 3 * var(--i))) translate(160px) rotate(calc(-360deg / 3 * var(--i)));
+      }
+      .xr-blip-workflow h4 {
+        font-size: 12.5px;
+        color: var(--ink);
+        margin: 0 0 4px;
+      }
+      .xr-blip-workflow p {
+        font-family: "Inter", sans-serif;
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 0;
+      }
+      .xr-blip-compliance {
+        position: absolute;
+        top: 37%;
+        left: 65%;
+        width: min(46vw, 230px);
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid var(--blue-pale);
+        border-radius: 12px;
+        text-align: left;
+        box-shadow: 0 10px 24px -16px rgba(9, 109, 217, 0.35);
+        transform: rotate(calc(360deg / 3 * var(--i))) translate(160px) rotate(calc(-360deg / 3 * var(--i)));
+      }
+      .xr-blip-compliance h4 {
+        font-size: 12.5px;
+        color: var(--ink);
+        margin: 0 0 4px;
+      }
+      .xr-blip-compliance p {
+        font-family: "Inter", sans-serif;
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 0;
+      }
+      .xr-blip-risk {
+        position: absolute;
+        top: 39%;
+        left: 40%;
+        width: min(46vw, 230px);
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid var(--blue-pale);
+        border-radius: 12px;
+        text-align: left;
+        box-shadow: 0 10px 24px -16px rgba(9, 109, 217, 0.35);
+        transform: rotate(calc(360deg / 3 * var(--i))) translate(160px) rotate(calc(-360deg / 3 * var(--i)));
+      }
+      .xr-blip-risk h4 {
+        font-size: 12.5px;
+        color: var(--ink);
+        margin: 0 0 4px;
+      }
+      .xr-blip-risk p {
+        font-family: "Inter", sans-serif;
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 0;
+      }
+      .xr-blip-llm {
+        position: absolute;
+        top: 44%;
+        left: 15%;
+        width: min(46vw, 230px);
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid var(--blue-pale);
+        border-radius: 12px;
+        text-align: left;
+        box-shadow: 0 10px 24px -16px rgba(9, 109, 217, 0.35);
+        transform: rotate(calc(360deg / 3 * var(--i))) translate(160px) rotate(calc(-360deg / 3 * var(--i)));
+      }
+      .xr-blip-llm h4 {
+        font-size: 12.5px;
+        color: var(--ink);
+        margin: 0 0 4px;
+      }
+      .xr-blip-llm p {
+        font-family: "Inter", sans-serif;
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 0;
+      }
+      .xr-blip-eval {
+        position: absolute;
+        top: 33%;
+        left: 15%;
+        width: min(46vw, 230px);
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid var(--blue-pale);
+        border-radius: 12px;
+        text-align: left;
+        box-shadow: 0 10px 24px -16px rgba(9, 109, 217, 0.35);
+        transform: rotate(calc(360deg / 3 * var(--i))) translate(160px) rotate(calc(-360deg / 3 * var(--i)));
+      }
+      .xr-blip-eval h4 {
+        font-size: 12.5px;
+        color: var(--ink);
+        margin: 0 0 4px;
+      }
+      .xr-blip-eval p {
+        font-family: "Inter", sans-serif;
+        font-size: 10.5px;
+        line-height: 1.4;
+        color: var(--muted);
+        margin: 0;
       }
       @keyframes xr-blip-pulse {
         0%,
@@ -1683,17 +1822,6 @@
         50% {
           opacity: 1;
         }
-      }
-      .xr-blip h4 {
-        font-size: 12.5px;
-        color: var(--ink);
-        margin: 0 0 4px;
-      }
-      .xr-blip p {
-        font-size: 10.5px;
-        line-height: 1.4;
-        color: var(--muted);
-        margin: 0;
       }
       @media (max-width: 860px) {
         .xr-radar {
@@ -1718,7 +1846,12 @@
           margin-bottom: 14px;
           padding: 18px;
         }
-        .xr-blip {
+        .xr-blip-ehr,
+        .xr-blip-workflow,
+        .xr-blip-compliance,
+        .xr-blip-risk,
+        .xr-blip-llm,
+        .xr-blip-eval {
           position: static;
           transform: none !important;
           width: auto;
@@ -1855,7 +1988,7 @@
       }
       .aiauto-tile--sm:hover {
         transform: translateY(-4px);
-        border-color: rgba(11, 126, 201, 0.5);
+        border-color: rgba(9, 109, 217, 0.5);
         background: rgba(255, 255, 255, 0.05);
       }
       .aiauto-tile--sm:hover .aiauto-tile-icon {
@@ -1909,7 +2042,7 @@
           background 0.35s ease;
       }
       .aiauto-tile--banner:hover {
-        border-color: rgba(11, 126, 201, 0.5);
+        border-color: rgba(9, 109, 217, 0.5);
         background: rgba(255, 255, 255, 0.05);
       }
       .aiauto-banner-bg {
@@ -2002,28 +2135,33 @@
       .process-grid > * {
         flex: 0 0 50%;
         width: 50%;
+        min-width: 0;
       }
       .process-left {
         display: flex;
         flex-direction: column;
-        /* explicit stretch, not the default "normal" — .process-visual has
-           aspect-ratio:1/1 with no definite size of its own, and "normal"
-           doesn't stretch that combination the way an explicit "stretch"
-           does, so it was falling back to CSS's generic 300px default
-           object size instead of filling this column like it used to
-           fill .process-grid directly */
         align-items: stretch;
+        gap: 0;
+        flex: 0 0 auto;
+        width: 460px;
       }
       .process-slogan {
-        margin: 0 auto 0;
-        font-family: "Playfair Display", serif;
+        margin: 0;
+        font-family: "Inter", sans-serif;
         font-size: clamp(18px, 2.2vw, 22px);
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.02em;
-        color: #0B7EC9;
-        text-align: center;
-        max-width: 320px;
+        color: #096dd9;
+        text-align: left;
+        max-width: 460px;
+        width: 100%;
+        flex: 0 0 auto;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border-top: 1px solid rgba(9, 109, 217, 0.3);
         opacity: 1;
         transform: translateY(0);
         transition:
@@ -2038,19 +2176,21 @@
         position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 70%;
-        aspect-ratio: 1/1;
-        max-width: 500px;
-        margin: 0 auto;
+        justify-content: flex-start;
+        width: 100%;
+        aspect-ratio: auto;
+        max-width: 460px;
+        min-height: 448px;
+        flex: 1 1 auto;
+        margin: 0;
       }
       .process-visual::before {
         content: "";
         position: absolute;
-        inset: -10%;
+        inset: -41%;
         background-image: radial-gradient(
           circle,
-          rgba(11, 126, 201, 0.18) 1.5px,
+          rgba(9, 109, 217, 0.18) 1.5px,
           transparent 1.5px
         );
         background-size: 22px 22px;
@@ -2070,16 +2210,16 @@
       }
       .pv-filler--corners {
         position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
+        left: 0;
+        width: 65%;
+        height: 85%;
         opacity: 0.84;
         transform: scale(1.05);
         pointer-events: none;
       }
       .process-ring {
-        width: 70%;
-        height: 70%;
+        width: 65%;
+        height: 60%;
       }
       .process-ring .ring-bg {
         fill: none;
@@ -2115,7 +2255,7 @@
         margin: -5px;
         border-radius: 50%;
         background: var(--blue);
-        box-shadow: 0 0 10px 2px rgba(11, 126, 201, 0.7);
+        box-shadow: 0 0 10px 2px rgba(9, 109, 217, 0.7);
         offset-path: circle(31.5% at 50% 50%);
         opacity: 0;
         transition:
@@ -2162,7 +2302,10 @@
       }
       .process-figure {
         position: absolute;
-        inset: 0;
+        left: -30px;
+        right: calc(40% - 30px);
+        top: calc(20% - 30px);
+        bottom: calc(20% - 30px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2246,10 +2389,10 @@
         0%,
         90%,
         100% {
-          fill: #cfe6fa;
+          fill: #dae9f9;
         }
         95% {
-          fill: #0b7ec9;
+          fill: #096dd9;
         }
       }
       .pf-mouse-cursor {
@@ -2450,6 +2593,8 @@
         display: flex;
         flex-direction: column;
         gap: 5px;
+        flex: 1 1 auto;
+        width: auto;
       }
       .process-step {
         background: #fff;
@@ -2462,7 +2607,7 @@
       .process-step.active {
         border-color: var(--blue);
         border-left: 3px solid var(--blue);
-        box-shadow: 0 24px 48px -26px rgba(11, 126, 201, 0.4);
+        box-shadow: 0 24px 48px -26px rgba(9, 109, 217, 0.4);
       }
       .process-step-head {
         width: 100%;
@@ -2512,7 +2657,7 @@
         background-position: 0 -227px;
       }
       .process-step-title {
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: 20px;
         color: var(--ink);
         flex: 1;
@@ -2584,7 +2729,7 @@
       /* ===== MARQUEE ===== */
       .marquee-wrap {
         background: var(--offwhite);
-        padding: 15px 0;
+        padding: 40px 0;
         overflow: hidden;
         border-top: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
@@ -2597,7 +2742,7 @@
       .stack-lede {
         flex: 0 0 auto;
         max-width: 200px;
-        font-family: "Playfair Display", serif;
+        font-family: "Inter", sans-serif;
         font-size: 20px;
         text-transform: uppercase;
         letter-spacing: 0.02em;
@@ -2637,7 +2782,7 @@
         flex-shrink: 0;
       }
       .tech-logo img {
-        height: 50px;
+        height: 70px;
         width: auto;
       }
       @keyframes scroll {
@@ -2671,7 +2816,7 @@
       .clients-strip {
         background: var(--black);
         color: #fff;
-        padding-top: 25px;
+        padding-top: 50px;
         padding-bottom: 50px;
         overflow: hidden;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -2688,7 +2833,7 @@
         top: 120px;
       }
       .why-heading {
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: clamp(24px, 3vw, 36px);
         color: #fff;
         text-transform: uppercase;
@@ -2711,7 +2856,7 @@
       }
       .why-stat-num {
         display: block;
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: 28px;
         color: var(--blue);
         line-height: 1;
@@ -2761,7 +2906,7 @@
         padding: 10px 10px 10px;
       }
       .why-proof-title {
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: 15px;
         letter-spacing: 0.05em;
         text-transform: uppercase;
@@ -2776,7 +2921,7 @@
       .why-clients-lede {
         flex: 0 0 auto;
         max-width: 200px;
-        font-family: "Playfair Display", serif;
+        font-family: "Inter", sans-serif;
         font-size: 20px;
         text-transform: uppercase;
         letter-spacing: 0.02em;
@@ -2805,7 +2950,7 @@
         flex-shrink: 0;
       }
       .why-clients-logo img {
-        height: 50px;
+        height: 70px;
         width: auto;
         object-fit: contain;
         opacity: 0.9;
@@ -2896,7 +3041,7 @@
         height: 20px;
       }
       .why-title {
-        font-family: "Playfair Display", serif;
+        font-family: "Fraunces", serif;
         font-size: 21px;
         color: #fff;
         margin: 0 0 6px;
@@ -2934,6 +3079,7 @@
         grid-template-columns: 1fr 1fr;
         align-items: center;
         gap: 50px;
+        padding: 40px;
       }
      
       .cta-copy h2 {
@@ -3042,7 +3188,7 @@
         gap: 40px;
       }
       .footer-tagline {
-        font-family: "Playfair Display", serif;
+        font-family: "Inter", sans-serif;
         font-size: 18px;
         color: #fff;
         margin: 26px 0 22px;
@@ -3120,8 +3266,11 @@
           font-size: clamp(80px, 26vw, 110px);
         }
         .process-grid {
-          grid-template-columns: 1fr;
+          flex-direction: column;
           gap: 40px;
+        }
+        .process-grid > * {
+          width: 100%;
         }
         .process-visual {
           max-width: 300px;
@@ -3584,11 +3733,11 @@
                 <circle cx="34" cy="32" r="4" fill="#5fb3e6" />
                 <circle cx="48" cy="32" r="4" fill="rgba(255,255,255,0.25)" />
                 <circle cx="62" cy="32" r="4" fill="rgba(255,255,255,0.25)" />
-                <rect x="20" y="70" width="30" height="110" rx="4" fill="rgba(11,126,201,0.55)" />
-                <rect x="58" y="100" width="30" height="80" rx="4" fill="rgba(11,126,201,0.4)" />
-                <rect x="96" y="55" width="30" height="125" rx="4" fill="rgba(11,126,201,0.7)" />
-                <rect x="134" y="88" width="30" height="92" rx="4" fill="rgba(11,126,201,0.4)" />
-                <rect x="172" y="118" width="30" height="62" rx="4" fill="rgba(11,126,201,0.55)" />
+                <rect x="20" y="70" width="30" height="110" rx="4" fill="rgba(9,109,217,0.55)" />
+                <rect x="58" y="100" width="30" height="80" rx="4" fill="rgba(9,109,217,0.4)" />
+                <rect x="96" y="55" width="30" height="125" rx="4" fill="rgba(9,109,217,0.7)" />
+                <rect x="134" y="88" width="30" height="92" rx="4" fill="rgba(9,109,217,0.4)" />
+                <rect x="172" y="118" width="30" height="62" rx="4" fill="rgba(9,109,217,0.55)" />
                 <path d="M20 150 L96 110 L134 132 L202 78 L280 96" stroke="#5fb3e6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
               </svg>
             </div>
@@ -3633,44 +3782,43 @@
     <section class="expertise-v2" id="expertise-v2">
       <div class="wrap">
         <div class="xr-radar">
-          <header class="xr-head">
-            <h2 class="xr-title">Our Expertise</h2>
-            <p class="xr-lede">The same two disciplines, narrowed to the three capabilities that carry the most weight and paired with the shape of the work itself.</p>
-          </header>
+            <header class="xr-head">
+              <h2 class="xr-title">Our Expertise</h2>
+              <p class="xr-lede">The same two disciplines, narrowed to the three capabilities that carry the most weight and paired with the shape of the work itself.</p>
+            </header>
 
-          <div class="xr-console">
-            <div class="xr-console-label">Healthcare IT</div>
-            <div class="xr-ring">
-              <div class="xr-ring-sweep" aria-hidden="true"></div>
-              <div class="xr-ring-rings" aria-hidden="true"></div>
-              <div class="xr-hub">
-                <h3>Healthcare IT</h3>
-                <p>Depth built one hospital interface at a time, not a marketing category we added last quarter.</p>
+            <div class="xr-console">
+              <div class="xr-console-label">Healthcare IT</div>
+              <div class="xr-ring">
+                <div class="xr-ring-sweep" aria-hidden="true"></div>
+                <div class="xr-ring-rings" aria-hidden="true"></div>
+                <div class="xr-hub">
+                  <h3>Healthcare IT</h3>
+                  <p>Depth built one hospital interface at a time, not a marketing category we added last quarter.</p>
+                </div>
+                <div class="xr-blip-ehr" style="--i:0"><span class="xr-blip-dot"></span><h4>EHR integration</h4><p>Epic, Cerner, Meditech and Athena interfaces — read, write, and the reconciliation rules in between.</p></div>
+                <div class="xr-blip-workflow" style="--i:1"><span class="xr-blip-dot"></span><h4>Clinical workflow design</h4><p>Intake, referral, and care-coordination flows shaped with people who've worked clinical-side.</p></div>
+                <div class="xr-blip-compliance" style="--i:2"><span class="xr-blip-dot"></span><h4>HIPAA &amp; SOC 2</h4><p>Technical safeguards and audit trails built into the first slice.</p></div>
               </div>
-              <div class="xr-blip" style="--i:0"><span class="xr-blip-dot"></span><h4>EHR integration</h4><p>Epic, Cerner, Meditech and Athena interfaces — read, write, and the reconciliation rules in between.</p></div>
-              <div class="xr-blip" style="--i:1"><span class="xr-blip-dot"></span><h4>Clinical workflow design</h4><p>Intake, referral, and care-coordination flows shaped with people who've worked clinical-side.</p></div>
-              <div class="xr-blip" style="--i:2"><span class="xr-blip-dot"></span><h4>HIPAA &amp; SOC 2</h4><p>Technical safeguards and audit trails built into the first slice.</p></div>
             </div>
-          </div>
 
-          <div class="xr-console">
-            <div class="xr-console-label">Applied AI</div>
-            <div class="xr-ring">
-              <div class="xr-ring-sweep" aria-hidden="true"></div>
-              <div class="xr-ring-rings" aria-hidden="true"></div>
-              <div class="xr-hub">
-                <h3>Applied AI</h3>
-                <p>Models built to pass clinical review, not just a benchmark. Grounded strictly in validated multi-center cohorts.</p>
+            <div class="xr-console">
+              <div class="xr-console-label">Applied AI</div>
+              <div class="xr-ring">
+                <div class="xr-ring-sweep" aria-hidden="true"></div>
+                <div class="xr-ring-rings" aria-hidden="true"></div>
+                <div class="xr-hub">
+                  <h3>Applied AI</h3>
+                  <p>Models built to pass clinical review, not just a benchmark. Grounded strictly in validated multi-center cohorts.</p>
+                </div>
+                <div class="xr-blip-risk" style="--i:0"><span class="xr-blip-dot"></span><h4>Clinical risk models</h4><p>Deterioration and readmission scoring, validated prospectively.</p></div>
+                <div class="xr-blip-llm" style="--i:1"><span class="xr-blip-dot"></span><h4>LLM application engineering</h4><p>Retrieval and structured output, designed around failure modes.</p></div>
+                <div class="xr-blip-eval" style="--i:2"><span class="xr-blip-dot"></span><h4>Evaluation &amp; monitoring</h4><p>Gold-standard test sets and a review queue that only surfaces what's uncertain.</p></div>
               </div>
-              <div class="xr-blip" style="--i:0"><span class="xr-blip-dot"></span><h4>Clinical risk models</h4><p>Deterioration and readmission scoring, validated prospectively.</p></div>
-              <div class="xr-blip" style="--i:1"><span class="xr-blip-dot"></span><h4>LLM application engineering</h4><p>Retrieval and structured output, designed around failure modes.</p></div>
-              <div class="xr-blip" style="--i:2"><span class="xr-blip-dot"></span><h4>Evaluation &amp; monitoring</h4><p>Gold-standard test sets and a review queue that only surfaces what's uncertain.</p></div>
             </div>
           </div>
         </div>
-      </div>
     </section>
-
 
     <section class="ai-automation" id="ai-automation">
       <div class="wrap">
@@ -3752,10 +3900,10 @@
               <circle class="ai-node" cx="20" cy="40" r="5" fill="#5fb3e6" />
               <circle class="ai-node" cx="20" cy="80" r="5" fill="#5fb3e6" />
               <circle class="ai-node" cx="20" cy="120" r="5" fill="#5fb3e6" />
-              <circle class="ai-node" cx="100" cy="60" r="6" fill="#0b7ec9" />
-              <circle class="ai-node" cx="100" cy="100" r="6" fill="#0b7ec9" />
+              <circle class="ai-node" cx="100" cy="60" r="6" fill="#096dd9" />
+              <circle class="ai-node" cx="100" cy="100" r="6" fill="#096dd9" />
               <circle class="ai-node" cx="180" cy="80" r="5" fill="#5fb3e6" />
-              <g stroke="#0b7ec9" stroke-width="1" fill="none" opacity="0.7">
+              <g stroke="#096dd9" stroke-width="1" fill="none" opacity="0.7">
                 <line class="ai-edge" x1="25" y1="40" x2="94" y2="60" />
                 <line class="ai-edge" x1="25" y1="80" x2="94" y2="60" />
                 <line class="ai-edge" x1="25" y1="80" x2="94" y2="100" />
@@ -3794,106 +3942,106 @@
 
         <div class="process-grid">
           <div class="process-left">
-          <div class="process-visual">
-            <svg class="pv-filler--corners" viewBox="0 0 200 200" aria-hidden="true">
-              <g fill="none" stroke="#0b7ec9" stroke-width="2.5" stroke-linecap="round">
-                <path d="M4 20 L4 4 L20 4" />
-                <path d="M180 4 L196 4 L196 20" />
-                <path d="M196 180 L196 196 L180 196" />
-                <path d="M20 196 L4 196 L4 180" />
-              </g>
-              <g fill="#0b7ec9" opacity="0.5">
-                <circle cx="18" cy="100" r="2.5" />
-                <circle cx="182" cy="100" r="2.5" />
-                <circle cx="100" cy="18" r="2.5" />
-                <circle cx="100" cy="182" r="2.5" />
-              </g>
-            </svg>
-            <svg class="process-ring" viewBox="0 0 200 200" aria-hidden="true">
-              <circle class="ring-bg" cx="100" cy="100" r="90" />
-              <circle class="ring-progress" cx="100" cy="100" r="90" />
-              <circle class="ring-dot" cx="100" cy="10" r="5" />
-              <circle class="ring-dot" cx="177.9" cy="55" r="5" />
-              <circle class="ring-dot" cx="177.9" cy="145" r="5" />
-              <circle class="ring-dot" cx="100" cy="190" r="5" />
-              <circle class="ring-dot" cx="22.1" cy="145" r="5" />
-              <circle class="ring-dot" cx="22.1" cy="55" r="5" />
-              <circle class="ring-ping" id="ringPing" cx="100" cy="10" r="5" />
-            </svg>
-            <div class="ring-comet" id="ringComet" aria-hidden="true"></div>
-            <div class="process-figure" id="processFigure">
-              <svg class="pf-icon active" viewBox="0 0 200 200" aria-hidden="true">
-                <rect x="40" y="35" width="120" height="150" rx="10" fill="#eaf4fd" stroke="#0d3a5c" stroke-width="4"/>
-                <rect x="58" y="60" width="70" height="8" rx="4" fill="#cfe6fa"/>
-                <rect x="58" y="80" width="84" height="8" rx="4" fill="#cfe6fa"/>
-                <rect x="58" y="100" width="60" height="8" rx="4" fill="#cfe6fa"/>
-                <rect x="58" y="120" width="84" height="8" rx="4" fill="#cfe6fa"/>
-                <rect x="58" y="140" width="45" height="8" rx="4" fill="#cfe6fa"/>
-                <g class="pf-lens">
-                  <circle cx="0" cy="0" r="32" fill="rgba(11,126,201,0.12)" stroke="#0b7ec9" stroke-width="7"/>
-                  <line x1="23" y1="23" x2="42" y2="42" stroke="#0d3a5c" stroke-width="8" stroke-linecap="round"/>
+            <div class="process-visual">
+              <svg class="pv-filler--corners" viewBox="0 0 200 200" aria-hidden="true">
+                <g fill="none" stroke="#096dd9" stroke-width="2.5" stroke-linecap="round">
+                  <path d="M4 20 L4 4 L20 4" />
+                  <path d="M180 4 L196 4 L196 20" />
+                  <path d="M196 180 L196 196 L180 196" />
+                  <path d="M20 196 L4 196 L4 180" />
+                </g>
+                <g fill="#096dd9" opacity="0.5">
+                  <circle cx="18" cy="100" r="2.5" />
+                  <circle cx="182" cy="100" r="2.5" />
+                  <circle cx="100" cy="18" r="2.5" />
+                  <circle cx="100" cy="182" r="2.5" />
                 </g>
               </svg>
-              <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
-                <rect x="35" y="30" width="130" height="150" rx="12" fill="#ffffff" stroke="#0d3a5c" stroke-width="4"/>
-                <rect x="55" y="55" width="24" height="24" rx="5" fill="none" stroke="#0b7ec9" stroke-width="4"/>
-                <path class="pf-check pf-check-1" d="M60 67 L67 74 L79 58" fill="none" stroke="#0b7ec9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="90" y="61" width="60" height="8" rx="4" fill="#cfe6fa"/>
-                <rect x="55" y="95" width="24" height="24" rx="5" fill="none" stroke="#0b7ec9" stroke-width="4"/>
-                <path class="pf-check pf-check-2" d="M60 107 L67 114 L79 98" fill="none" stroke="#0b7ec9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="90" y="101" width="45" height="8" rx="4" fill="#cfe6fa"/>
-                <rect x="55" y="135" width="24" height="24" rx="5" fill="none" stroke="#0b7ec9" stroke-width="4"/>
-                <path class="pf-check pf-check-3" d="M60 147 L67 154 L79 138" fill="none" stroke="#0b7ec9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                <rect x="90" y="141" width="55" height="8" rx="4" fill="#cfe6fa"/>
+              <svg class="process-ring" viewBox="0 0 200 200" aria-hidden="true">
+                <circle class="ring-bg" cx="100" cy="100" r="90" />
+                <circle class="ring-progress" cx="100" cy="100" r="90" />
+                <circle class="ring-dot" cx="100" cy="10" r="5" />
+                <circle class="ring-dot" cx="177.9" cy="55" r="5" />
+                <circle class="ring-dot" cx="177.9" cy="145" r="5" />
+                <circle class="ring-dot" cx="100" cy="190" r="5" />
+                <circle class="ring-dot" cx="22.1" cy="145" r="5" />
+                <circle class="ring-dot" cx="22.1" cy="55" r="5" />
+                <circle class="ring-ping" id="ringPing" cx="100" cy="10" r="5" />
               </svg>
-              <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
-                <rect x="35" y="40" width="130" height="120" rx="10" fill="#ffffff" stroke="#0d3a5c" stroke-width="4"/>
-                <rect x="35" y="40" width="130" height="24" rx="10" fill="#eaf4fd"/>
-                <circle cx="48" cy="52" r="4" fill="#0b7ec9"/>
-                <circle cx="62" cy="52" r="4" fill="#cfe6fa"/>
-                <rect class="pf-block pf-block-1" x="48" y="76" width="44" height="34" rx="6" fill="#cfe6fa"/>
-                <rect class="pf-block pf-block-2" x="106" y="76" width="44" height="34" rx="6" fill="#cfe6fa"/>
-                <rect class="pf-block pf-block-3" x="48" y="120" width="102" height="18" rx="6" fill="#cfe6fa"/>
-                <g class="pf-mouse-cursor">
-                  <path d="M0 0 L0 19 L4.5 15.2 L7.2 21.8 L10.4 20.4 L7.7 13.9 L14 13.9 Z" fill="#0d3a5c" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
-                </g>
-              </svg>
-              <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
-                <rect x="30" y="45" width="140" height="110" rx="10" fill="#ffffff" stroke="#0d3a5c" stroke-width="4"/>
-                <path d="M30 67 L30 55 A10 10 0 0 1 40 45 L160 45 A10 10 0 0 1 170 55 L170 67 Z" fill="#0d3a5c"/>
-                <circle cx="44" cy="56" r="4" fill="#ffffff" opacity="0.6"/>
-                <circle cx="56" cy="56" r="4" fill="#ffffff" opacity="0.6"/>
-                <circle cx="68" cy="56" r="4" fill="#ffffff" opacity="0.6"/>
-                <rect class="pf-code-line pf-code-line-1" x="45" y="82" width="70" height="8" rx="4" fill="#0b7ec9"/>
-                <rect class="pf-code-line pf-code-line-2" x="45" y="100" width="90" height="8" rx="4" fill="#cfe6fa"/>
-                <rect class="pf-code-line pf-code-line-3" x="45" y="118" width="55" height="8" rx="4" fill="#0b7ec9"/>
-                <rect class="pf-cursor" x="45" y="136" width="9" height="11" fill="#0d3a5c"/>
-              </svg>
-              <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
-                <path d="M100 30 L155 50 L155 100 C155 140 130 165 100 176 C70 165 45 140 45 100 L45 50 Z" fill="#eaf4fd" stroke="#0d3a5c" stroke-width="5"/>
-                <rect class="pf-scan" x="46" y="46" width="108" height="10" fill="#0b7ec9" opacity="0"/>
-                <path class="pf-shield-check" d="M72 100 L92 120 L130 76" fill="none" stroke="#0b7ec9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
-                <circle class="pf-star pf-star-1" cx="52" cy="55" r="3.5" fill="#0b7ec9"/>
-                <circle class="pf-star pf-star-2" cx="150" cy="70" r="3" fill="#0b7ec9"/>
-                <circle class="pf-star pf-star-3" cx="140" cy="150" r="3.5" fill="#0b7ec9"/>
-                <ellipse class="pf-trail" cx="100" cy="152" rx="13" ry="5" fill="#0b7ec9"/>
-                <g class="pf-rocket">
-                  <path d="M100 28 C120 53 128 83 128 108 L72 108 C72 83 80 53 100 28 Z" fill="#eaf4fd" stroke="#0d3a5c" stroke-width="4"/>
-                  <circle cx="100" cy="78" r="10" fill="#0b7ec9"/>
-                  <path d="M72 98 L50 122 L64 100 Z" fill="#0d3a5c"/>
-                  <path d="M128 98 L150 122 L136 100 Z" fill="#0d3a5c"/>
-                  <rect x="88" y="106" width="24" height="14" fill="#cfe6fa"/>
-                  <g class="pf-flame">
-                    <path d="M90 120 C90 138 95 150 100 160 C105 150 110 138 110 120 Z" fill="#0b7ec9"/>
+              <div class="ring-comet" id="ringComet" aria-hidden="true"></div>
+              <div class="process-figure" id="processFigure">
+                <svg class="pf-icon active" viewBox="0 0 200 200" aria-hidden="true">
+                  <rect x="40" y="35" width="120" height="150" rx="10" fill="#cee2f7" stroke="#0d3a5c" stroke-width="4"/>
+                  <rect x="58" y="60" width="70" height="8" rx="4" fill="#dae9f9"/>
+                  <rect x="58" y="80" width="84" height="8" rx="4" fill="#dae9f9"/>
+                  <rect x="58" y="100" width="60" height="8" rx="4" fill="#dae9f9"/>
+                  <rect x="58" y="120" width="84" height="8" rx="4" fill="#dae9f9"/>
+                  <rect x="58" y="140" width="45" height="8" rx="4" fill="#dae9f9"/>
+                  <g class="pf-lens">
+                    <circle cx="0" cy="0" r="32" fill="rgba(9,109,217,0.12)" stroke="#096dd9" stroke-width="7"/>
+                    <line x1="23" y1="23" x2="42" y2="42" stroke="#0d3a5c" stroke-width="8" stroke-linecap="round"/>
                   </g>
-                </g>
-              </svg>
+                </svg>
+                <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
+                  <rect x="35" y="30" width="130" height="150" rx="12" fill="#ffffff" stroke="#0d3a5c" stroke-width="4"/>
+                  <rect x="55" y="55" width="24" height="24" rx="5" fill="none" stroke="#096dd9" stroke-width="4"/>
+                  <path class="pf-check pf-check-1" d="M60 67 L67 74 L79 58" fill="none" stroke="#096dd9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="90" y="61" width="60" height="8" rx="4" fill="#dae9f9"/>
+                  <rect x="55" y="95" width="24" height="24" rx="5" fill="none" stroke="#096dd9" stroke-width="4"/>
+                  <path class="pf-check pf-check-2" d="M60 107 L67 114 L79 98" fill="none" stroke="#096dd9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="90" y="101" width="45" height="8" rx="4" fill="#dae9f9"/>
+                  <rect x="55" y="135" width="24" height="24" rx="5" fill="none" stroke="#096dd9" stroke-width="4"/>
+                  <path class="pf-check pf-check-3" d="M60 147 L67 154 L79 138" fill="none" stroke="#096dd9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="90" y="141" width="55" height="8" rx="4" fill="#dae9f9"/>
+                </svg>
+                <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
+                  <rect x="35" y="40" width="130" height="120" rx="10" fill="#ffffff" stroke="#0d3a5c" stroke-width="4"/>
+                  <rect x="35" y="40" width="130" height="24" rx="10" fill="#cee2f7"/>
+                  <circle cx="48" cy="52" r="4" fill="#096dd9"/>
+                  <circle cx="62" cy="52" r="4" fill="#dae9f9"/>
+                  <rect class="pf-block pf-block-1" x="48" y="76" width="44" height="34" rx="6" fill="#dae9f9"/>
+                  <rect class="pf-block pf-block-2" x="106" y="76" width="44" height="34" rx="6" fill="#dae9f9"/>
+                  <rect class="pf-block pf-block-3" x="48" y="120" width="102" height="18" rx="6" fill="#dae9f9"/>
+                  <g class="pf-mouse-cursor">
+                    <path d="M0 0 L0 19 L4.5 15.2 L7.2 21.8 L10.4 20.4 L7.7 13.9 L14 13.9 Z" fill="#0d3a5c" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+                  </g>
+                </svg>
+                <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
+                  <rect x="30" y="45" width="140" height="110" rx="10" fill="#ffffff" stroke="#0d3a5c" stroke-width="4"/>
+                  <path d="M30 67 L30 55 A10 10 0 0 1 40 45 L160 45 A10 10 0 0 1 170 55 L170 67 Z" fill="#0d3a5c"/>
+                  <circle cx="44" cy="56" r="4" fill="#ffffff" opacity="0.6"/>
+                  <circle cx="56" cy="56" r="4" fill="#ffffff" opacity="0.6"/>
+                  <circle cx="68" cy="56" r="4" fill="#ffffff" opacity="0.6"/>
+                  <rect class="pf-code-line pf-code-line-1" x="45" y="82" width="70" height="8" rx="4" fill="#096dd9"/>
+                  <rect class="pf-code-line pf-code-line-2" x="45" y="100" width="90" height="8" rx="4" fill="#dae9f9"/>
+                  <rect class="pf-code-line pf-code-line-3" x="45" y="118" width="55" height="8" rx="4" fill="#096dd9"/>
+                  <rect class="pf-cursor" x="45" y="136" width="9" height="11" fill="#0d3a5c"/>
+                </svg>
+                <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
+                  <path d="M100 30 L155 50 L155 100 C155 140 130 165 100 176 C70 165 45 140 45 100 L45 50 Z" fill="#cee2f7" stroke="#0d3a5c" stroke-width="5"/>
+                  <rect class="pf-scan" x="46" y="46" width="108" height="10" fill="#096dd9" opacity="0"/>
+                  <path class="pf-shield-check" d="M72 100 L92 120 L130 76" fill="none" stroke="#096dd9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg class="pf-icon" viewBox="0 0 200 200" aria-hidden="true">
+                  <circle class="pf-star pf-star-1" cx="52" cy="55" r="3.5" fill="#096dd9"/>
+                  <circle class="pf-star pf-star-2" cx="150" cy="70" r="3" fill="#096dd9"/>
+                  <circle class="pf-star pf-star-3" cx="140" cy="150" r="3.5" fill="#096dd9"/>
+                  <ellipse class="pf-trail" cx="100" cy="152" rx="13" ry="5" fill="#096dd9"/>
+                  <g class="pf-rocket">
+                    <path d="M100 28 C120 53 128 83 128 108 L72 108 C72 83 80 53 100 28 Z" fill="#cee2f7" stroke="#0d3a5c" stroke-width="4"/>
+                    <circle cx="100" cy="78" r="10" fill="#096dd9"/>
+                    <path d="M72 98 L50 122 L64 100 Z" fill="#0d3a5c"/>
+                    <path d="M128 98 L150 122 L136 100 Z" fill="#0d3a5c"/>
+                    <rect x="88" y="106" width="24" height="14" fill="#dae9f9"/>
+                    <g class="pf-flame">
+                      <path d="M90 120 C90 138 95 150 100 160 C105 150 110 138 110 120 Z" fill="#096dd9"/>
+                    </g>
+                  </g>
+                </svg>
+              </div>
             </div>
-          </div>
-          <p class="process-slogan" id="processSlogan">Listen first, build second.</p>
-          </div>
+            <p class="process-slogan" id="processSlogan">Listen first, build second.</p>
+            </div>
           <div class="process-steps" id="processSteps">
               <div class="process-step active">
                 <button class="process-step-head" type="button">
@@ -4187,43 +4335,43 @@
             <g class="cta-3d-float">
               <!-- floating accent particles -->
               <circle class="cta-particle cta-particle-1" cx="470" cy="220" r="4" fill="#ffffff"/>
-              <circle class="cta-particle cta-particle-2" cx="200" cy="360" r="3.5" fill="#cfe6fa"/>
+              <circle class="cta-particle cta-particle-2" cx="200" cy="360" r="3.5" fill="#dae9f9"/>
               <circle class="cta-particle cta-particle-3" cx="440" cy="410" r="3" fill="#ffffff"/>
-              <circle class="cta-particle cta-particle-4" cx="180" cy="230" r="3" fill="#cfe6fa"/>
+              <circle class="cta-particle cta-particle-4" cx="180" cy="230" r="3" fill="#dae9f9"/>
 
               <!-- connector spine running through the three layers -->
               <path d="M340,380 L260,180" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" stroke-dasharray="6 7"/>
               <circle class="cta-flow-dot" cx="0" cy="0" r="5" fill="#ffffff"/>
 
               <!-- layer 1 (base): data & infrastructure -->
-              <path d="M230,380 L340,435 L340,463 L230,408 Z" fill="#0b7ec9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <path d="M230,380 L340,435 L340,463 L230,408 Z" fill="#096dd9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
               <path d="M340,435 L450,380 L450,408 L340,463 Z" fill="#0a2e49" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-              <path d="M340,325 L450,380 L340,435 L230,380 Z" fill="#cfe6fa" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-              <ellipse cx="340" cy="382" rx="28" ry="9" fill="#eaf4fd" stroke="#0d3a5c" stroke-width="2.5"/>
-              <rect x="312" y="360" width="56" height="22" fill="#eaf4fd"/>
+              <path d="M340,325 L450,380 L340,435 L230,380 Z" fill="#dae9f9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <ellipse cx="340" cy="382" rx="28" ry="9" fill="#cee2f7" stroke="#0d3a5c" stroke-width="2.5"/>
+              <rect x="312" y="360" width="56" height="22" fill="#cee2f7"/>
               <line x1="312" y1="360" x2="312" y2="382" stroke="#0d3a5c" stroke-width="2.5"/>
               <line x1="368" y1="360" x2="368" y2="382" stroke="#0d3a5c" stroke-width="2.5"/>
-              <ellipse cx="340" cy="360" rx="28" ry="9" fill="#eaf4fd" stroke="#0d3a5c" stroke-width="2.5"/>
-              <ellipse cx="340" cy="371" rx="28" ry="9" fill="none" stroke="#0b7ec9" stroke-width="1.5" opacity="0.6"/>
+              <ellipse cx="340" cy="360" rx="28" ry="9" fill="#cee2f7" stroke="#0d3a5c" stroke-width="2.5"/>
+              <ellipse cx="340" cy="371" rx="28" ry="9" fill="none" stroke="#096dd9" stroke-width="1.5" opacity="0.6"/>
 
               <!-- layer 2 (middle): backend & APIs -->
-              <path d="M205,280 L300,328 L300,352 L205,304 Z" fill="#0b7ec9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <path d="M205,280 L300,328 L300,352 L205,304 Z" fill="#096dd9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
               <path d="M300,328 L395,280 L395,304 L300,352 Z" fill="#0a2e49" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
-              <path d="M300,232 L395,280 L300,328 L205,280 Z" fill="#eaf4fd" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <path d="M300,232 L395,280 L300,328 L205,280 Z" fill="#cee2f7" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
               <polygon points="320,280 310,297.3 290,297.3 280,280 290,262.7 310,262.7" fill="#ffffff" stroke="#0d3a5c" stroke-width="2.5"/>
-              <circle cx="300" cy="280" r="8" fill="none" stroke="#0b7ec9" stroke-width="2.5"/>
-              <circle cx="300" cy="280" r="3" fill="#0b7ec9"/>
+              <circle cx="300" cy="280" r="8" fill="none" stroke="#096dd9" stroke-width="2.5"/>
+              <circle cx="300" cy="280" r="3" fill="#096dd9"/>
 
               <!-- layer 3 (top): frontend & UI -->
-              <path d="M180,180 L260,220 L260,240 L180,200 Z" fill="#0b7ec9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+              <path d="M180,180 L260,220 L260,240 L180,200 Z" fill="#096dd9" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
               <path d="M260,220 L340,180 L340,200 L260,240 Z" fill="#0a2e49" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
               <path d="M260,140 L340,180 L260,220 L180,180 Z" fill="#ffffff" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
               <rect x="234" y="162" width="52" height="36" rx="4" fill="#ffffff" stroke="#0d3a5c" stroke-width="2.5"/>
-              <path d="M234,172 L234,166 A4,4 0 0 1 238,162 L282,162 A4,4 0 0 1 286,166 L286,172 Z" fill="#cfe6fa"/>
-              <circle cx="241" cy="167" r="2" fill="#0b7ec9"/>
-              <circle cx="248" cy="167" r="2" fill="#ffffff" stroke="#0b7ec9" stroke-width="1"/>
-              <line x1="241" y1="182" x2="278" y2="182" stroke="#cfe6fa" stroke-width="3.5" stroke-linecap="round"/>
-              <line x1="241" y1="190" x2="266" y2="190" stroke="#cfe6fa" stroke-width="3.5" stroke-linecap="round"/>
+              <path d="M234,172 L234,166 A4,4 0 0 1 238,162 L282,162 A4,4 0 0 1 286,166 L286,172 Z" fill="#dae9f9"/>
+              <circle cx="241" cy="167" r="2" fill="#096dd9"/>
+              <circle cx="248" cy="167" r="2" fill="#ffffff" stroke="#096dd9" stroke-width="1"/>
+              <line x1="241" y1="182" x2="278" y2="182" stroke="#dae9f9" stroke-width="3.5" stroke-linecap="round"/>
+              <line x1="241" y1="190" x2="266" y2="190" stroke="#dae9f9" stroke-width="3.5" stroke-linecap="round"/>
             </g>
           </svg>
         </div>
@@ -4478,7 +4626,7 @@
           octx.clearRect(0, 0, W, H);
           octx.fillStyle = "#fff";
           const fontSize = Math.min(H * 0.72, W / (word.length * 0.6));
-          octx.font = `700 ${fontSize}px "Playfair Display", serif`;
+          octx.font = `700 ${fontSize}px "Fraunces", serif`;
           octx.textAlign = "left";
           octx.textBaseline = "middle";
           octx.fillText(word, 0, H / 2 + fontSize * 0.04);
@@ -4562,7 +4710,7 @@
           const blue =
             getComputedStyle(document.documentElement)
               .getPropertyValue("--blue")
-              .trim() || "#0b7ec9";
+              .trim() || "#096dd9";
           ctx.fillStyle = blue;
           for (const p of particles) {
             ctx.globalAlpha = p.a;
