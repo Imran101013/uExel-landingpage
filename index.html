@@ -2332,6 +2332,7 @@
       }
       .pf-icon {
         position: absolute;
+        left: 95px;
         width: 50%;
         height: 50%;
         padding: 0;
@@ -2887,7 +2888,7 @@
         font-size: 11.5px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--muted-2);
+        color: whitesmoke;
       }
       .why-stats--divided {
         display: grid;
@@ -3539,7 +3540,7 @@
           <p class="about-note">
             We're also building the next generation of engineers through
             <a href="https://sda.com.pk" target="_blank" rel="noopener">SDA Tech Hub</a>,
-            our training academy and startup studio in Gilgit-Baltistan.</p>    
+            our training academy and startup studio in Gilgit-Baltistan.</p>
           </p>
           <a href="#contact" class="btn btn-outline">Meet The Team ↗</a>
         </div>
@@ -4632,7 +4633,24 @@
           timers = [];
         }
 
-        function samplePoints(word) {
+        // One shared size for every word — sizing each word to its own measured
+        // width made shorter/narrower words (e.g. "VALUE.") render larger than
+        // wider ones, since each was independently scaled to fill the canvas.
+        function computeSharedFontSize() {
+          const mctx = document.createElement("canvas").getContext("2d");
+          const base = H * 0.72;
+          mctx.font = `700 ${base}px "Fraunces", serif`;
+          const maxWidth = W * 0.98;
+          let scale = 1;
+          for (const word of words) {
+            const measuredWidth = mctx.measureText(word).width;
+            if (measuredWidth > maxWidth)
+              scale = Math.min(scale, maxWidth / measuredWidth);
+          }
+          return base * scale;
+        }
+
+        function samplePoints(word, fontSize) {
           const off = document.createElement("canvas");
           // canvas width/height truncate to integers; reusing the un-truncated W*dpr float
           // as the row stride below drifts out of sync with the buffer's real row length and
@@ -4645,10 +4663,9 @@
           octx.setTransform(dpr, 0, 0, dpr, 0, 0);
           octx.clearRect(0, 0, W, H);
           octx.fillStyle = "#fff";
-          const fontSize = Math.min(H * 0.72, W / (word.length * 0.6));
-          octx.font = `700 ${fontSize}px "Fraunces", serif`;
           octx.textAlign = "left";
           octx.textBaseline = "middle";
+          octx.font = `700 ${fontSize}px "Fraunces", serif`;
           octx.fillText(word, 0, H / 2 + fontSize * 0.04);
           const data = octx.getImageData(0, 0, cw, ch).data;
           const pts = [];
@@ -4755,7 +4772,8 @@
           canvas.width = W * dpr;
           canvas.height = H * dpr;
           ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-          wordPoints = words.map(samplePoints);
+          const sharedFontSize = computeSharedFontSize();
+          wordPoints = words.map((word) => samplePoints(word, sharedFontSize));
           const scatter = randomScatter();
           particles = scatter.map((p) => ({
             x: p[0],
@@ -4831,5 +4849,8 @@
         setTimeout(runOnce, 1200);
       })();
     </script>
-  </body>
+  <!-- impeccable-live-start -->
+<script src="http://localhost:8400/live.js?token=7b8c824d-3936-4275-8f36-4dbb8a9dd175"></script>
+<!-- impeccable-live-end -->
+</body>
 </html>
