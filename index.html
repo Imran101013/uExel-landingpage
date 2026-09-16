@@ -434,22 +434,21 @@
       }
       .about-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 0.70fr 1.30fr;
         gap: 70px;
-        align-items: center;
+        align-items: start;
       }
       .about-copy h2 {
         color: #fff;
         font-size: clamp(22px, 3.4vw, 36px);
         line-height: 1.15;
-        margin-top: 14px;
       }
       .about-copy p {
         color: #c7cdd4;
         font-size: 16.5px;
         line-height: 1.6;
         max-width: 440px;
-        margin: 18px 0 0;
+        margin: 18px 0 18px;
       }
       .about-points {
         list-style: none;
@@ -486,8 +485,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 22px;
-        height: 22px;
+        width: 26px;
+        height: 26px;
+        padding: 5px;
+        box-sizing: border-box;
+        background: rgba(9, 109, 217, 0.12);
+        border-radius: 50%;
         color: var(--blue);
       }
       .about-point-icon svg {
@@ -500,24 +503,36 @@
         letter-spacing: 0.01em;
       }
       .about-visual {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-        align-content: start;
+        display: block;
       }
       .about-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        padding: 26px 26px 22px;
-        transition: border-color 0.3s ease, background 0.3s ease;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        margin: 0 0 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        transition: border-color 0.3s ease;
+      }
+      .about-card:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
       }
       .about-card:hover {
         border-color: rgba(9, 109, 217, 0.4);
-        background: rgba(255, 255, 255, 0.045);
       }
-      .about-card--wide {
-        grid-column: 1 / -1;
+      .about-card:hover .about-card-title {
+        color: var(--blue);
+      }
+      .about-card--primary {
+        background: transparent;
+      }
+      .about-card--quote {
+        position: relative;
+      }
+      .about-card--quote .about-quote-text {
+        position: relative;
+        z-index: 1;
       }
       .about-card-title {
         font-family: "Inter", sans-serif;
@@ -542,9 +557,9 @@
         font-style: italic;
         font-weight: 400;
         text-transform: none;
-        font-size: clamp(16px, 2vw, 18.5px);
+        font-size: clamp(16px, 2vw, 22px);
         line-height: 1.55;
-        color: #fff;
+        color: #096dd9;
         margin: 0 0 20px;
       }
       @media (max-width: 900px) {
@@ -556,15 +571,6 @@
           max-width: none;
         }
       }
-      @media (max-width: 640px) {
-        .about-visual {
-          grid-template-columns: 1fr;
-        }
-        .about-card--wide {
-          grid-column: 1;
-        }
-      }
-
       /* ===== TRUSTED BY / CLIENTS ===== */
       .clients {
         background: var(--white);
@@ -1795,7 +1801,9 @@
         position: relative;
       }
       .aiauto-tile-icon {
-        display: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         width: 30px;
         height: 30px;
         color: var(--blue);
@@ -1837,8 +1845,8 @@
         z-index: 1;
       }
       .aiauto-tile--hc .aiauto-tile-icon {
-        width: 34px;
-        height: 34px;
+        width: 40px;
+        height: 40px;
         color: #5fb3e6;
       }
       .aiauto-tile-icon-wrap {
@@ -1864,7 +1872,7 @@
         100% { transform: scale(1.6); opacity: 0; }
       }
       .aiauto-tile--hc h3 {
-        font-size: 24px;
+        font-size: 28px;
         color: #fff;
         margin: 0 0 12px;
       }
@@ -3340,113 +3348,92 @@
 
     <section class="about-section" id="about">
       <div class="wrap about-grid">
-        <div class="about-copy">
-          <h2>Engineers first,<br />consultants second.</h2>
-          <p>
-            We're a global team of builders who'd rather ship working
-            software than sit in status meetings — the same partner from
-            first prototype through enterprise scale.
-          </p>
-          <ul class="about-points">
-            <li>
-              <span class="about-point-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12.5l4.5 4.5L19 7" />
-                </svg>
-              </span>
-              <span class="about-point-text">Senior engineers, not resellers</span>
-            </li>
-            <li>
-              <span class="about-point-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12.5l4.5 4.5L19 7" />
-                </svg>
-              </span>
-              <span class="about-point-text">Fixed scope, fixed timeline</span>
-            </li>
-            <li>
-              <span class="about-point-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M5 12.5l4.5 4.5L19 7" />
-                </svg>
-              </span>
-              <span class="about-point-text">We stay on after launch</span>
-            </li>
-          </ul>
-          <p class="about-note">
-            We're also building the next generation of engineers through
-            <a href="https://sda.com.pk" target="_blank" rel="noopener">SDA Tech Hub</a>,
-            our training academy and startup studio in Gilgit-Baltistan.</p>
-          </p>
-          <a href="#contact" class="btn btn-outline">Meet The Team ↗</a>
-        </div>
-        <div class="about-visual">
-          <div class="about-card about-card--wide">
-            <h3 class="about-card-title">Why We Started</h3>
+          <div class="about-copy">
+            <h2>Engineers first,<br />consultants second.</h2>
             <p>
-              We broke away from traditional consultancies after growing
-              tired of the industry's familiar playbook: a senior partner
-              pitches the engagement and wins the trust, then hands execution
-              off to whoever's free on the bench.
+              We're a global team of builders who'd rather ship working
+              software than sit in status meetings — the same partner from
+              first prototype through enterprise scale.
             </p>
-            <p>
-              We built uExel on the opposite model — you work directly with
-              battle-tested senior engineers who embed into your
-              repositories, your Slack channels, and your architecture
-              reviews from kickoff through production scale.
+            <ul class="about-points">
+              <li>
+                <span class="about-point-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12.5l4.5 4.5L19 7" />
+                  </svg>
+                </span>
+                <span class="about-point-text">Senior engineers, not resellers</span>
+              </li>
+              <li>
+                <span class="about-point-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12.5l4.5 4.5L19 7" />
+                  </svg>
+                </span>
+                <span class="about-point-text">Fixed scope, fixed timeline</span>
+              </li>
+              <li>
+                <span class="about-point-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12.5l4.5 4.5L19 7" />
+                  </svg>
+                </span>
+                <span class="about-point-text">We stay on after launch</span>
+              </li>
+            </ul>
+            <p class="about-note">
+              We're also building the next generation of engineers through
+              <a href="https://sda.com.pk" target="_blank" rel="noopener">SDA Tech Hub</a>,
+              our training academy and startup studio in Gilgit-Baltistan.
             </p>
+            <a href="#contact" class="btn btn-outline">Meet The Team ↗</a>
           </div>
+          <div class="about-visual">
+            <div class="about-card about-card--wide about-card--primary">
+              <h3 class="about-card-title">Why We Started</h3>
+              <p>
+                We broke away from traditional consultancies after growing
+                tired of the industry's familiar playbook: a senior partner
+                pitches the engagement and wins the trust, then hands execution
+                off to whoever's free on the bench.
+              </p>
+              <p>
+                We built uExel on the opposite model — you work directly with
+                battle-tested senior engineers who embed into your
+                repositories, your Slack channels, and your architecture
+                reviews from kickoff through production scale.
+              </p>
+            </div>
 
-          <div class="about-card">
-            <h3 class="about-card-title">Our Practice &amp; Craft</h3>
-            <p>
-              We design resilient APIs, clean data models, and cloud-native
-              systems built for sustained load. We sit in your standups,
-              review your PRs, and guard your codebase's health like our
-              own.
-            </p>
-          </div>
+            <div class="about-card">
+              <h3 class="about-card-title">Our Practice &amp; Craft</h3>
+              <p>
+                We design resilient APIs, clean data models, and cloud-native
+                systems built for sustained load. We sit in your standups,
+                review your PRs, and guard your codebase's health like our
+                own.
+              </p>
+            </div>
 
-          <div class="about-card">
-            <h3 class="about-card-title">SDA Tech Hub &amp; Impact</h3>
-            <p>
-              We reinvest our consulting earnings directly into
-              Gilgit-Baltistan, running an intensive training academy and
-              startup studio to grow exceptional local engineering talent on
-              real production code.
-            </p>
-          </div>
+            <div class="about-card">
+              <h3 class="about-card-title">SDA Tech Hub &amp; Impact</h3>
+              <p>
+                We reinvest our consulting earnings directly into
+                Gilgit-Baltistan, running an intensive training academy and
+                startup studio to grow exceptional local engineering talent on
+                real production code.
+              </p>
+            </div>
 
-          <div class="about-card about-card--wide about-card--quote">
-            <p class="about-quote-text">
-              "Great software isn't built in slide decks or steering
-              committee reviews. It is forged in meticulous code review,
-              sound system architecture, and honest peer debate."
-            </p>
+            <div class="about-card about-card--wide about-card--quote">
+              <p class="about-quote-text">
+                "Great software isn't built in slide decks or steering
+                committee reviews. It is forged in meticulous code review,
+                sound system architecture, and honest peer debate."
+              </p>
+            </div>
           </div>
         </div>
-      </div>
     </section>
 
 
@@ -3730,101 +3717,101 @@
           </p>
         </div>
         <div class="aiauto-mosaic" id="aiAutoMosaic">
-          <div class="aiauto-tile aiauto-tile--hc">
-            <svg class="aiauto-hc-bg" viewBox="0 0 260 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <path class="hc-pulse" d="M0 150 H50 L65 110 L80 190 L95 70 L110 150 H160 L175 120 L190 170 L205 100 L220 150 H260" fill="none" stroke="#5fb3e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-              <circle class="hc-dot" cx="95" cy="70" r="4" fill="#5fb3e6" />
-            </svg>
-            <div class="tile-overlay" aria-hidden="true"></div>
-            <span class="aiauto-tile-icon-wrap">
+            <div class="aiauto-tile aiauto-tile--hc">
+              <svg class="aiauto-hc-bg" viewBox="0 0 260 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <path class="hc-pulse" d="M0 150 H50 L65 110 L80 190 L95 70 L110 150 H160 L175 120 L190 170 L205 100 L220 150 H260" fill="none" stroke="#5fb3e6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <circle class="hc-dot" cx="95" cy="70" r="4" fill="#5fb3e6" />
+              </svg>
+              <div class="tile-overlay" aria-hidden="true"></div>
+              <span class="aiauto-tile-icon-wrap">
+                <span class="aiauto-tile-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 2h6" />
+                    <path d="M10 2v6.5L4.8 17a2 2 0 001.7 3h10.9a2 2 0 001.7-3L14 8.5V2" />
+                    <path d="M7 14h10" />
+                  </svg>
+                </span>
+              </span>
+              <h3>AI in Healthcare &amp; Lab Systems</h3>
+              <p>Clinical and administrative AI layered onto the HMIS, EMR and claims systems a hospital already runs — integration, not replacement.</p>
+            </div>
+            <article class="aiauto-tile aiauto-tile--sm aiauto-tile--wf">
               <span class="aiauto-tile-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 2h6" />
-                  <path d="M10 2v6.5L4.8 17a2 2 0 001.7 3h10.9a2 2 0 001.7-3L14 8.5V2" />
-                  <path d="M7 14h10" />
+                  <path d="M4 12a8 8 0 0114-5.3" />
+                  <path d="M20 12a8 8 0 01-14 5.3" />
+                  <path d="M18 3v4h-4" />
+                  <path d="M6 21v-4h4" />
                 </svg>
               </span>
-            </span>
-            <h3>AI in Healthcare &amp; Lab Systems</h3>
-            <p>Clinical and administrative AI layered onto the HMIS, EMR and claims systems a hospital already runs — integration, not replacement.</p>
+              <h4>Workflow Automation</h4>
+              <span class="aiauto-tile-rule" aria-hidden="true"></span>
+              <p>Repetitive work taken out of operations — document handling, approvals, data entry and hand-offs between systems that were never designed to talk.</p>
+            </article>
+            <article class="aiauto-tile aiauto-tile--sm aiauto-tile--bpo">
+              <span class="aiauto-tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 17l6-6 4 4 8-9" />
+                  <path d="M15 6h6v6" />
+                </svg>
+              </span>
+              <h4>Business Process Optimization</h4>
+              <span class="aiauto-tile-rule" aria-hidden="true"></span>
+              <p>We redesign the process first, then decide what software should carry it — one system of record, role-based approvals, and live reporting.</p>
+            </article>
+            <article class="aiauto-tile aiauto-tile--sm aiauto-tile--aws">
+              <span class="aiauto-tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 18a4 4 0 01-.6-7.96A5 5 0 0116.9 8.1 4.5 4.5 0 0117.5 18H7z" />
+                </svg>
+              </span>
+              <h4>AWS Services &amp; Migration</h4>
+              <span class="aiauto-tile-rule" aria-hidden="true"></span>
+              <p>Workloads moved to AWS without a big-bang cutover — assessed, staged, cost-modelled and operated afterwards.</p>
+            </article>
+            <article class="aiauto-tile aiauto-tile--sm aiauto-tile--gov">
+              <span class="aiauto-tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 21h16" />
+                  <path d="M5 21V10l7-6 7 6v11" />
+                  <path d="M9 21v-7h6v7" />
+                </svg>
+              </span>
+              <h4>Government Digital Transformation</h4>
+              <span class="aiauto-tile-rule" aria-hidden="true"></span>
+              <p>Citizen services that work on a low-bandwidth phone, and the back-office systems, data and capacity to keep them running after we leave.</p>
+            </article>
+            <article class="aiauto-tile aiauto-tile--banner">
+              <svg class="aiauto-banner-bg" viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <circle class="ai-node" cx="20" cy="40" r="5" fill="#5fb3e6" />
+                <circle class="ai-node" cx="20" cy="80" r="5" fill="#5fb3e6" />
+                <circle class="ai-node" cx="20" cy="120" r="5" fill="#5fb3e6" />
+                <circle class="ai-node" cx="100" cy="60" r="6" fill="#096dd9" />
+                <circle class="ai-node" cx="100" cy="100" r="6" fill="#096dd9" />
+                <circle class="ai-node" cx="180" cy="80" r="5" fill="#5fb3e6" />
+                <g stroke="#096dd9" stroke-width="1" fill="none" opacity="0.7">
+                  <line class="ai-edge" x1="25" y1="40" x2="94" y2="60" />
+                  <line class="ai-edge" x1="25" y1="80" x2="94" y2="60" />
+                  <line class="ai-edge" x1="25" y1="80" x2="94" y2="100" />
+                  <line class="ai-edge" x1="25" y1="120" x2="94" y2="100" />
+                </g>
+                <g stroke="#5fb3e6" stroke-width="1" fill="none" opacity="0.7">
+                  <line class="ai-edge" x1="106" y1="60" x2="175" y2="80" />
+                  <line class="ai-edge" x1="106" y1="100" x2="175" y2="80" />
+                </g>
+              </svg>
+              <span class="aiauto-tile-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
+                  <path d="M19 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z" />
+                </svg>
+              </span>
+              <div class="aiauto-banner-copy">
+                <h3>AI Tools for SMEs</h3>
+                <p>Enterprise AI capability in packages a 20-person business can buy: fixed scope, fixed price, live in weeks — no data-science hire required.</p>
+              </div>
+            </article>
           </div>
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--wf">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 12a8 8 0 0114-5.3" />
-                <path d="M20 12a8 8 0 01-14 5.3" />
-                <path d="M18 3v4h-4" />
-                <path d="M6 21v-4h4" />
-              </svg>
-            </span>
-            <h4>Workflow Automation</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>Repetitive work taken out of operations — document handling, approvals, data entry and hand-offs between systems that were never designed to talk.</p>
-          </article>
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--bpo">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 17l6-6 4 4 8-9" />
-                <path d="M15 6h6v6" />
-              </svg>
-            </span>
-            <h4>Business Process Optimization</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>We redesign the process first, then decide what software should carry it — one system of record, role-based approvals, and live reporting.</p>
-          </article>
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--aws">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 18a4 4 0 01-.6-7.96A5 5 0 0116.9 8.1 4.5 4.5 0 0117.5 18H7z" />
-              </svg>
-            </span>
-            <h4>AWS Services &amp; Migration</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>Workloads moved to AWS without a big-bang cutover — assessed, staged, cost-modelled and operated afterwards.</p>
-          </article>
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--gov">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 21h16" />
-                <path d="M5 21V10l7-6 7 6v11" />
-                <path d="M9 21v-7h6v7" />
-              </svg>
-            </span>
-            <h4>Government Digital Transformation</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>Citizen services that work on a low-bandwidth phone, and the back-office systems, data and capacity to keep them running after we leave.</p>
-          </article>
-          <article class="aiauto-tile aiauto-tile--banner">
-            <svg class="aiauto-banner-bg" viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <circle class="ai-node" cx="20" cy="40" r="5" fill="#5fb3e6" />
-              <circle class="ai-node" cx="20" cy="80" r="5" fill="#5fb3e6" />
-              <circle class="ai-node" cx="20" cy="120" r="5" fill="#5fb3e6" />
-              <circle class="ai-node" cx="100" cy="60" r="6" fill="#096dd9" />
-              <circle class="ai-node" cx="100" cy="100" r="6" fill="#096dd9" />
-              <circle class="ai-node" cx="180" cy="80" r="5" fill="#5fb3e6" />
-              <g stroke="#096dd9" stroke-width="1" fill="none" opacity="0.7">
-                <line class="ai-edge" x1="25" y1="40" x2="94" y2="60" />
-                <line class="ai-edge" x1="25" y1="80" x2="94" y2="60" />
-                <line class="ai-edge" x1="25" y1="80" x2="94" y2="100" />
-                <line class="ai-edge" x1="25" y1="120" x2="94" y2="100" />
-              </g>
-              <g stroke="#5fb3e6" stroke-width="1" fill="none" opacity="0.7">
-                <line class="ai-edge" x1="106" y1="60" x2="175" y2="80" />
-                <line class="ai-edge" x1="106" y1="100" x2="175" y2="80" />
-              </g>
-            </svg>
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
-                <path d="M19 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z" />
-              </svg>
-            </span>
-            <div class="aiauto-banner-copy">
-              <h3>AI Tools for SMEs</h3>
-              <p>Enterprise AI capability in packages a 20-person business can buy: fixed scope, fixed price, live in weeks — no data-science hire required.</p>
-            </div>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -4112,6 +4099,7 @@
     </div>
 
     <section class="testimonials" id="testimonials">
+
       <div class="wrap why-layout">
         <div class="why-rail">
           <h2 class="why-heading">Why Choose uExel</h2>
@@ -4193,6 +4181,7 @@
           </li>
         </ol>
       </div>
+
     </section>
 
     <div class="clients-strip">
@@ -4727,7 +4716,7 @@
       })();
     </script>
   <!-- impeccable-live-start -->
-<script src="http://localhost:8400/live.js?token=7b8c824d-3936-4275-8f36-4dbb8a9dd175"></script>
+<script src="http://localhost:8400/live.js?token=0c75464b-e3fc-494a-8e03-6ff7c71b98fc"></script>
 <!-- impeccable-live-end -->
 </body>
 </html>
