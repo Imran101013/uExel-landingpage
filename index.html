@@ -27,7 +27,6 @@
         --muted-2: #4b5563;
         --line: #e5e7eb;
         --line-light: rgba(255, 255, 255, 0.14);
-        --radius: 22px;
         --maxw: 1280px;
       }
       * {
@@ -94,7 +93,6 @@
         justify-content: center;
         gap: 8px;
         padding: 16px 34px;
-        border-radius: 0;
         font-weight: 700;
         font-size: 14px;
         letter-spacing: 0.06em;
@@ -403,23 +401,6 @@
       .hero-cta {
         margin-top: 30px;
       }
-      .featured-on {
-        margin-top: 8px;
-      }
-      
-      .badge-row {
-        display: flex;
-        gap: 26px;
-        align-items: center;
-        flex-wrap: wrap;
-        opacity: 0.75;
-      }
-      .badge-row .badge {
-        font-family: "Fraunces", serif;
-        font-size: 22px;
-        color: #aeb6bf;
-        letter-spacing: 0.02em;
-      }
       .hero-right p {
         color: #c7cdd4;
         font-size: 18px;
@@ -571,84 +552,6 @@
           max-width: none;
         }
       }
-      /* ===== TRUSTED BY / CLIENTS ===== */
-      .clients {
-        background: var(--white);
-        padding: 15px 0;
-        border-bottom: 1px solid var(--line);
-      }
-      .clients-row {
-        display: flex;
-        align-items: center;
-        gap: 48px;
-      }
-      .clients-lede {
-        flex: 0 0 auto;
-        max-width: 260px;
-        font-size: 16px;
-        line-height: 1.5;
-        color: var(--muted);
-      }
-      .clients-marquee-wrap {
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        mask-image: linear-gradient(
-          90deg,
-          transparent,
-          #000 8%,
-          #000 92%,
-          transparent
-        );
-        -webkit-mask-image: linear-gradient(
-          90deg,
-          transparent,
-          #000 8%,
-          #000 92%,
-          transparent
-        );
-      }
-      .clients-marquee {
-        display: flex;
-        align-items: center;
-        gap: 64px;
-        width: max-content;
-        animation: clients-scroll-right 24s linear infinite;
-      }
-      .clients-logo {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .clients-logo img {
-        height: 50px;
-        width: auto;
-        max-width: 140px;
-        object-fit: contain;
-      }
-      @keyframes clients-scroll-right {
-        from {
-          transform: translateX(-50%);
-        }
-        to {
-          transform: translateX(0);
-        }
-      }
-      @media (max-width: 768px) {
-        .clients-row {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 24px;
-        }
-        .clients-lede {
-          max-width: none;
-        }
-        .clients-marquee-wrap {
-          width: 100%;
-        }
-      }
-
       /* ===== WE WORK WITH ===== */
       .work-with {
         background: var(--blue-light);
@@ -739,7 +642,6 @@
         position: relative;
         z-index: 1;
         font-size: 28px;
-        margin-top: 6px;
       }
       .work-rule {
         position: relative;
@@ -976,6 +878,7 @@
         color: #fff;
         margin: 0 0 10px;
         transition: color 0.3s ease;
+        min-height: 57px;
       }
       .case-card:hover .case-card-title {
         color: #5fb3e6;
@@ -987,206 +890,12 @@
         color: #aeb6bf;
       }
       .case-card-more {
-        margin-top: auto;
+        margin-top: 20px;
         padding-top: 16px;
-        align-self: flex-start;
+        align-self: center;
       }
 
-      /* ===== EXPERTISE — discipline ledger ===== */
-      .expertise {
-        background: var(--blue-light);
-        padding: 70px 0;
-      }
-      .expertise-list {
-        margin-top: 60px;
-        border-top: 1px solid var(--line);
-      }
-      /* Healthcare IT and Applied AI share this panel-ledger structure: a
-         filled intro panel opposite the capability grid, mirrored left/right
-         between the two so the pair reads as a matched set that still
-         differs by specialty (navy gradient vs. ink + a circuit dot-grid). */
-      .expertise-panel-block {
-        display: grid;
-        grid-template-columns: 1fr 1.7fr;
-        border-bottom: 1px solid var(--line);
-      }
-      .expertise-panel-block--b {
-        grid-template-columns: 1.7fr 1fr;
-      }
-      .expertise-panel {
-        background: linear-gradient(160deg, var(--navy), var(--navy-2));
-        padding: 44px 36px;
-      }
-      .expertise-panel--ink {
-        position: relative;
-        overflow: hidden;
-        background: var(--ink);
-      }
-      .expertise-panel--ink::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        background-image: radial-gradient(
-          circle,
-          rgba(9, 109, 217, 0.4) 1px,
-          transparent 1px
-        );
-        background-size: 16px 16px;
-        mask-image: radial-gradient(
-          ellipse 85% 85% at 70% 30%,
-          #000 0%,
-          transparent 100%
-        );
-        -webkit-mask-image: radial-gradient(
-          ellipse 85% 85% at 70% 30%,
-          #000 0%,
-          transparent 100%
-        );
-      }
-      .expertise-panel-letter {
-        position: relative;
-        z-index: 1;
-        display: block;
-        font-family: "Fraunces", serif;
-        font-size: 13px;
-        letter-spacing: 0.1em;
-        color: #5fb3e6;
-        margin-bottom: 8px;
-      }
-      .expertise-panel-title {
-        position: relative;
-        z-index: 1;
-        font-family: "Fraunces", serif;
-        font-size: clamp(24px, 2.6vw, 30px);
-        color: #fff;
-        text-transform: uppercase;
-        letter-spacing: 0.01em;
-        margin: 0 0 14px;
-      }
-      .expertise-panel-desc {
-        position: relative;
-        z-index: 1;
-        margin: 0;
-        font-size: 15px;
-        color: rgba(255, 255, 255, 0.78);
-        max-width: 30ch;
-      }
-      .expertise-panel-rule {
-        position: relative;
-        z-index: 1;
-        display: block;
-        height: 1px;
-        margin: 22px 0 18px;
-        background: rgba(255, 255, 255, 0.18);
-        transform: scaleX(1);
-        transform-origin: left;
-      }
-      .expertise-panel-proof {
-        position: relative;
-        z-index: 1;
-        margin: 0;
-        font-size: 13.5px;
-        line-height: 1.5;
-        color: #cee2f7;
-        max-width: 26ch;
-      }
-      .expertise-panel-caps {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 40px;
-        row-gap: 28px;
-        align-content: start;
-        padding: 44px 40px;
-      }
-      .expertise-panel-cap {
-        padding: 4px 10px;
-        margin: -4px -10px;
-        transition: background 0.2s ease;
-      }
-      .expertise-panel-cap:hover {
-        background: rgba(11, 15, 20, 0.03);
-      }
-      .expertise-panel-cap h4 {
-        margin: 0 0 6px;
-        font-family: "Inter", sans-serif;
-        font-weight: 700;
-        font-size: 15.5px;
-        color: var(--ink);
-      }
-      .expertise-panel-cap p {
-        margin: 0;
-        font-size: 14.5px;
-        line-height: 1.5;
-        color: var(--muted);
-      }
-      @media (max-width: 768px) {
-        .expertise-panel-block,
-        .expertise-panel-block--b {
-          grid-template-columns: 1fr;
-        }
-        .expertise-panel-caps {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* Scroll-triggered reveal for each discipline block: the hairline rule
-         under the panel draws left-to-right and the capability grid cascades
-         in row by row. Only JS adds ".oe-pre" (see the "our expertise —
-         reveal" script below), so a no-JS/failed-script page keeps every
-         block at its normal, fully visible resting state. */
-      .oe-pre .expertise-panel-rule {
-        transform: scaleX(0);
-      }
-      .oe-pre .expertise-panel-cap {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      @media (prefers-reduced-motion: no-preference) {
-        .oe-pre .expertise-panel-rule {
-          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .oe-pre .expertise-panel-cap {
-          transition:
-            opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .oe-pre .expertise-panel-cap:nth-child(1) {
-          transition-delay: 0.15s;
-        }
-        .oe-pre .expertise-panel-cap:nth-child(2) {
-          transition-delay: 0.21s;
-        }
-        .oe-pre .expertise-panel-cap:nth-child(3) {
-          transition-delay: 0.27s;
-        }
-        .oe-pre .expertise-panel-cap:nth-child(4) {
-          transition-delay: 0.33s;
-        }
-        .oe-pre .expertise-panel-cap:nth-child(5) {
-          transition-delay: 0.39s;
-        }
-        .oe-pre .expertise-panel-cap:nth-child(6) {
-          transition-delay: 0.45s;
-        }
-      }
-      .oe-pre.oe-in .expertise-panel-rule {
-        transform: scaleX(1);
-      }
-      .oe-pre.oe-in .expertise-panel-cap {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ===== EXPERTISE (VARIANT B) — an asymmetric bento mosaic: the two
-         discipline intro tiles anchor opposite corners, with the six
-         capability tiles (two of them wide) filling the remaining cells. */
-      /* ===== EXPERTISE (VARIANT C) — "engineering dashboard": each
-         discipline is its own numbered spec sheet (bracketed index +
-         status tag over a hairline rule), followed by a bento grid of a
-         dark hero "domain" card and monospace capability cards with
-         badge/meta rows, mirroring an ops-console readout rather than a
-         marketing tile. */
+      /* ===== OUR EXPERTISE ===== */
       .expertise-v2 {
         --dash-bg: #141a21;
         --dash-line: rgba(255, 255, 255, 0.09);
@@ -1198,272 +907,6 @@
       .expertise-v2 .lede {
         max-width: 460px;
       }
-      .xg-block {
-        margin-top: 50px;
-      }
-      .xg-block + .xg-block {
-        margin-top: 56px;
-      }
-      
-      .xg-eyebrow {
-        font-family: "IBM Plex Mono", "Inter", monospace;
-        font-size: 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--muted-2);
-      }
-      .xg-bracket {
-        color: var(--blue);
-        font-weight: 600;
-        margin-right: 8px;
-      }
-      .xg-status {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 11px;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--muted-2);
-        opacity: 0.8;
-      }
-      .xg-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        grid-auto-rows: minmax(150px, auto);
-      }
-      .xg-grid--hc {
-        grid-template-areas:
-          "hc hc ehr ehr"
-          "hc hc workflow hipaa";
-      }
-      .xg-grid--ai {
-        grid-template-areas:
-          "risk llm ai ai"
-          "eval eval ai ai";
-      }
-      .xg-hero,
-      .xg-cap {
-        position: relative;
-        border-radius: 8px;
-        background: var(--dash-bg);
-        border: 1px solid var(--dash-line);
-        border-left: 3px solid transparent;
-        padding: 24px 26px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition:
-          transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-          border-color 0.4s ease,
-          border-left-color 0.4s ease,
-          box-shadow 0.45s ease,
-          background 0.4s ease;
-      }
-      /* top scan-line draws in on hover, echoing the site's other
-         hover-rule reveals (.wwm-panel .work-rule, .about-tile-photo) */
-      .xg-hero::before,
-      .xg-cap::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--dash-cyan), transparent);
-        transform: scaleX(0);
-        transform-origin: center;
-        transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-        pointer-events: none;
-      }
-      .xg-hero:hover,
-      .xg-cap:hover {
-        transform: translateY(-5px);
-        border-color: rgba(45, 212, 224, 0.4);
-        background: #182029;
-        box-shadow: 0 18px 40px -18px rgba(45, 212, 224, 0.45);
-      }
-      .xg-hero:hover::before,
-      .xg-cap:hover::before {
-        transform: scaleX(1);
-      }
-      .xg-hero {
-        border-left-color: var(--dash-cyan);
-        justify-content: space-between;
-      }
-      .xg-hero:hover {
-        border-left-color: #fff;
-        box-shadow: 0 22px 48px -16px rgba(45, 212, 224, 0.55);
-      }
-      .xg-cap:hover {
-        border-left-color: var(--dash-cyan);
-      }
-      .xg-hero--hc {
-        grid-area: hc;
-      }
-      .xg-hero--ai {
-        grid-area: ai;
-      }
-      .xg-hero-watermark {
-        position: absolute;
-        top: 10px;
-        right: 6px;
-        width: 46%;
-        height: auto;
-        max-height: 70%;
-        opacity: 0.5;
-        pointer-events: none;
-      }
-      .xg-hero-eyebrow {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 11px;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--dash-cyan);
-      }
-      .xg-pill {
-        position: relative;
-        z-index: 1;
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        padding: 5px 11px;
-        border-radius: 20px;
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 10px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        white-space: nowrap;
-        background: rgba(45, 212, 224, 0.1);
-        border: 1px solid rgba(45, 212, 224, 0.3);
-        color: var(--dash-cyan);
-      }
-      .xg-dot {
-        width: 6px;
-        height: 6px;
-        flex-shrink: 0;
-        border-radius: 50%;
-        background: currentColor;
-        box-shadow: 0 0 0 3px rgba(45, 212, 224, 0.22);
-      }
-      .xg-hero-title {
-        position: relative;
-        z-index: 1;
-        font-family: "Fraunces", serif;
-        font-size: clamp(26px, 3vw, 34px);
-        text-transform: uppercase;
-        color: #fff;
-        margin: 22px 0 10px;
-      }
-      .xg-hero-desc {
-        position: relative;
-        z-index: 1;
-        margin: 0;
-        color: var(--dash-text-dim);
-        font-size: 14px;
-        line-height: 1.55;
-        max-width: 34ch;
-      }
-      .xg-hero-rule {
-        position: relative;
-        z-index: 1;
-        height: 1px;
-        background: var(--dash-line);
-        margin: 22px 0 14px;
-      }
-      .xg-stat-label {
-        color: var(--dash-text-dim);
-        letter-spacing: 0.05em;
-      }
-      .xg-stat-value {
-        color: #fff;
-        font-weight: 600;
-        margin-left: 5px;
-      }
-      .xg-stat-value--accent {
-        color: var(--dash-cyan);
-      }
-      .xg-cap--ehr {
-        grid-area: ehr;
-      }
-      .xg-cap--workflow {
-        grid-area: workflow;
-      }
-      .xg-cap--hipaa {
-        grid-area: hipaa;
-      }
-      .xg-cap--risk {
-        grid-area: risk;
-      }
-      .xg-cap--llm {
-        grid-area: llm;
-      }
-      .xg-cap--eval {
-        grid-area: eval;
-      }
-      .xg-cap-top {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 10px;
-      }
-      .xg-cap-title {
-        display: flex;
-        align-items: baseline;
-        gap: 9px;
-        margin: 0;
-        font-family: "Inter", sans-serif;
-        font-weight: 700;
-        font-size: 15.5px;
-        color: #fff;
-      }
-      .xg-badge {
-        flex-shrink: 0;
-        padding: 3px 9px;
-        border-radius: 4px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 9.5px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--dash-text-dim);
-      }
-      .xg-cap-desc {
-        flex: 1;
-        margin: 12px 0 0;
-        font-size: 13.5px;
-        line-height: 1.55;
-        color: var(--dash-text-dim);
-      }
-      .xg-cap-rule {
-        height: 1px;
-        background: var(--dash-line);
-        margin: 16px 0 10px;
-      }
-      .xg-meta-accent {
-        color: var(--dash-cyan);
-      }
-      @media (max-width: 768px) {
-        .xg-grid--hc,
-        .xg-grid--ai {
-          grid-template-columns: 1fr;
-        }
-        .xg-grid--hc {
-          grid-template-areas:
-            "hc"
-            "ehr"
-            "workflow"
-            "hipaa";
-        }
-        .xg-grid--ai {
-          grid-template-areas:
-            "risk"
-            "llm"
-            "ai"
-            "eval";
-        }
-      }
-
       .xr-radar {
         --density: 1.25;
         font-family: "IBM Plex Mono", monospace;
@@ -1985,7 +1428,7 @@
         line-height: 1.6;
         color: #aeb6bf;
       }
-      /* entrance: same fade/rise + stagger convention as .wwm-pre/.oe-pre */
+      /* entrance: same fade/rise + stagger convention as .wwm-pre */
       .aiauto-pre {
         opacity: 0;
         transform: translateY(28px);
@@ -2509,38 +1952,16 @@
       }
       .process-step-icon {
         flex-shrink: 0;
-        background-repeat: no-repeat;
-        background-image: url("https://www.dynamologic.com/wp-content/themes/dynamologic2021/images/sprite.png");
-      }
-      .p1-li-img {
         width: 44px;
-        height: 35px;
-        background-position: 0 -40px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--blue);
       }
-      .p2-li-img {
-        width: 44px;
-        height: 41px;
-        background-position: 0 -75px;
-      }
-      .p3-li-img {
-        width: 44px;
-        height: 35px;
-        background-position: 0 -116px;
-      }
-      .p4-li-img {
-        width: 44px;
-        height: 35px;
-        background-position: 0 -151px;
-      }
-      .p5-li-img {
-        width: 44px;
-        height: 41px;
-        background-position: 0 -186px;
-      }
-      .p6-li-img {
-        width: 44px;
-        height: 41px;
-        background-position: 0 -227px;
+      .process-step-icon svg {
+        width: 24px;
+        height: 24px;
       }
       .process-step-title {
         font-family: "Fraunces", serif;
@@ -3188,7 +2609,8 @@
         }
         .work-with,
         .featured,
-        .expertise,
+        .expertise-v2,
+        .ai-automation,
         .process,
         .testimonials,
         .cta-banner {
@@ -3271,10 +2693,10 @@
         <nav class="links">
           <a href="#top">Home</a>
           <a href="#about">About</a>
-          <a href="#">Services</a>
-          <a href="#">Product</a>
-          <a href="#">Industries</a>
-          <a href="#">Blog</a>
+          <a href="#expertise-v2">Services</a>
+          <a href="#featured">Product</a>
+          <a href="#testimonials">Industries</a>
+          <a href="#contact">Blog</a>
         </nav>
         <div class="nav-cta">
           <a href="#contact" class="btn btn-primary">Book A Call</a>
@@ -3317,8 +2739,7 @@
             <p class="hero-anim-up hero-anim-up-2">
               We are a global software consulting and product engineering
               partner — building fast, scalable web, mobile, and AI-powered
-              solutions for startups and enterprises, with 120+ developers ready
-              to ship.
+              solutions for startups and enterprises.
             </p>
             <div class="hero-stats hero-anim-up hero-anim-up-3">
               <div>
@@ -3389,7 +2810,7 @@
             <a href="#contact" class="btn btn-outline">Meet The Team ↗</a>
           </div>
           <div class="about-visual">
-            <div class="about-card about-card--wide about-card--primary">
+            <div class="about-card about-card--primary">
               <h3 class="about-card-title">Why We Started</h3>
               <p>
                 We broke away from traditional consultancies after growing
@@ -3425,7 +2846,7 @@
               </p>
             </div>
 
-            <div class="about-card about-card--wide about-card--quote">
+            <div class="about-card about-card--quote">
               <p class="about-quote-text">
                 "Great software isn't built in slide decks or steering
                 committee reviews. It is forged in meticulous code review,
@@ -3436,69 +2857,6 @@
         </div>
     </section>
 
-
-    <!-- <section class="clients" id="clients">
-      <div class="wrap">
-        <div class="clients-row">
-          <p class="clients-lede">
-            Companies we've partnered with to design, build, and scale their
-            products.
-          </p>
-          <div class="clients-marquee-wrap">
-            <div class="clients-marquee">
-              <div class="clients-logo">
-                <img src="logos/odoo.png" alt="Odoo" loading="lazy" />
-              </div>
-              <div class="clients-logo">
-                <img
-                  src="logos/uconnect.png"
-                  alt="uConnect Technologies"
-                  loading="lazy"
-                />
-              </div>
-              <div class="clients-logo">
-                <img src="logos/medit360.webp" alt="MedIT360" loading="lazy" />
-              </div>
-              <div class="clients-logo">
-                <img src="logos/execudea.png" alt="Execudea" loading="lazy" />
-              </div>
-              <div class="clients-logo">
-                <img
-                  src="logos/greensquad.png"
-                  alt="GreenSquad"
-                  loading="lazy"
-                />
-              </div>
-              <div class="clients-logo">
-                <img
-                  src="logos/sdatechhub.png"
-                  alt="SDA Tech Hub"
-                  loading="lazy"
-                />
-              </div>
-              <div class="clients-logo" aria-hidden="true">
-                <img src="logos/odoo.png" alt="" loading="lazy" />
-              </div>
-              <div class="clients-logo" aria-hidden="true">
-                <img src="logos/uconnect.png" alt="" loading="lazy" />
-              </div>
-              <div class="clients-logo" aria-hidden="true">
-                <img src="logos/medit360.webp" alt="" loading="lazy" />
-              </div>
-              <div class="clients-logo" aria-hidden="true">
-                <img src="logos/execudea.png" alt="" loading="lazy" />
-              </div>
-              <div class="clients-logo" aria-hidden="true">
-                <img src="logos/greensquad.png" alt="" loading="lazy" />
-              </div>
-              <div class="clients-logo" aria-hidden="true">
-                <img src="logos/sdatechhub.png" alt="" loading="lazy" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
 
     <section class="work-with" id="work-with">
       <div class="wrap">
@@ -3574,7 +2932,7 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <h2 style="color: #fff">Case Studies</h2>
+            <h2>Case Studies</h2>
             <a href="#" class="view-all">View All Projects ↘</a>
           </div>
           <p class="lede">
@@ -3603,9 +2961,9 @@
                 <rect x="116" y="124" width="184" height="56" rx="6" fill="rgba(255,255,255,0.1)" />
               </svg>
             </div>
-            <h3 class="case-card-title">Lorem ipsum dolor sit amet</h3>
+            <h3 class="case-card-title">Healthcare Platform Modernization</h3>
             <p class="case-card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Legacy patient-records system rebuilt on a modern stack.
               Delivered on time and adopted across teams.
             </p>
             <a href="#" class="btn btn-outline case-card-more">Read More ↗</a>
@@ -3627,10 +2985,10 @@
                 <path d="M20 150 L96 110 L134 132 L202 78 L280 96" stroke="#5fb3e6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
               </svg>
             </div>
-            <h3 class="case-card-title">Consectetur adipiscing elit</h3>
+            <h3 class="case-card-title">Enterprise Analytics Dashboard</h3>
             <p class="case-card-text">
-              Sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Rolled out ahead of schedule, team fully onboarded.
+              Real-time reporting layer built across five siloed data
+              sources. Rolled out ahead of schedule, team fully onboarded.
             </p>
             <a href="#" class="btn btn-outline case-card-more">Read More ↗</a>
           </article>
@@ -3654,10 +3012,10 @@
                 <rect x="152" y="164" width="16" height="6" rx="3" fill="rgba(255,255,255,0.3)" />
               </svg>
             </div>
-            <h3 class="case-card-title">Sed ut perspiciatis unde omnis</h3>
+            <h3 class="case-card-title">Startup MVP Launch</h3>
             <p class="case-card-text">
-              Excepteur sint occaecat cupidatat non proident sunt in
-              culpa. Shipped as a stable release the team now maintains.
+              Cross-platform mobile app taken from concept to app-store
+              launch. Shipped as a stable release the team now maintains.
             </p>
             <a href="#" class="btn btn-outline case-card-more">Read More ↗</a>
           </article>
@@ -3930,7 +3288,12 @@
           <div class="process-steps" id="processSteps">
               <div class="process-step active">
                 <button class="process-step-head" type="button">
-                  <span class="process-step-icon p1-li-img"></span>
+                  <span class="process-step-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="10" cy="10" r="6" />
+                      <line x1="20" y1="20" x2="14.5" y2="14.5" />
+                    </svg>
+                  </span>
                   <span class="process-step-title">Discovery</span>
                   <span class="process-step-toggle">+</span>
                 </button>
@@ -3952,7 +3315,12 @@
               </div>
               <div class="process-step">
                 <button class="process-step-head" type="button">
-                  <span class="process-step-icon p2-li-img"></span>
+                  <span class="process-step-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="4" y="3" width="16" height="18" rx="2" />
+                      <path d="M8 8h8M8 12h8M8 16h5" />
+                    </svg>
+                  </span>
                   <span class="process-step-title">Planning</span>
                   <span class="process-step-toggle">+</span>
                 </button>
@@ -3974,7 +3342,12 @@
               </div>
               <div class="process-step">
                 <button class="process-step-head" type="button">
-                  <span class="process-step-icon p3-li-img"></span>
+                  <span class="process-step-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <path d="M3 9h18M9 9v12" />
+                    </svg>
+                  </span>
                   <span class="process-step-title">Design</span>
                   <span class="process-step-toggle">+</span>
                 </button>
@@ -3996,7 +3369,12 @@
               </div>
               <div class="process-step">
                 <button class="process-step-head" type="button">
-                  <span class="process-step-icon p4-li-img"></span>
+                  <span class="process-step-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 18 22 12 16 6" />
+                      <polyline points="8 6 2 12 8 18" />
+                    </svg>
+                  </span>
                   <span class="process-step-title">Development</span>
                   <span class="process-step-toggle">+</span>
                 </button>
@@ -4018,7 +3396,12 @@
               </div>
               <div class="process-step">
                 <button class="process-step-head" type="button">
-                  <span class="process-step-icon p5-li-img"></span>
+                  <span class="process-step-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
+                      <path d="M9 12l2 2 4-4" />
+                    </svg>
+                  </span>
                   <span class="process-step-title">Testing &amp; QA</span>
                   <span class="process-step-toggle">+</span>
                 </button>
@@ -4040,7 +3423,13 @@
               </div>
               <div class="process-step">
                 <button class="process-step-head" type="button">
-                  <span class="process-step-icon p6-li-img"></span>
+                  <span class="process-step-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 2.5c3 2.5 4.8 6.2 4.8 9.8 0 2.3-1.1 4.3-2.8 5.6l-2-.9-2 .9c-1.7-1.3-2.8-3.3-2.8-5.6 0-3.6 1.8-7.3 4.8-9.8z" />
+                      <circle cx="12" cy="10.5" r="1.4" />
+                      <path d="M9 16.2L6.5 19h2.2M15 16.2l2.5 2.8h-2.2" />
+                    </svg>
+                  </span>
                   <span class="process-step-title">Launch &amp; Support</span>
                   <span class="process-step-toggle">+</span>
                 </button>
@@ -4289,7 +3678,7 @@
           </div>
           <div class="footer-col">
             <div class="footer-col-title">Pages</div>
-            <a href="#top">About</a>
+            <a href="#about">About</a>
             <a href="#expertise-v2">Services</a>
             <a href="#featured">Product</a>
             <a href="#contact">Contact Us</a>
@@ -4344,30 +3733,6 @@
         observer.observe(split);
       })();
 
-// our expertise — reveal: each discipline block's hairline rule draws
-      // left-to-right and its capability grid cascades in row by row the
-      // first time the block scrolls into view (see the ".oe-pre"/".oe-in"
-      // rules under EXPERTISE in the stylesheet)
-      (function () {
-        const list = document.getElementById("expertiseList");
-        if (!list) return;
-        const blocks = Array.from(list.querySelectorAll(".expertise-panel-block"));
-        const observer = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              entry.target.classList.add("oe-in");
-              obs.unobserve(entry.target);
-            });
-          },
-          { threshold: 0.2 },
-        );
-        blocks.forEach((block) => {
-          block.classList.add("oe-pre");
-          observer.observe(block);
-        });
-      })();
-
 // ai & automation — reveal: the whole mosaic fades/rises into place the
       // first time it scrolls into view, each tile staggered by the
       // ".aiauto-pre"/".aiauto-in" delay rules under AI & AUTOMATION
@@ -4399,11 +3764,9 @@
         const progressCircle = document.querySelector(".ring-progress");
         const figure = document.getElementById("processFigure");
         const figureIcons = Array.from(figure.querySelectorAll(".pf-icon"));
-        const comet = document.getElementById("ringComet");
         const ping = document.getElementById("ringPing");
         const slogan = document.getElementById("processSlogan");
         const CIRCUMFERENCE = 565.5;
-        let cometHideTimer = null;
         let sloganSwapTimer = null;
 
         // one slogan per step, in step order
@@ -4416,12 +3779,9 @@
           "Launch is day one.",
         ];
 
-        // switching steps sends two animated elements after the ring: a
-        // comet that travels its circular path (offset-path's 0% sits at
-        // 3 o'clock and runs clockwise, so +75% realigns 0% with the
-        // ring's own 12 o'clock start) arriving as the fill finishes, and
-        // a one-shot burst at the dot that just lit up. Skipped on the
-        // initial render (animate:false) — only real switches should move.
+        // switching steps sends a one-shot ring burst to the dot that just
+        // lit up. Skipped on the initial render (animate:false) — only real
+        // switches should move.
         function setActive(index, { animate = true } = {}) {
           steps.forEach((s, i) => s.classList.toggle("active", i === index));
           dots.forEach((d, i) => d.classList.toggle("done", i <= index));
@@ -4446,15 +3806,6 @@
           }
 
           if (!animate) return;
-
-          if (comet) {
-            comet.style.offsetDistance = `${(75 + fraction * 100) % 100}%`;
-            comet.classList.add("is-visible");
-            clearTimeout(cometHideTimer);
-            cometHideTimer = setTimeout(() => {
-              comet.classList.remove("is-visible");
-            }, 900);
-          }
 
           if (ping) {
             const targetDot = dots[index];
@@ -4715,8 +4066,5 @@
         setTimeout(runOnce, 1200);
       })();
     </script>
-  <!-- impeccable-live-start -->
-<script src="http://localhost:8400/live.js?token=0c75464b-e3fc-494a-8e03-6ff7c71b98fc"></script>
-<!-- impeccable-live-end -->
 </body>
 </html>
