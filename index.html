@@ -448,49 +448,6 @@
         line-height: 1.55;
         margin: 0;
       }
-      /* scroll indicator */
-      .hero-scroll {
-        position: relative;
-        z-index: 2;
-        margin: 0 auto 0;
-        width: fit-content;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        color: rgba(255, 255, 255, 0.6);
-      }
-      .hero-scroll-label {
-        writing-mode: vertical-rl;
-        text-transform: uppercase;
-        font-size: 11px;
-        letter-spacing: 0.25em;
-        font-weight: 600;
-      }
-      .hero-scroll-line {
-        position: relative;
-        width: 1px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.25);
-      }
-      .hero-scroll-dot {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        width: 10px;
-        height: 10px;
-        margin-left: -6px;
-        border-radius: 50%;
-        background: var(--blue);
-        animation: hero-scroll-move 2.4s ease-in-out infinite;
-      }
-      @keyframes hero-scroll-move {
-        0% { top: 0; opacity: 0; }
-        15% { opacity: 1; }
-        85% { opacity: 1; }
-        100% { top: 100%; opacity: 0; }
-      }
-      /* trust bar */
       .hero-trust {
         position: relative;
         z-index: 2;
@@ -2704,7 +2661,7 @@
         grid-template-columns: 1fr 1fr;
         align-items: center;
         gap: 50px;
-        padding: 120px 40px;
+        padding: 90px 40px;
       }
      
       .cta-copy h2 {
@@ -2870,9 +2827,6 @@
         .burger {
           display: flex;
         }
-        .hero-scroll {
-          display: none;
-        }
         .hero-content {
           flex-direction: column;
         }
@@ -2988,7 +2942,6 @@
         .hero-orb-1,
         .hero-orb-2,
         .hero-shimmer,
-        .hero-scroll-dot,
         .cta-particle,
         .cta-flow-dot,
         .cta-3d-float,
@@ -3111,10 +3064,6 @@
           </div>
         </div>
 
-        <div class="hero-scroll hero-anim-up hero-anim-up-5" aria-hidden="true">
-          <span class="hero-scroll-label">Scroll</span>
-          <span class="hero-scroll-line"><span class="hero-scroll-dot"></span></span>
-        </div>
       </div>
 
       <div class="hero-trust">
