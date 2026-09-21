@@ -108,8 +108,6 @@
       .btn-primary {
         align-items: center;
         justify-content: center;
-        /* var(--blue) only clears 4.3:1 against white text; --blue-btn is a
-           touch darker so it passes 4.5:1 AA while staying visually on-brand */
         background: var(--blue-btn);
         color: #fff;
         box-shadow: 0 10px 30px -8px rgba(9, 109, 217, 0.55);
@@ -233,7 +231,6 @@
         position: relative;
         z-index: 2;
       }
-      /* rotating background slides */
       .hero-slides {
         position: absolute;
         inset: 0;
@@ -265,7 +262,6 @@
             rgba(10, 13, 17, 0.82) 100%
           );
       }
-      /* animated orb glows */
       .hero-orb {
         position: absolute;
         z-index: 1;
@@ -293,7 +289,6 @@
         0%, 100% { transform: scale(1); opacity: 1; }
         50% { transform: scale(1.08); opacity: 0.7; }
       }
-      /* shimmer line */
       .hero-shimmer {
         position: absolute;
         z-index: 1;
@@ -307,7 +302,6 @@
         from { background-position: 100% 0; }
         to   { background-position: -100% 0; }
       }
-      /* floating grid dots */
       .hero-grid {
         position: absolute;
         z-index: 1;
@@ -365,7 +359,7 @@
         padding-left: 30px;
       }
       .hero h1 {
-        font-size: clamp(40px, 9vw, 80px);
+        font-size: clamp(30px, 9vw, 70px);
         font-weight: 700;
         line-height: 0.98;
         letter-spacing: 0.005em;
@@ -573,6 +567,14 @@
         width: 100%;
         height: 100%;
       }
+      .about-point-icon path {
+        stroke-dasharray: 24;
+        stroke-dashoffset: 24;
+        transition: stroke-dashoffset 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+      }
+      .reveal.in .about-point-icon path {
+        stroke-dashoffset: 0;
+      }
       .about-point-text {
         font-size: 15.5px;
         color: #c7cdd4;
@@ -603,8 +605,22 @@
       .about-card--primary {
         background: transparent;
       }
+      .about-card--primary.reveal {
+        transition: opacity 0.35s ease, border-color 0.35s ease,
+          transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .about-card--primary:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 44px -20px rgba(9, 109, 217, 0.5);
+      }
+      .about-card--primary.reveal:hover {
+        transform: translateY(-4px);
+      }
       .about-card--quote {
         position: relative;
+      }
+      .reveal.about-card--quote[data-d="4"] {
+        transition-delay: 510ms;
       }
       .about-card--quote .about-quote-text {
         position: relative;
@@ -685,7 +701,11 @@
         position: relative;
         background: var(--line);
         transform: scaleY(0);
-        transform-origin: center;
+        transform-origin: top;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .work-split.reveal.in .work-divider {
+        transform: scaleY(1);
       }
       .work-divider::before {
         content: "";
@@ -743,19 +763,15 @@
         position: relative;
         z-index: 1;
         display: block;
-        width: 150px;
+        width: 0%;
+        max-width: 72px;
         height: 4px;
         margin-top: 22px;
         background: var(--blue);
-        transform: scaleX(0.4);
-        transform-origin: left;
-        transition:
-          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-          width 0.4s ease;
+        transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .wwm-panel:hover .work-rule {
-        transform: scaleX(1);
-        width: 72px;
+        width: 100%;
       }
       .wwm-panel p {
         position: relative;
@@ -795,72 +811,39 @@
         color: var(--blue-dark);
       }
 
-      .wwm-pre {
+      .wwm-panel.reveal[data-d="1"] {
+        transition-delay: 0s;
+      }
+      .wwm-panel.reveal[data-d="2"] {
+        transition-delay: 0.12s;
+      }
+      .wwm-panel.reveal[data-d="3"] {
+        transition-delay: 0.24s;
+      }
+      .wwm-panel.reveal .tag {
         opacity: 0;
-        transform: translateY(28px);
+        transform: scale(0.94);
+        transition: opacity 0.4s ease, transform 0.4s ease;
       }
-      .wwm-pre.work-divider {
+      .wwm-panel.reveal .tag:nth-child(2) {
+        transition-delay: 0.04s;
+      }
+      .wwm-panel.reveal .tag:nth-child(3) {
+        transition-delay: 0.08s;
+      }
+      .wwm-panel.reveal .tag:nth-child(4) {
+        transition-delay: 0.12s;
+      }
+      .wwm-panel.reveal .tag:nth-child(5) {
+        transition-delay: 0.16s;
+      }
+      .wwm-panel.reveal.in .tag {
         opacity: 1;
-        transform: scaleY(0);
+        transform: scale(1);
       }
-      .wwm-pre .tag {
-        opacity: 0;
-        transform: translateY(8px);
+      .wwm-panel.reveal.in .tag:hover {
+        transform: translateY(-2px) scale(1);
       }
-      @media (prefers-reduced-motion: no-preference) {
-        .wwm-pre {
-          transition:
-            opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .wwm-pre.wwm-panel:nth-child(1) {
-          transition-delay: 0.1s;
-        }
-        .wwm-pre.wwm-panel:nth-child(3) {
-          transition-delay: 0.22s;
-        }
-        .wwm-pre.wwm-panel:nth-child(5) {
-          transition-delay: 0.34s;
-        }
-        .wwm-pre.work-divider {
-          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .wwm-pre .tag {
-          transition:
-            opacity 0.4s ease,
-            transform 0.4s ease;
-        }
-        .wwm-pre .tag:nth-child(1) {
-          transition-delay: 0.48s;
-        }
-        .wwm-pre .tag:nth-child(2) {
-          transition-delay: 0.55s;
-        }
-        .wwm-pre .tag:nth-child(3) {
-          transition-delay: 0.62s;
-        }
-        .wwm-pre .tag:nth-child(4) {
-          transition-delay: 0.69s;
-        }
-        .wwm-pre .tag:nth-child(5) {
-          transition-delay: 0.76s;
-        }
-      }
-      .wwm-pre.wwm-in {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .wwm-pre.work-divider.wwm-in {
-        transform: scaleY(1);
-      }
-      .wwm-pre.wwm-in .tag {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      /* On real hover devices, swap the description for the tag list in
-         place: both are grid-stacked onto the same cell so the crossfade
-         doesn't shift panel height or layout. Touch/no-hover devices keep
-         the description and tags both visible, as in the base layout. */
       @media (hover: hover) and (pointer: fine) {
         .wwm-pre.wwm-in {
           display: grid;
@@ -932,22 +915,43 @@
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.1);
         overflow: hidden;
-        transition: transform 0.3s ease, border-color 0.3s ease,
-          box-shadow 0.3s ease;
+      }
+      .case-card.reveal {
+        transition: opacity 0.3s ease, transform 0.3s ease,
+          border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .case-card.reveal[data-d="1"] {
+        transition-delay: 0s;
+      }
+      .case-card.reveal[data-d="2"] {
+        transition-delay: 0.14s;
+      }
+      .case-card.reveal[data-d="3"] {
+        transition-delay: 0.28s;
       }
       .case-card--offset {
         margin-top: 44px;
+      }
+      .case-card--offset.reveal {
+        transform: translateY(48px);
+      }
+      .case-card--offset.reveal.in {
+        transform: translateY(0);
       }
       .case-card:hover {
         transform: translateY(-6px);
         border-color: rgba(9, 109, 217, 0.5);
         box-shadow: 0 18px 40px -18px rgba(9, 109, 217, 0.45);
       }
+      .case-card.reveal:hover {
+        transform: translateY(-6px);
+      }
       .case-card-thumb {
         position: relative;
         display: block;
         aspect-ratio: 1 / 1;
         overflow: hidden;
+        height: 270px;
       }
       .case-card-thumb svg,
       .case-card-thumb img {
@@ -957,9 +961,19 @@
         object-fit: cover;
         transition: transform 0.4s ease;
       }
-      .case-card:hover .case-card-thumb svg,
-      .case-card:hover .case-card-thumb img {
+      .case-card:hover .case-card-thumb svg {
         transform: scale(1.05);
+      }
+      .case-card.reveal .case-card-thumb img {
+        transform: scale(1.08);
+        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .case-card.reveal.in .case-card-thumb img {
+        transform: scale(1);
+      }
+      .case-card:hover .case-card-thumb img {
+        transform: scale(1.04);
+        transition: transform 0.6s ease;
       }
       .case-card-body {
         display: flex;
@@ -992,10 +1006,14 @@
         font-size: 14px;
         font-weight: 600;
         color: #fff;
+        transition: transform 0.3s ease;
       }
       .case-card-more span {
         color: #5fb3e6;
         transition: transform 0.3s ease;
+      }
+      .case-card:hover .case-card-more {
+        transform: translateX(4px);
       }
       .case-card:hover .case-card-more span {
         transform: translateX(4px);
@@ -1071,12 +1089,19 @@
         margin: 0 auto;
         border-radius: 50%;
         border: 4px solid var(--blue-pale);
+        --xr-sweep-period: 6s;
       }
       .xr-ring-rings {
         position: absolute;
         inset: calc(14% * var(--density) / 1.25);
         border-radius: 50%;
         border: 3px dashed rgba(9, 109, 217, 0.22);
+        transform: scale(0.85);
+        transform-origin: center;
+        transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .expertise.is-live .xr-ring-rings {
+        transform: scale(1);
       }
       .xr-ring-sweep {
         position: absolute;
@@ -1084,7 +1109,10 @@
         border-radius: 50%;
         overflow: hidden;
         background: conic-gradient(from 0deg, rgba(9, 109, 217, 0.22), transparent 26%, transparent 100%);
-        animation: xr-sweep 6s linear infinite;
+        animation: none;
+      }
+      .expertise.is-live .xr-ring-sweep {
+        animation: xr-sweep var(--xr-sweep-period) linear infinite;
       }
       @keyframes xr-sweep {
         to {
@@ -1104,6 +1132,27 @@
         border: 1px solid var(--blue-pale);
         box-shadow: 0 10px 26px -14px rgba(9, 109, 217, 0.3);
         padding: calc(14px * var(--density));
+        /* one soft pulse, timed to land just after .xr-ring-rings finishes
+           scaling in (900ms) */
+        animation-name: none;
+        animation-duration: 700ms;
+        animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        animation-delay: 900ms;
+        animation-fill-mode: both;
+      }
+      .expertise.is-live .xr-hub {
+        animation-name: xr-hub-pulse;
+      }
+      @keyframes xr-hub-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 10px 26px -14px rgba(9, 109, 217, 0.3);
+        }
+        50% {
+          transform: scale(1.04);
+          box-shadow: 0 14px 34px -14px rgba(9, 109, 217, 0.5);
+        }
       }
       .xr-hub h3 {
         font-family: "Fraunces", serif;
@@ -1269,13 +1318,40 @@
         color: var(--muted);
         margin: 0;
       }
-      @keyframes xr-blip-pulse {
-        0%,
+     
+      .xr-blip-dot {
+        position: absolute;
+        top: -6px;
+        left: -6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--blue);
+        box-shadow: 0 0 0 4px rgba(9, 109, 217, 0.15);
+        opacity: 0.5;
+        transform: scale(1);
+        animation-name: none;
+        animation-duration: var(--xr-sweep-period);
+        animation-timing-function: ease-out;
+        animation-iteration-count: infinite;
+
+        animation-delay: calc(var(--xr-sweep-period) / 3 * var(--i));
+      }
+      .expertise.is-live .xr-blip-dot {
+        animation-name: xr-blip-flash;
+      }
+      @keyframes xr-blip-flash {
+        0% {
+          opacity: 1;
+          transform: scale(1.35);
+        }
+        13.333% {
+          opacity: 0.5;
+          transform: scale(1);
+        }
         100% {
           opacity: 0.5;
-        }
-        50% {
-          opacity: 1;
+          transform: scale(1);
         }
       }
       @media (max-width: 860px) {
@@ -1314,14 +1390,7 @@
         }
       }
 
-      /* ===== AI & AUTOMATION — new for 2026 =====
-         Bento mosaic, matching the asymmetric hero-tile + grid pattern
-         already established in EXPERTISE (VARIANT B): one large anchor
-         tile for the lead vertical (Healthcare), a quiet grid of equal
-         tiles for the rest, and a wide capstone tile for reach/scale.
-         .hc-pulse/.hc-dot and .ai-edge/.ai-node reuse the exact animated
-         watermark classes (and their keyframes) already defined above
-         for EXPERTISE, so no new motion vocabulary is introduced. */
+      /* ===== AI & AUTOMATION ===== */
       .ai-automation {
         background: var(--black);
         padding: 120px 0;
@@ -1365,6 +1434,9 @@
         width: 100%;
         height: 100%;
       }
+      .aiauto-tile:hover .aiauto-tile-icon {
+        transform: rotate(6deg) translateY(-3px);
+      }
       .aiauto-tile--hc {
         grid-area: hc;
         background: linear-gradient(160deg, var(--navy), var(--navy-2));
@@ -1382,6 +1454,10 @@
         height: 100%;
         pointer-events: none;
         opacity: 0.35;
+        transition: transform 8s ease-out;
+      }
+      .aiauto-tile--hc:hover .aiauto-hc-bg {
+        transform: scale(1.06);
       }
       .aiauto-tile--hc .tile-overlay {
         position: absolute;
@@ -1431,26 +1507,19 @@
         line-height: 1.6;
         color: rgba(255, 255, 255, 0.82);
       }
-      /* quiet grid tiles */
       .aiauto-tile--sm {
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.1);
         padding: 26px 24px;
         display: flex;
         flex-direction: column;
-        transition:
-          transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-          border-color 0.35s ease,
-          background 0.35s ease;
       }
       .aiauto-tile--sm:hover {
-        transform: translateY(-4px);
         border-color: rgba(9, 109, 217, 0.5);
         background: rgba(255, 255, 255, 0.05);
       }
       .aiauto-tile--sm:hover .aiauto-tile-icon {
         color: #5fb3e6;
-        transform: translateY(-2px);
       }
       .aiauto-tile--wf { grid-area: wf; }
       .aiauto-tile--bpo { grid-area: bpo; }
@@ -1464,19 +1533,15 @@
       }
       .aiauto-tile-rule {
         display: block;
-        width: 36px;
+        width: 0;
+        max-width: 36px;
         height: 2px;
         margin: 14px 0;
         background: var(--blue);
-        transform: scaleX(0.45);
-        transform-origin: left;
-        transition:
-          transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-          width 0.4s ease;
+        transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .aiauto-tile--sm:hover .aiauto-tile-rule {
-        transform: scaleX(2);
-        width: 100px;
+        width: 100%;
       }
       .aiauto-tile--sm p {
         margin: 0;
@@ -1484,7 +1549,6 @@
         line-height: 1.55;
         color: #aeb6bf;
       }
-      /* wide capstone tile — AI Tools for SMEs, reach and scale */
       .aiauto-tile--banner {
         grid-area: smes;
         background: rgba(255, 255, 255, 0.03);
@@ -1494,9 +1558,6 @@
         align-items: center;
         gap: 32px;
         overflow: hidden;
-        transition:
-          border-color 0.35s ease,
-          background 0.35s ease;
       }
       .aiauto-tile--banner:hover {
         border-color: rgba(9, 109, 217, 0.5);
@@ -1510,6 +1571,10 @@
         width: 300px;
         opacity: 0.5;
         pointer-events: none;
+        transition: transform 8s ease-out;
+      }
+      .aiauto-tile--banner:hover .aiauto-banner-bg {
+        transform: scale(1.06);
       }
       .aiauto-tile--banner .aiauto-tile-icon {
         flex: none;
@@ -1517,7 +1582,6 @@
       }
       .aiauto-tile--banner:hover .aiauto-tile-icon {
         color: #5fb3e6;
-        transform: translateX(4px);
       }
       .aiauto-banner-copy {
         position: relative;
@@ -1534,10 +1598,9 @@
         line-height: 1.6;
         color: #aeb6bf;
       }
-      /* entrance: same fade/rise + stagger convention as .wwm-pre */
       .aiauto-pre {
         opacity: 0;
-        transform: translateY(28px);
+        transform: scale(0.97) translateY(20px);
       }
       @media (prefers-reduced-motion: no-preference) {
         .aiauto-pre {
@@ -1545,16 +1608,35 @@
             opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
             transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .aiauto-pre.aiauto-tile--hc { transition-delay: 0.05s; }
-        .aiauto-pre.aiauto-tile--wf { transition-delay: 0.18s; }
-        .aiauto-pre.aiauto-tile--bpo { transition-delay: 0.26s; }
-        .aiauto-pre.aiauto-tile--aws { transition-delay: 0.34s; }
-        .aiauto-pre.aiauto-tile--gov { transition-delay: 0.42s; }
-        .aiauto-pre.aiauto-tile--banner { transition-delay: 0.5s; }
+        .aiauto-pre.aiauto-tile--sm {
+          transition:
+            opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+            border-color 0.35s ease,
+            background 0.35s ease;
+        }
+        .aiauto-pre.aiauto-tile--sm:hover {
+          transform: translateY(-4px);
+          transition-duration: 0.35s;
+        }
+        .aiauto-pre.aiauto-tile--banner {
+          transition:
+            opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+            border-color 0.35s ease,
+            background 0.35s ease;
+        }
+        /* mosaic order, 70ms apart */
+        .aiauto-pre.aiauto-tile--hc { transition-delay: 0s; }
+        .aiauto-pre.aiauto-tile--wf { transition-delay: 0.07s; }
+        .aiauto-pre.aiauto-tile--bpo { transition-delay: 0.14s; }
+        .aiauto-pre.aiauto-tile--aws { transition-delay: 0.21s; }
+        .aiauto-pre.aiauto-tile--gov { transition-delay: 0.28s; }
+        .aiauto-pre.aiauto-tile--banner { transition-delay: 0.35s; }
       }
       .aiauto-pre.aiauto-in {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1) translateY(0);
       }
       @media (max-width: 768px) {
         .aiauto-mosaic {
@@ -1650,7 +1732,6 @@
         );
         background-size: 22px 22px;
         border-radius: 50%;
-        /* fades the dot grid toward the ring's edge instead of clipping it hard */
         mask-image: radial-gradient(
           circle,
           rgba(0, 0, 0, 0.9) 55%,
@@ -1690,7 +1771,7 @@
         stroke-dashoffset: 565.5;
         transform: rotate(-90deg);
         transform-origin: 100px 100px;
-        transition: stroke-dashoffset 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+        transition: stroke-dashoffset 0.8s cubic-bezier(0.34, 1.3, 0.64, 1);
       }
       .process-ring .ring-dot {
         fill: var(--blue-pale);
@@ -1750,13 +1831,22 @@
         padding: 0;
         box-sizing: border-box;
         opacity: 0;
-        transition: opacity 0.5s ease;
+        transform: translateY(8px);
+        filter: blur(0);
+        transition:
+          opacity 0.45s ease,
+          transform 0.45s ease,
+          filter 0.45s ease;
       }
       .pf-icon.active {
         opacity: 1;
+        transform: translateY(0);
+      }
+      .pf-icon.pf-icon--leaving {
+        transform: translateY(-8px);
+        filter: blur(4px);
       }
 
-      /* Discovery — magnifying glass drifting/tilting over a document */
       .pf-lens {
         transform-origin: center;
         animation: pf-drift 5s ease-in-out infinite;
@@ -1777,7 +1867,6 @@
         }
       }
 
-      /* Planning — checklist items ticking off in sequence */
       .pf-check {
         stroke-dasharray: 36;
         stroke-dashoffset: 36;
@@ -1803,7 +1892,6 @@
         }
       }
 
-      /* Design — cursor touring a wireframe mockup, clicking each block */
       .pf-block {
         transition: fill 0.2s ease;
       }
@@ -1866,7 +1954,6 @@
         }
       }
 
-      /* Development — code lines typing out, cursor blinking */
       .pf-code-line {
         transform-box: fill-box;
         transform-origin: left center;
@@ -1905,7 +1992,6 @@
         }
       }
 
-      /* Testing & QA — checkmark drawing in, scan beam sweeping the shield */
       .pf-shield-check {
         stroke-dasharray: 90;
         stroke-dashoffset: 90;
@@ -1944,7 +2030,6 @@
         }
       }
 
-      /* Launch & Support — rocket lifting off (crouch, rise, exhaust trail), flame flickering, stars twinkling */
       .pf-rocket {
         transform-origin: 100px 108px;
         animation: pf-bob 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
@@ -2128,6 +2213,19 @@
         color: var(--muted);
         padding-left: 18px;
         position: relative;
+      }
+      .process-step-body-content > p,
+      .process-step-body-content .process-step-list li {
+        opacity: 0;
+        transform: translateY(10px);
+        transition:
+          opacity 0.35s ease,
+          transform 0.35s ease;
+      }
+      .process-step.active .process-step-body-content > p,
+      .process-step.active .process-step-body-content .process-step-list li {
+        opacity: 1;
+        transform: translateY(0);
       }
       .process-step-list li::before {
         content: "›";
@@ -2397,6 +2495,24 @@
         justify-content: center;
         padding: 6px;
       }
+      .why-proof-badge.reveal {
+        transform: none;
+        transition:
+          opacity 0.3s ease,
+          border-color 0.3s ease;
+      }
+      .why-proof-badge.reveal[data-d="1"] { transition-delay: 0s; }
+      .why-proof-badge.reveal[data-d="2"] { transition-delay: 0.05s; }
+      .why-proof-badge.reveal[data-d="3"] { transition-delay: 0.1s; }
+      .why-proof-badge.reveal[data-d="4"] { transition-delay: 0.15s; }
+      .why-proof-badge.reveal[data-d="5"] { transition-delay: 0.2s; }
+      .why-proof-badge.reveal.in {
+        opacity: 0.8;
+      }
+      .why-proof-badge.reveal.in:hover {
+        opacity: 1;
+        border-color: rgba(9, 109, 217, 0.5);
+      }
       .why-proof-badge img,
       .why-proof-badge svg {
         max-width: 90%;
@@ -2434,6 +2550,13 @@
       .why-item:last-child {
         border-bottom: none;
       }
+      .why-item.reveal {
+        transform: translateX(-24px);
+      }
+      .why-item.reveal[data-d="1"] { transition-delay: 0s; }
+      .why-item.reveal[data-d="2"] { transition-delay: 0.1s; }
+      .why-item.reveal[data-d="3"] { transition-delay: 0.2s; }
+      .why-item.reveal[data-d="4"] { transition-delay: 0.3s; }
       .why-icon {
         width: 44px;
         height: 44px;
@@ -2446,6 +2569,11 @@
         flex-shrink: 0;
         position: relative;
         z-index: 1;
+        transform: scale(0.8);
+        transition: transform 0.6s cubic-bezier(0.34, 1.4, 0.64, 1);
+      }
+      .why-item.reveal.in .why-icon {
+        transform: scale(1);
       }
       .why-icon svg {
         width: 20px;
@@ -2492,16 +2620,33 @@
         border: 1px solid var(--line);
         border-radius: 0;
         overflow: hidden;
-        transition: border-width 0.2s ease;
       }
+      .insight-card.reveal {
+        transition:
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          border-width 0.2s ease;
+      }
+      .insight-card.reveal[data-d="1"] { transition-delay: 0s; }
+      .insight-card.reveal[data-d="2"] { transition-delay: 0.13s; }
+      .insight-card.reveal[data-d="3"] { transition-delay: 0.26s; }
       .insight-card:hover {
         border-width: 1.5px;
+      }
+      .insight-card.reveal:hover {
+        transform: translateY(-6px);
+        transition-duration: 0.3s;
       }
       .insight-card-media {
         height: 190px;
         flex-shrink: 0;
         overflow: hidden;
         border-bottom: 5px solid #1744AC;
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .insight-card.reveal.in .insight-card-media {
+        clip-path: inset(0 0 0 0);
       }
       .insight-card-media img {
         width: 100%;
@@ -2563,6 +2708,10 @@
         -webkit-line-clamp: 3;
         line-clamp: 3;
         overflow: hidden;
+        transition: transform 0.45s ease;
+      }
+      .insight-card:hover .insight-card-title {
+        transform: translateY(-2px);
       }
       .insight-card-link {
         color: var(--ink);
@@ -2624,6 +2773,11 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+      }
+      .insight-card:hover .insight-card-tags {
+        opacity: 1;
       }
       .insight-card-tag {
         font-size: 14px;
@@ -2677,17 +2831,47 @@
         max-width: 420px;
         margin: 0 0 36px;
       }
+      .btn.reveal {
+        transition:
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.25s ease,
+          background 0.25s ease;
+      }
+      .cta-copy .btn.reveal[data-d="2"] {
+        transition-delay: 0.15s;
+      }
       .cta-illustration {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: end;
+        animation: cta-illustration-float 6s ease-in-out infinite alternate;
+      }
+      @keyframes cta-illustration-float {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-10px);
+        }
+      }
+      .cta-shimmer {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(9,109,217,0.6) 40%, rgba(255,255,255,0.35) 50%, rgba(9,109,217,0.6) 60%, transparent);
+        background-size: 200% 100%;
+        animation: hero-shimmer-move 8s linear infinite;
+        pointer-events: none;
       }
       .cta-illustration::before {
         content: "";
         position: absolute;
         left: -200px;
-        /* inset: -12%; */
         background: radial-gradient(
           circle,
           rgba(255, 255, 255, 0.12),
@@ -2701,8 +2885,6 @@
         width: 80%;
         height: auto;
       }
-      /* isometric stack — UI layer on top, API in the middle, data/infra as
-         the foundation, echoing how uExel actually layers a build */
       .cta-3d-float {
         animation: cta-3d-bob 4s ease-in-out infinite;
       }
@@ -2808,6 +2990,14 @@
       .footer-col a:hover {
         color: var(--blue);
       }
+      .footer-col.reveal[data-d="1"],
+      .footer-contact.reveal[data-d="1"] { transition-delay: 0s; }
+      .footer-col.reveal[data-d="2"],
+      .footer-contact.reveal[data-d="2"] { transition-delay: 0.08s; }
+      .footer-col.reveal[data-d="3"],
+      .footer-contact.reveal[data-d="3"] { transition-delay: 0.16s; }
+      .footer-col.reveal[data-d="4"],
+      .footer-contact.reveal[data-d="4"] { transition-delay: 0.24s; }
       .footer-bottom {
         margin-top: 80px;
         padding: 28px 0;
@@ -2924,17 +3114,6 @@
           grid-template-columns: 1fr;
         }
       }
-      /* ===== REDUCED MOTION =====
-         Every indefinite decorative loop on the page (marquee, hero grid/
-         orb/shimmer, cursor pulse, CTA particles, process-step icon
-         micro-animations) freezes here. Paused rather than removed: several
-         of these elements (e.g. .pf-lens, .cta-flow-dot) are positioned
-         entirely by their own keyframes with no static transform/opacity
-         declared elsewhere, so animation:none would snap them to an
-         undefined/incorrect resting position. animation-play-state:paused
-         instead freezes each one at whatever valid in-cycle frame it's
-         already showing. The hero particle-text canvas has its own
-         matchMedia check in the script below and isn't duplicated here. */
       @media (prefers-reduced-motion: reduce) {
         .marquee,
         .clients-marquee,
@@ -2966,16 +3145,59 @@
           animation-play-state: paused;
         }
       }
-
-      /* ===== FOCUS-VISIBLE =====
-         Native default outline was previously the only focus indicator
-         anywhere on the page. Branded to the signal-blue accent instead. */
       a:focus-visible,
       button:focus-visible {
         outline: 2px solid var(--blue);
         outline-offset: 3px;
       }
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal[data-d="1"] { transition-delay: 90ms; }
+      .reveal[data-d="2"] { transition-delay: 180ms; }
+      .reveal[data-d="3"] { transition-delay: 270ms; }
+      .reveal[data-d="4"] { transition-delay: 360ms; }
+      .reveal[data-d="5"] { transition-delay: 450ms; }
+      .reveal[data-d="6"] { transition-delay: 540ms; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          transition: none;
+          opacity: 1;
+          transform: none;
+        }
+        .hero-orb,
+        .hero-grid,
+        .marquee,
+        .hero-trust-logos,
+        .cta-illustration,
+        .cta-shimmer {
+          animation: none !important;
+        }
+      }
     </style>
+    <noscript>
+      <style>
+        /* .reveal content only ever becomes visible via the
+           IntersectionObserver in the script below (it adds .in) — with
+           JS disabled nothing would trigger that, so every .reveal
+           element would stay permanently at opacity:0. This forces them
+           to their settled state instead. */
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+          clip-path: none !important;
+          transition: none !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <header>
@@ -3093,7 +3315,7 @@
 
     <section class="about-section" id="about">
       <div class="wrap about-grid">
-          <div class="about-copy">
+          <div class="about-copy reveal">
             <h2>Engineers first,<br />consultants second.</h2>
             <p>
               We're a global team of builders who'd rather ship working
@@ -3101,7 +3323,7 @@
               first prototype through enterprise scale.
             </p>
             <ul class="about-points">
-              <li>
+              <li class="reveal" data-d="1">
                 <span class="about-point-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12.5l4.5 4.5L19 7" />
@@ -3109,7 +3331,7 @@
                 </span>
                 <span class="about-point-text">Senior engineers, not resellers</span>
               </li>
-              <li>
+              <li class="reveal" data-d="2">
                 <span class="about-point-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12.5l4.5 4.5L19 7" />
@@ -3117,7 +3339,7 @@
                 </span>
                 <span class="about-point-text">Fixed scope, fixed timeline</span>
               </li>
-              <li>
+              <li class="reveal" data-d="3">
                 <span class="about-point-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12.5l4.5 4.5L19 7" />
@@ -3134,7 +3356,7 @@
             <a href="#contact" class="btn btn-outline">Meet The Team ↗</a>
           </div>
           <div class="about-visual">
-            <div class="about-card about-card--primary">
+            <div class="about-card about-card--primary reveal" data-d="1">
               <h3 class="about-card-title">Why We Started</h3>
               <p>
                 We broke away from traditional consultancies after growing
@@ -3150,7 +3372,7 @@
               </p>
             </div>
 
-            <div class="about-card">
+            <div class="about-card reveal" data-d="2">
               <h3 class="about-card-title">Our Practice &amp; Craft</h3>
               <p>
                 We design resilient APIs, clean data models, and cloud-native
@@ -3160,7 +3382,7 @@
               </p>
             </div>
 
-            <div class="about-card">
+            <div class="about-card reveal" data-d="3">
               <h3 class="about-card-title">SDA Tech Hub &amp; Impact</h3>
               <p>
                 We reinvest our consulting earnings directly into
@@ -3170,7 +3392,7 @@
               </p>
             </div>
 
-            <div class="about-card about-card--quote">
+            <div class="about-card about-card--quote reveal" data-d="4">
               <p class="about-quote-text">
                 "Great software isn't built in slide decks or steering
                 committee reviews. It is forged in meticulous code review,
@@ -3192,8 +3414,8 @@
           </p>
         </div>
 
-        <div class="work-split" id="workSplit">
-          <div class="wwm-panel">
+        <div class="work-split reveal" id="workSplit">
+          <div class="wwm-panel reveal" data-d="1">
             <h3 class="work-title">Startups</h3>
             <span class="work-rule" aria-hidden="true"></span>
             <p>
@@ -3212,7 +3434,7 @@
             </div>
           </div>
           <div class="work-divider"></div>
-          <div class="wwm-panel wwm-panel--alt">
+          <div class="wwm-panel wwm-panel--alt reveal" data-d="2">
             <h3 class="work-title">Enterprises</h3>
             <span class="work-rule" aria-hidden="true"></span>
             <p>
@@ -3230,7 +3452,7 @@
             </div>
           </div>
           <div class="work-divider"></div>
-          <div class="wwm-panel">
+          <div class="wwm-panel reveal" data-d="3">
             <h3 class="work-title">Governments &amp; NGOs</h3>
             <span class="work-rule" aria-hidden="true"></span>
             <p>
@@ -3265,7 +3487,7 @@
           </p>
         </div>
         <div class="case-grid">
-          <article class="case-card">
+          <article class="case-card reveal" data-d="1">
             <div class="case-card-thumb" aria-hidden="true">
               <img
                 src="https://picsum.photos/seed/uexel-healthcare/640/640"
@@ -3282,7 +3504,7 @@
               <a href="#" class="case-card-more">Read More <span aria-hidden="true">→</span></a>
             </div>
           </article>
-          <article class="case-card case-card--offset">
+          <article class="case-card case-card--offset reveal" data-d="2">
             <div class="case-card-thumb" aria-hidden="true">
               <img
                 src="https://picsum.photos/seed/uexel-analytics/640/640"
@@ -3299,7 +3521,7 @@
               <a href="#" class="case-card-more">Read More <span aria-hidden="true">→</span></a>
             </div>
           </article>
-          <article class="case-card">
+          <article class="case-card reveal" data-d="3">
             <div class="case-card-thumb" aria-hidden="true">
               <img
                 src="https://picsum.photos/seed/uexel-startup/640/640"
@@ -3811,16 +4033,16 @@
           <div class="why-proof">
             <h3 class="why-proof-title">Affiliation / Accreditation</h3>
             <div class="why-proof-badges">
-              <div class="why-proof-badge why-proof-badge--mono"><img src="logos/pseb.png" alt="Pakistan Software Export Board (PSEB)" loading="lazy" /></div>
-              <div class="why-proof-badge why-proof-badge--mono"><img src="logos/secp.png" alt="Securities and Exchange Commission of Pakistan (SECP)" loading="lazy" /></div>
-              <div class="why-proof-badge why-proof-badge--mono"><img src="logos/iso.webp" alt="ISO 9001 Certification" loading="lazy" /></div>
-              <div class="why-proof-badge why-proof-badge--mono"><img src="logos/dnb.png" alt="D&amp;B D-U-N-S Registered" loading="lazy" /></div>
-              <div class="why-proof-badge why-proof-badge--mono"><img src="logos/pasha.png" alt="P@SHA — Pakistan IT Industry Association" loading="lazy" /></div>
+              <div class="why-proof-badge why-proof-badge--mono reveal" data-d="1"><img src="logos/pseb.png" alt="Pakistan Software Export Board (PSEB)" loading="lazy" /></div>
+              <div class="why-proof-badge why-proof-badge--mono reveal" data-d="2"><img src="logos/secp.png" alt="Securities and Exchange Commission of Pakistan (SECP)" loading="lazy" /></div>
+              <div class="why-proof-badge why-proof-badge--mono reveal" data-d="3"><img src="logos/iso.webp" alt="ISO 9001 Certification" loading="lazy" /></div>
+              <div class="why-proof-badge why-proof-badge--mono reveal" data-d="4"><img src="logos/dnb.png" alt="D&amp;B D-U-N-S Registered" loading="lazy" /></div>
+              <div class="why-proof-badge why-proof-badge--mono reveal" data-d="5"><img src="logos/pasha.png" alt="P@SHA — Pakistan IT Industry Association" loading="lazy" /></div>
             </div>
           </div>
         </div>
         <ol class="why-list">
-          <li class="why-item">
+          <li class="why-item reveal" data-d="1">
             <div class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M13 2 5 14h6l-1 8 8-12h-6l1-8z" />
@@ -3831,7 +4053,7 @@
               <p class="why-desc">Agile delivery with no bloat — we ship working software in weeks, not quarters.</p>
             </div>
           </li>
-          <li class="why-item">
+          <li class="why-item reveal" data-d="2">
             <div class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" />
@@ -3843,7 +4065,7 @@
               <p class="why-desc">Deep experience building for regulated industries, from HIPAA to clinical infrastructure.</p>
             </div>
           </li>
-          <li class="why-item">
+          <li class="why-item reveal" data-d="3">
             <div class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 5h16v11H9l-4 4V5z" />
@@ -3854,7 +4076,7 @@
               <p class="why-desc">You talk to the engineers building your product, not a layer of account managers.</p>
             </div>
           </li>
-          <li class="why-item">
+          <li class="why-item reveal" data-d="4">
             <div class="why-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14.7 6.3a4 4 0 00-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 005.4-5.4l-2.6 2.6-2-2 2.6-2.6z" />
@@ -3881,7 +4103,7 @@
         </div>
 
         <div class="insights-grid">
-          <article class="insight-card insight-card--navy">
+          <article class="insight-card insight-card--navy reveal" data-d="1">
             <div class="insight-card-media">
               <img
                 src="https://picsum.photos/seed/uexel-insight-healthcare/640/360"
@@ -3920,7 +4142,7 @@
             </div>
           </article>
 
-          <article class="insight-card insight-card--blue">
+          <article class="insight-card insight-card--blue reveal" data-d="2">
             <div class="insight-card-media">
               <img
                 src="https://picsum.photos/seed/uexel-insight-modernization/640/360"
@@ -3959,7 +4181,7 @@
             </div>
           </article>
 
-          <article class="insight-card insight-card--deep">
+          <article class="insight-card insight-card--deep reveal" data-d="3">
             <div class="insight-card-media">
               <img
                 src="https://picsum.photos/seed/uexel-insight-ai-trends/640/360"
@@ -4027,12 +4249,12 @@
 
     <section class="cta-banner" id="contact">      <div class="wrap cta-grid">
         <div class="cta-copy">
-          <h2>Have a project in mind?<br />Let's talk about it.</h2>
+          <h2 class="reveal">Have a project in mind?<br />Let's talk about it.</h2>
           <p class="cta-sub">
             Tell us what you're building — we'll get back to you within one
             business day.
           </p>
-          <a href="mailto:info@uexel.com" class="btn btn-ghost">Contact Us</a>
+          <a href="mailto:info@uexel.com" class="btn btn-ghost reveal" data-d="2">Contact Us</a>
         </div>
         <div class="cta-illustration" aria-hidden="true">
           <svg viewBox="150 110 370 390" xmlns="http://www.w3.org/2000/svg">
@@ -4080,6 +4302,7 @@
           </svg>
         </div>
       </div>
+      <div class="cta-shimmer" aria-hidden="true"></div>
     </section>
 
     <footer>
@@ -4093,25 +4316,25 @@
             <p class="footer-addr">
               Headquarters<br />Islamabad, Pakistan
             </p>
-            <div class="footer-contact">
+            <div class="footer-contact reveal" data-d="1">
               <a href="mailto:info@uexel.com">info@uexel.com</a>
             </div>
           </div>
-          <div class="footer-col">
+          <div class="footer-col reveal" data-d="2">
             <div class="footer-col-title">Social</div>
             <a href="#">LinkedIn</a>
             <a href="#">Facebook</a>
             <a href="#">Instagram</a>
             <a href="#">Tiktok</a>
           </div>
-          <div class="footer-col">
+          <div class="footer-col reveal" data-d="3">
             <div class="footer-col-title">Pages</div>
             <a href="#about">About</a>
             <a href="#expertise">Services</a>
             <a href="#featured">Product</a>
             <a href="#contact">Contact Us</a>
           </div>
-          <div class="footer-col">
+          <div class="footer-col reveal" data-d="4">
             <div class="footer-col-title">Resources</div>
             <a href="#">Case Studies</a>
             <a href="#">FAQ</a>
@@ -4141,6 +4364,30 @@
           ),
         );
 
+      // scroll-reveal — generic fade+rise for any element carrying
+      // `.reveal` (optionally `data-d="1"`..`"6"` for stagger). Adds `.in`
+      // once and stops observing; nothing currently uses this class.
+      function initScrollReveal() {
+        const revealEls = document.querySelectorAll(".reveal");
+        if (!revealEls.length) return;
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("in");
+              obs.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initScrollReveal);
+      } else {
+        initScrollReveal();
+      }
+
       (function () {
         const split = document.getElementById("workSplit");
         if (!split) return;
@@ -4159,6 +4406,26 @@
           { threshold: 0.25 },
         );
         observer.observe(split);
+      })();
+
+// expertise — the radar's sweep, blip flashes, ring scale-in, and hub
+      // pulse are all gated on .is-live (see the .xr- rules under
+      // ===== OUR EXPERTISE =====) so they start together once, the first
+      // time the section scrolls into view, instead of animating on load
+      (function () {
+        const section = document.getElementById("expertise");
+        if (!section) return;
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              section.classList.add("is-live");
+              obs.disconnect();
+            });
+          },
+          { threshold: 0.25 },
+        );
+        observer.observe(section);
       })();
 
 // ai & automation — reveal: the whole mosaic fades/rises into place the
@@ -4207,6 +4474,12 @@
           "Launch is day one.",
         ];
 
+        // stagger timing for the body-content "lines" (paragraph + list
+        // items) below — base delay is ~40% into the body's own 0.5s
+        // grid-template-rows transition, then 60ms apart after that
+        const LINE_BASE_DELAY = 200;
+        const LINE_STAGGER = 60;
+
         // switching steps sends a one-shot ring burst to the dot that just
         // lit up. Skipped on the initial render (animate:false) — only real
         // switches should move.
@@ -4215,9 +4488,22 @@
           dots.forEach((d, i) => d.classList.toggle("done", i <= index));
           const fraction = (index + 1) / steps.length;
           progressCircle.style.strokeDashoffset = CIRCUMFERENCE * (1 - fraction);
-          figureIcons.forEach((icon, i) =>
-            icon.classList.toggle("active", i === index),
+          figureIcons.forEach((icon, i) => {
+            const wasActive = icon.classList.contains("active");
+            const isActive = i === index;
+            icon.classList.toggle("active", isActive);
+            // crossfade: only the icon that just lost .active gets the
+            // "leaving" look (blur + drift up); the incoming one just
+            // uses .pf-icon's own resting-to-active transition
+            icon.classList.toggle("pf-icon--leaving", wasActive && !isActive);
+          });
+
+          const activeLines = steps[index].querySelectorAll(
+            ".process-step-body-content > p, .process-step-body-content .process-step-list li",
           );
+          activeLines.forEach((line, i) => {
+            line.style.transitionDelay = `${LINE_BASE_DELAY + i * LINE_STAGGER}ms`;
+          });
 
           if (slogan) {
             const text = SLOGANS[index] || "";
@@ -4429,6 +4715,35 @@
           }));
         }
 
+        // pause/resume path shared by the tab-visibility check below and
+        // the hero-viewport check further down — both just flip a flag and
+        // call syncRunState() rather than repeating the cancel/reschedule
+        let running = false;
+        let heroInView = true;
+
+        function pause() {
+          if (!running) return;
+          running = false;
+          cancelAnimationFrame(animId);
+          clearTimers();
+        }
+
+        function resume() {
+          if (running || reduceMotion) return;
+          running = true;
+          scheduleCycle();
+          animId = requestAnimationFrame(tick);
+        }
+
+        function syncRunState() {
+          if (reduceMotion) return;
+          if (!document.hidden && heroInView) {
+            resume();
+          } else {
+            pause();
+          }
+        }
+
         function start(retriesLeft) {
           resize();
           if (!particles.length) {
@@ -4442,36 +4757,40 @@
             setTargetsFromWord(0, true);
             return;
           }
-          scheduleCycle();
-          animId = requestAnimationFrame(tick);
+          syncRunState();
         }
 
         let resizeTO;
         window.addEventListener("resize", () => {
           clearTimeout(resizeTO);
           resizeTO = setTimeout(() => {
-            cancelAnimationFrame(animId);
-            clearTimers();
+            pause();
             resize();
             if (reduceMotion) {
               setTargetsFromWord(current, true);
             } else {
-              scheduleCycle();
-              animId = requestAnimationFrame(tick);
+              syncRunState();
             }
           }, 250);
         });
 
-        document.addEventListener("visibilitychange", () => {
-          if (reduceMotion) return;
-          if (document.hidden) {
-            cancelAnimationFrame(animId);
-            clearTimers();
-          } else {
-            scheduleCycle();
-            animId = requestAnimationFrame(tick);
-          }
-        });
+        document.addEventListener("visibilitychange", syncRunState);
+
+        // same pause/resume path, driven by whether the hero section
+        // itself is scrolled into the viewport
+        const heroSection = canvas.closest(".hero");
+        if (heroSection && "IntersectionObserver" in window) {
+          const heroObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                heroInView = entry.isIntersecting;
+              });
+              syncRunState();
+            },
+            { threshold: 0 },
+          );
+          heroObserver.observe(heroSection);
+        }
 
         start();
       }
@@ -4504,6 +4823,108 @@
           current = (current + 1) % slides.length;
           slides[current].classList.add("is-current");
         }, 6000);
+      })();
+
+      // hero stat counters — animates 0 → target, preserving whatever
+      // suffix (+, %, ...) the markup already has
+      function countUp(el) {
+        const raw = el.textContent.trim();
+        const match = raw.match(/^(\d+(?:\.\d+)?)(.*)$/);
+        if (!match) return;
+        const target = parseFloat(match[1]);
+        const suffix = match[2];
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (reduceMotion) {
+          el.textContent = target + suffix;
+          return;
+        }
+        const duration = 1600;
+        let startTime = null;
+        el.textContent = "0" + suffix;
+        function tick(ts) {
+          if (startTime === null) startTime = ts;
+          const progress = Math.min((ts - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      // triggered 1.4s after load — the same moment the last stat's
+      // stat-pop entrance (CSS, staggered 0.8s/1.0s/1.2s/1.4s) kicks in —
+      // then keeps stepping through the four stats on that same 200ms beat
+      (function () {
+        const stats = document.querySelectorAll(".stat-num");
+        stats.forEach((el, i) => {
+          setTimeout(() => countUp(el), 1400 + i * 200);
+        });
+      })();
+
+      // testimonials — reuses the same countUp() helper, but this section
+      // is below the fold, so it's triggered by .why-stats scrolling into
+      // view instead of a fixed post-load delay
+      (function () {
+        const stats = document.querySelector(".why-stats");
+        if (!stats) return;
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              stats
+                .querySelectorAll(".why-stat-num")
+                .forEach((el) => countUp(el));
+              obs.disconnect();
+            });
+          },
+          { threshold: 0.4 },
+        );
+        observer.observe(stats);
+      })();
+
+      // hero background parallax — subtle vertical drift tied to scroll
+      // position, throttled to once per frame and only while the hero
+      // itself is on screen
+      (function () {
+        const heroEl = document.querySelector(".hero");
+        const slidesEl = document.querySelector(".hero-slides");
+        if (!heroEl || !slidesEl) return;
+        if (
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        )
+          return;
+
+        let heroInView = true;
+        let ticking = false;
+
+        function applyParallax() {
+          ticking = false;
+          if (!heroInView) return;
+          slidesEl.style.transform = `translate3d(0, ${window.scrollY * 0.25}px, 0)`;
+        }
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(applyParallax);
+          },
+          { passive: true },
+        );
+
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                heroInView = entry.isIntersecting;
+              });
+            },
+            { threshold: 0 },
+          );
+          observer.observe(heroEl);
+        }
       })();
     </script>
 </body>
