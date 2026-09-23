@@ -920,14 +920,10 @@
         transition: opacity 0.3s ease, transform 0.3s ease,
           border-color 0.3s ease, box-shadow 0.3s ease;
       }
-      .case-card.reveal[data-d="1"] {
+      .case-card.reveal[data-d="1"],
+      .case-card.reveal[data-d="4"],
+      .case-card.reveal[data-d="5"] {
         transition-delay: 0s;
-      }
-      .case-card.reveal[data-d="2"] {
-        transition-delay: 0.14s;
-      }
-      .case-card.reveal[data-d="3"] {
-        transition-delay: 0.28s;
       }
       .case-card--offset {
         margin-top: 44px;
@@ -1334,7 +1330,6 @@
         animation-duration: var(--xr-sweep-period);
         animation-timing-function: ease-out;
         animation-iteration-count: infinite;
-
         animation-delay: calc(var(--xr-sweep-period) / 3 * var(--i));
       }
       .expertise.is-live .xr-blip-dot {
@@ -2487,9 +2482,18 @@
         }
       }
       .why-proof-badges {
-        display: flex;
-        flex-wrap: nowrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
         gap: 6px;
+      }
+      .why-proof-badge--text {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 9px;
+        line-height: 1.35;
+        letter-spacing: 0.02em;
+        text-align: center;
+        color: #9aa2ab;
+        padding: 6px 4px;
       }
       .why-proof-badge {
         background: rgba(255, 255, 255, 0.05);
@@ -3156,6 +3160,141 @@
         outline: 2px solid var(--blue);
         outline-offset: 3px;
       }
+
+      /* ---- compact service card grid (AI & Automation Services) ---- */
+      .svc-grid {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .svc-card {
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 26px 24px;
+        transition:
+          border-color 0.3s ease,
+          background 0.3s ease,
+          transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .svc-card:hover {
+        border-color: rgba(9, 109, 217, 0.5);
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateY(-3px);
+      }
+      .svc-card h3 {
+        font-size: 17px;
+        color: #fff;
+        margin: 0 0 10px;
+        font-weight: 400;
+      }
+      .svc-card p {
+        margin: 0;
+        font-size: 13.5px;
+        line-height: 1.55;
+        color: #aeb6bf;
+      }
+      @media (max-width: 900px) {
+        .svc-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .svc-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---- horizontal era timeline (The Journey) ---- */
+      .journey-track {
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 28px 20px;
+      }
+      .journey-item {
+        position: relative;
+        padding-top: 24px;
+        border-top: 3px solid rgba(255, 255, 255, 0.14);
+      }
+      .journey-item::before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: 0;
+        width: 224px;
+        height: 3px;
+        background: var(--blue);
+      }
+      .journey-range {
+        display: block;
+        font-family: "Fraunces", serif;
+        font-size: 14px;
+        color: var(--blue);
+        margin: 0 0 6px;
+      }
+      .journey-item h3 {
+        font-size: 18px;
+        color: #fff;
+        margin: 0 0 14px;
+      }
+      .journey-item ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .journey-item li {
+        font-size: 12.5px;
+        line-height: 1.5;
+        color: #aeb6bf;
+        padding-left: 14px;
+        position: relative;
+      }
+      .journey-item li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 7px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(9, 109, 217, 0.7);
+      }
+      @media (max-width: 900px) {
+        .journey-track {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        .journey-track {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---- new-section chrome (background + rhythm, matching the
+         alternating light/dark pattern already used by the page) ---- */
+      .journey {
+        background: var(--black);
+        color: #c7cdd4;
+        padding: 110px 0;
+      }
+      .journey .lede {
+        color: #aeb6bf;
+      }
+      .journey h2 {
+        color: #fff;
+      }
+
+      @media (max-width: 560px) {
+        .journey {
+          padding: 60px 0;
+        }
+      }
+
       .reveal {
         opacity: 0;
         transform: translateY(28px);
@@ -3216,7 +3355,6 @@
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#featured">Product</a>
-          <a href="#testimonials">Industries</a>
           <a href="#contact">Blog</a>
         </nav>
         <div class="nav-cta">
@@ -3409,6 +3547,65 @@
         </div>
     </section>
 
+    <section class="journey" id="journey">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The Journey <span class="arrow">↘</span></h2>
+          <p class="lede">
+            Fourteen years from a first enterprise client to an applied-AI
+            practice — the same team, compounding.
+          </p>
+        </div>
+        <div class="journey-track">
+          <div class="journey-item reveal" data-d="1">
+            <span class="journey-range">2010–13</span>
+            <h3>Foundation</h3>
+            <ul>
+              <li>Company established</li>
+              <li>First enterprise clients</li>
+              <li>Core software team built</li>
+            </ul>
+          </div>
+          <div class="journey-item reveal" data-d="2">
+            <span class="journey-range">2014–17</span>
+            <h3>Growth</h3>
+            <ul>
+              <li>AKDN partnership</li>
+              <li>Healthcare IT expansion</li>
+              <li>Mobile app capabilities</li>
+            </ul>
+          </div>
+          <div class="journey-item reveal" data-d="3">
+            <span class="journey-range">2018–21</span>
+            <h3>Maturity</h3>
+            <ul>
+              <li>ISO 9001:2015 certified</li>
+              <li>AI/ML practice launched</li>
+              <li>Staff augmentation model</li>
+            </ul>
+          </div>
+          <div class="journey-item reveal" data-d="4">
+            <span class="journey-range">2022–24</span>
+            <h3>Global Reach</h3>
+            <ul>
+              <li>Lincoln Corners Pakistan</li>
+              <li>International clients</li>
+              <li>SDA Tech Hub founded</li>
+            </ul>
+          </div>
+          <div class="journey-item reveal" data-d="5">
+            <span class="journey-range">2025–26</span>
+            <h3>AI-First</h3>
+            <ul>
+              <li>Applied AI &amp; automation practice</li>
+              <li>AWS migration capability</li>
+              <li>Government &amp; SME programmes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section class="work-with" id="work-with">
       <div class="wrap">
@@ -3510,36 +3707,39 @@
               <a href="#" class="case-card-more">Read More <span aria-hidden="true">→</span></a>
             </div>
           </article>
-          <article class="case-card case-card--offset reveal" data-d="2">
+          <article class="case-card case-card--offset reveal" data-d="4">
             <div class="case-card-thumb" aria-hidden="true">
               <img
-                src="https://picsum.photos/seed/uexel-analytics/640/640"
+                src="https://picsum.photos/seed/uexel-docmanager/640/640"
                 alt=""
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div class="case-card-body">
-              <h3 class="case-card-title">Enterprise Analytics Dashboard</h3>
+              <h3 class="case-card-title">Clinical &amp; Compliance Document Manager</h3>
               <p class="case-card-text">
-                Real-time reporting layer built across five siloed data sources.
+                A shipped product (v3, live): controlled SOPs, policies and
+                records with version control, e-signature and an audit trail
+                that survives inspection.
               </p>
               <a href="#" class="case-card-more">Read More <span aria-hidden="true">→</span></a>
             </div>
           </article>
-          <article class="case-card reveal" data-d="3">
+          <article class="case-card reveal" data-d="5">
             <div class="case-card-thumb" aria-hidden="true">
               <img
-                src="https://picsum.photos/seed/uexel-startup/640/640"
+                src="https://picsum.photos/seed/uexel-vrquest/640/640"
                 alt=""
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div class="case-card-body">
-              <h3 class="case-card-title">Startup MVP Launch</h3>
+              <h3 class="case-card-title">VR Training for Meta Quest</h3>
               <p class="case-card-text">
-                Cross-platform mobile app taken from concept to app-store launch.
+                Immersive training and simulation shipped to Quest headsets —
+                clinical procedure practice, safety drills, product walkthroughs.
               </p>
               <a href="#" class="case-card-more">Read More <span aria-hidden="true">→</span></a>
             </div>
@@ -3586,6 +3786,7 @@
               </div>
             </div>
           </div>
+
         </div>
     </section>
 
@@ -3717,7 +3918,6 @@
         </div>
       </div>
     </section>
-
 
     <section class="process" id="process">
       <div class="wrap">
@@ -4064,6 +4264,11 @@
               <div class="why-proof-badge why-proof-badge--mono reveal" data-d="3"><img src="logos/iso.webp" alt="ISO 9001 Certification" loading="lazy" /></div>
               <div class="why-proof-badge why-proof-badge--mono reveal" data-d="4"><img src="logos/dnb.png" alt="D&amp;B D-U-N-S Registered" loading="lazy" /></div>
               <div class="why-proof-badge why-proof-badge--mono reveal" data-d="5"><img src="logos/pasha.png" alt="P@SHA — Pakistan IT Industry Association" loading="lazy" /></div>
+              <div class="why-proof-badge why-proof-badge--text reveal" data-d="1">ISO 27001<br />Info Security</div>
+              <div class="why-proof-badge why-proof-badge--text reveal" data-d="2">ISO 20000<br />IT Service Mgmt</div>
+              <div class="why-proof-badge why-proof-badge--text reveal" data-d="3">ISO 14001<br />Environmental</div>
+              <div class="why-proof-badge why-proof-badge--text reveal" data-d="4">ISO 10015<br />Learning &amp; Training</div>
+              <div class="why-proof-badge why-proof-badge--text reveal" data-d="5">FBR<br />Registered</div>
             </div>
           </div>
         </div>
