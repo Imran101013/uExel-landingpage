@@ -1389,272 +1389,258 @@
         background: var(--black);
         padding: 120px 0;
         overflow: hidden;
-      }
-      .services .section-head h2 {
-        color: #fff;
-      }
-      .services .lede {
-        color: #9aa2ab;
-        max-width: 480px;
-      }
-      .aiauto-mosaic {
-        margin-top: 50px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-areas:
-          "intro intro intro intro"
-          "csd web cloud erp"
-          "staff ux ux ux";
-        gap: 24px;
-        grid-auto-rows: minmax(150px, auto);
-      }
-      .aiauto-tile {
-        border-radius: 12px;
         position: relative;
       }
-      .aiauto-tile-icon {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        color: var(--blue);
-        margin-bottom: 16px;
-        transition:
-          color 0.3s ease,
-          transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      .services::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(9,109,217,0.07) 1px, transparent 1px);
+        background-size: 44px 44px;
+        pointer-events: none;
+        mask-image: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(0,0,0,0.5) 0%, transparent 100%);
+        -webkit-mask-image: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(0,0,0,0.5) 0%, transparent 100%);
       }
-      .aiauto-tile-icon svg {
-        width: 100%;
-        height: 100%;
+      .services-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 50px;
+        align-items: start;
       }
-      .aiauto-tile:hover .aiauto-tile-icon {
-        transform: rotate(6deg) translateY(-3px);
+      .services-rail {
+        position: sticky;
+        top: 50px;
       }
-      .aiauto-tile--intro {
-        grid-area: intro;
-        background: linear-gradient(100deg, rgba(9,109,217,0.12) 0%, rgba(9,109,217,0.04) 100%);
-        border: 1px solid rgba(9,109,217,0.25);
-        padding: 34px 40px;
-        display: flex;
-        align-items: center;
-        gap: 48px;
-      }
-      .aiauto-tile--intro:hover {
-        border-color: rgba(9,109,217,0.5);
-        background: linear-gradient(100deg, rgba(9,109,217,0.16) 0%, rgba(9,109,217,0.07) 100%);
-      }
-      .aiauto-tile--intro-copy {
-        flex: 1;
-      }
-      .aiauto-tile--intro-copy h3 {
-        font-size: 22px;
+      .services-rail h2 {
+        font-size: clamp(28px, 3.2vw, 40px);
         color: #fff;
-        margin: 0 0 10px;
+        line-height: 1.05;
+        margin: 0 0 20px;
       }
-      .aiauto-tile--intro-copy p {
-        margin: 0;
+      .services-rail-lede {
         font-size: 14.5px;
-        line-height: 1.6;
-        color: #aeb6bf;
-        max-width: 560px;
+        line-height: 1.65;
+        color: #7d8590;
+        margin: 0 0 36px;
       }
-      .aiauto-tile--intro-pills {
+      .services-core-pills {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 10px;
-        flex-shrink: 0;
+        margin-bottom: 36px;
       }
-      .aiauto-tile--intro-pill {
+      .services-core-pill {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 10px 18px;
-        border: 1px solid rgba(9,109,217,0.45);
-        border-radius: 100px;
+        gap: 10px;
+        padding: 11px 16px;
+        border: 1px solid rgba(9,109,217,0.35);
+        border-radius: 8px;
         font-size: 13px;
         font-weight: 600;
         letter-spacing: 0.04em;
         text-transform: uppercase;
         color: #5fb3e6;
-        background: rgba(9,109,217,0.08);
+        background: rgba(9,109,217,0.07);
+        transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+      }
+      .services-core-pill:hover {
+        background: rgba(9,109,217,0.16);
+        border-color: rgba(9,109,217,0.6);
+        color: #fff;
+        transform: translateX(4px);
+      }
+      .services-core-pill svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        opacity: 0.8;
+      }
+      .services-core-pill-label {
+        flex: 1;
+      }
+      .services-core-pill-arrow {
+        opacity: 0.5;
+        font-size: 16px;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+      .services-core-pill:hover .services-core-pill-arrow {
+        opacity: 1;
+        transform: translateX(3px);
+      }
+      /* service cards grid */
+      .svc-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .svc-card {
+        position: relative;
+        background: #0d1117;
+        padding: 34px 28px 28px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border-left: 2px solid transparent;
+        transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease;
+      }
+      /* per-card accent colours cycling through 3 blue tones */
+      .svc-card:nth-child(1), .svc-card:nth-child(2) { --svc-accent: #096dd9; }
+      .svc-card:nth-child(3), .svc-card:nth-child(4) { --svc-accent: #1d4ed8; }
+      .svc-card:nth-child(5), .svc-card:nth-child(6) { --svc-accent: #0ea5e9; }
+      /* bottom-left radial glow */
+      .svc-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 0% 110%, rgba(var(--svc-accent-rgb,9,109,217),0.12) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+      .svc-card:hover {
+        background: #111720;
+        border-left-color: var(--svc-accent);
+        transform: translateY(-3px);
+        box-shadow: 0 16px 40px -16px rgba(9,109,217,0.3);
+      }
+      .svc-card:hover::after  { opacity: 1; }
+      .svc-card-top {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 16px;
+      }
+      .svc-card-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: rgba(9,109,217,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--svc-accent, var(--blue));
+        flex-shrink: 0;
+        transition: background 0.3s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
+      }
+      .svc-card-icon svg {
+        width: 18px;
+        height: 18px;
+      }
+      .svc-card:hover .svc-card-icon {
+        background: rgba(9,109,217,0.18);
+        transform: rotate(8deg) scale(1.08);
+        box-shadow: 0 0 0 6px rgba(9,109,217,0.08);
+      }
+      .svc-card h3 {
+        font-family: "Inter", sans-serif;
+        font-size: 15.5px;
+        font-weight: 600;
+        color: #d1d9e0;
+        text-transform: none;
+        letter-spacing: 0;
+        margin: 0;
+        line-height: 1.3;
+        transition: color 0.3s ease;
+      }
+      .svc-card:hover h3 { color: #fff; }
+      .svc-card p {
+        font-size: 13px;
+        line-height: 1.65;
+        color: #4a5568;
+        margin: 0 0 20px;
+        flex: 1;
+        transition: color 0.3s ease;
+      }
+      .svc-card:hover p { color: #7a8694; }
+      .svc-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: auto;
+      }
+      .svc-card-tag {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        padding: 3px 9px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.07);
+        color: rgba(255,255,255,0.3);
         transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
       }
-      .aiauto-tile--intro-pill:hover {
-        background: rgba(9,109,217,0.2);
-        border-color: rgba(9,109,217,0.7);
-        color: #fff;
+      .svc-card:hover .svc-card-tag {
+        background: rgba(9,109,217,0.12);
+        border-color: rgba(9,109,217,0.3);
+        color: #5fb3e6;
       }
-      .aiauto-tile--intro-pill svg {
-        width: 14px;
-        height: 14px;
-        flex-shrink: 0;
+      /* bottom CTA strip */
+      .services-bottom {
+        margin-top: 32px;
+        padding: 22px 20px;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.02);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
       }
-      @media (max-width: 768px) {
-        .aiauto-tile--intro {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 24px;
+      .services-bottom p {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.55;
+        color: #5a6475;
+      }
+      .services-bottom p strong {
+        color: #c7cdd4;
+        font-weight: 500;
+      }
+      .services-bottom .btn {
+        align-self: flex-start;
+      }
+      /* entrance animation */
+      .svc-card-pre {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .svc-card-pre {
+          transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
         }
-        .aiauto-tile--intro-pills {
+        .svc-card-pre:nth-child(1) { transition-delay: 0s; }
+        .svc-card-pre:nth-child(2) { transition-delay: 0.07s; }
+        .svc-card-pre:nth-child(3) { transition-delay: 0.14s; }
+        .svc-card-pre:nth-child(4) { transition-delay: 0.21s; }
+        .svc-card-pre:nth-child(5) { transition-delay: 0.28s; }
+        .svc-card-pre:nth-child(6) { transition-delay: 0.35s; }
+      }
+      .svc-card-pre.svc-card-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (max-width: 900px) {
+        .services-layout {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .services-rail {
+          position: static;
+        }
+        .services-core-pills {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        .services-core-pill {
           flex-direction: row;
         }
       }
-
-
-      .aiauto-tile--sm {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 26px 24px;
-        display: flex;
-        flex-direction: column;
-      }
-      .aiauto-tile--sm:hover {
-        border-color: rgba(9, 109, 217, 0.5);
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .aiauto-tile--sm:hover .aiauto-tile-icon {
-        color: #5fb3e6;
-      }
-      .aiauto-tile--intro { grid-area: intro; }
-      .aiauto-tile--csd { grid-area: csd; }
-      .aiauto-tile--web { grid-area: web; }
-      .aiauto-tile--cloud { grid-area: cloud; }
-      .aiauto-tile--erp { grid-area: erp; }
-      .aiauto-tile--staff { grid-area: staff; }
-      .aiauto-tile--ux { grid-area: ux; }
-      .aiauto-tile--sm h4 {
-        font-size: 17px;
-        color: #fff;
-        margin: 0;
-        font-weight: 400;
-      }
-      .aiauto-tile-rule {
-        display: block;
-        width: 0;
-        max-width: 36px;
-        height: 2px;
-        margin: 14px 0;
-        background: var(--blue);
-        transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      .aiauto-tile--sm:hover .aiauto-tile-rule {
-        width: 100%;
-      }
-      .aiauto-tile--sm p {
-        margin: 0;
-        font-size: 13.5px;
-        line-height: 1.55;
-        color: #aeb6bf;
-      }
-      .aiauto-tile--banner {
-        grid-area: ux;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 30px 34px;
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        overflow: hidden;
-      }
-      .aiauto-tile--banner:hover {
-        border-color: rgba(9, 109, 217, 0.5);
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .aiauto-banner-bg {
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 300px;
-        opacity: 0.5;
-        pointer-events: none;
-        transition: transform 8s ease-out;
-      }
-      .aiauto-tile--banner:hover .aiauto-banner-bg {
-        transform: scale(1.06);
-      }
-      .aiauto-tile--banner .aiauto-tile-icon {
-        flex: none;
-        margin-bottom: 0;
-      }
-      .aiauto-tile--banner:hover .aiauto-tile-icon {
-        color: #5fb3e6;
-      }
-      .aiauto-banner-copy {
-        position: relative;
-        z-index: 1;
-      }
-      .aiauto-banner-copy h3 {
-        font-size: 22px;
-        color: #fff;
-        margin: 0 0 10px;
-      }
-      .aiauto-banner-copy p {
-        margin: 0;
-        font-size: 14.5px;
-        line-height: 1.6;
-        color: #aeb6bf;
-      }
-      .aiauto-pre {
-        opacity: 0;
-        transform: scale(0.97) translateY(20px);
-      }
-      @media (prefers-reduced-motion: no-preference) {
-        .aiauto-pre {
-          transition:
-            opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .aiauto-pre.aiauto-tile--sm {
-          transition:
-            opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-            border-color 0.35s ease,
-            background 0.35s ease;
-        }
-        .aiauto-pre.aiauto-tile--sm:hover {
-          transform: translateY(-4px);
-          transition-duration: 0.35s;
-        }
-        .aiauto-pre.aiauto-tile--banner {
-          transition:
-            opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-            transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-            border-color 0.35s ease,
-            background 0.35s ease;
-        }
-        /* mosaic order, 70ms apart */
-        .aiauto-pre.aiauto-tile--intro { transition-delay: 0s; }
-        .aiauto-pre.aiauto-tile--csd   { transition-delay: 0.07s; }
-        .aiauto-pre.aiauto-tile--web   { transition-delay: 0.14s; }
-        .aiauto-pre.aiauto-tile--cloud { transition-delay: 0.21s; }
-        .aiauto-pre.aiauto-tile--erp   { transition-delay: 0.28s; }
-        .aiauto-pre.aiauto-tile--staff { transition-delay: 0.35s; }
-        .aiauto-pre.aiauto-tile--banner { transition-delay: 0.42s; }
-      }
-      .aiauto-pre.aiauto-in {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-      @media (max-width: 768px) {
-        .aiauto-mosaic {
+      @media (max-width: 600px) {
+        .svc-cards {
           grid-template-columns: 1fr;
-          grid-template-areas:
-            "intro"
-            "csd"
-            "web"
-            "cloud"
-            "erp"
-            "staff"
-            "ux";
-        }
-        .aiauto-tile--banner {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .aiauto-banner-bg {
-          display: none;
         }
       }
 
@@ -3789,130 +3775,144 @@
         </div>
     </section>
 
-    <section class="services ai-automation" id="services">
+    <section class="services" id="services">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Our Services <span class="arrow">↘</span></h2>
-          <p class="lede">
-            End-to-end engineering across the disciplines that matter most —
-            from applied AI and healthcare systems to cloud infrastructure
-            and custom software.
-          </p>
-        </div>
-        <div class="aiauto-mosaic" id="aiAutoMosaic">
+        <div class="services-layout">
 
-          <!-- Core services bridge banner -->
-          <div class="aiauto-tile aiauto-tile--intro">
-            <div class="aiauto-tile--intro-copy">
-              <h3>Applied AI &amp; Healthcare IT — Our Core</h3>
-              <p>Everything we build is anchored in two deep specialisms. Explore the full depth of our capabilities in the Our Expertise section above.</p>
-            </div>
-            <div class="aiauto-tile--intro-pills">
-              <a href="#expertise" class="aiauto-tile--intro-pill">
+          <!-- Left rail -->
+          <div class="services-rail">
+            <h2>Our Services</h2>
+            <p class="services-rail-lede">End-to-end engineering across the disciplines that matter — from cloud infrastructure and custom software to ERP and design.</p>
+            <div class="services-core-pills">
+              <a href="#expertise" class="services-core-pill">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
                 </svg>
-                Applied AI
+                <span class="services-core-pill-label">Applied AI</span>
+                <span class="services-core-pill-arrow">→</span>
               </a>
-              <a href="#expertise" class="aiauto-tile--intro-pill">
+              <a href="#expertise" class="services-core-pill">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 2h6" />
-                  <path d="M10 2v6.5L4.8 17a2 2 0 001.7 3h10.9a2 2 0 001.7-3L14 8.5V2" />
-                  <path d="M7 14h10" />
+                  <path d="M9 2h6" /><path d="M10 2v6.5L4.8 17a2 2 0 001.7 3h10.9a2 2 0 001.7-3L14 8.5V2" /><path d="M7 14h10" />
                 </svg>
-                Healthcare IT
+                <span class="services-core-pill-label">Healthcare IT</span>
+                <span class="services-core-pill-arrow">→</span>
               </a>
+            </div>
+            <div class="services-bottom">
+              <p><strong>Not sure which service fits?</strong> Tell us what you're building and we'll map it to the right team.</p>
+              <a href="#contact" class="btn btn-primary">Book a Call</a>
             </div>
           </div>
 
-          <!-- Custom Software Development -->
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--csd">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-            </span>
-            <h4>Custom Software Development</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>Bespoke web and backend systems designed around your domain — clean architecture, tested, and built to scale.</p>
-          </article>
+          <!-- Right: service cards -->
+          <div>
+            <div class="svc-cards" id="svcCards">
 
-          <!-- Web & Mobile Development -->
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--web">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-            </span>
-            <h4>Web &amp; Mobile Development</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>React, React Native, and cross-platform apps — from MVP to app-store launch, built for performance and accessibility.</p>
-          </article>
+              <article class="svc-card" data-index="01">
+                <div class="svc-card-top">
+                  <div class="svc-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+                    </svg>
+                  </div>
+                  <h3>Custom Software Development</h3>
+                </div>
+                <p>Bespoke web and backend systems designed around your domain — clean architecture, tested, and built to scale from day one.</p>
+                <div class="svc-card-tags">
+                  <span class="svc-card-tag">Web Apps</span>
+                  <span class="svc-card-tag">APIs</span>
+                  <span class="svc-card-tag">Microservices</span>
+                </div>
+              </article>
 
-          <!-- Cloud & DevOps -->
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--cloud">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 18a4 4 0 01-.6-7.96A5 5 0 0116.9 8.1 4.5 4.5 0 0117.5 18H7z" />
-              </svg>
-            </span>
-            <h4>Cloud &amp; DevOps</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>AWS architecture, CI/CD pipelines, containerisation, and cost-modelled migrations — operated and monitored after go-live.</p>
-          </article>
+              <article class="svc-card" data-index="02">
+                <div class="svc-card-top">
+                  <div class="svc-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" />
+                    </svg>
+                  </div>
+                  <h3>Web &amp; Mobile Development</h3>
+                </div>
+                <p>React, React Native, and cross-platform apps — from MVP to app-store launch, built for performance and accessibility.</p>
+                <div class="svc-card-tags">
+                  <span class="svc-card-tag">React</span>
+                  <span class="svc-card-tag">React Native</span>
+                  <span class="svc-card-tag">PWA</span>
+                </div>
+              </article>
 
-          <!-- ERP & Business Systems -->
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--erp">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 17l6-6 4 4 8-9" />
-                <path d="M15 6h6v6" />
-              </svg>
-            </span>
-            <h4>ERP &amp; Business Systems</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>Odoo implementation, customisation, and integration — one system of record with role-based approvals and live reporting.</p>
-          </article>
+              <article class="svc-card" data-index="03">
+                <div class="svc-card-top">
+                  <div class="svc-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M7 18a4 4 0 01-.6-7.96A5 5 0 0116.9 8.1 4.5 4.5 0 0117.5 18H7z" />
+                    </svg>
+                  </div>
+                  <h3>Cloud &amp; DevOps</h3>
+                </div>
+                <p>AWS architecture, CI/CD pipelines, containerisation, and cost-modelled migrations — operated and monitored after go-live.</p>
+                <div class="svc-card-tags">
+                  <span class="svc-card-tag">AWS</span>
+                  <span class="svc-card-tag">Docker</span>
+                  <span class="svc-card-tag">Kubernetes</span>
+                </div>
+              </article>
 
-          <!-- Staff Augmentation -->
-          <article class="aiauto-tile aiauto-tile--sm aiauto-tile--staff">
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="9" cy="7" r="4" />
-                <path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" />
-                <path d="M16 3.13a4 4 0 010 7.75" />
-                <path d="M21 21v-2a4 4 0 00-3-3.87" />
-              </svg>
-            </span>
-            <h4>Staff Augmentation</h4>
-            <span class="aiauto-tile-rule" aria-hidden="true"></span>
-            <p>Senior engineers embedded directly into your team — same timezone overlap, same Slack, same code review standards.</p>
-          </article>
+              <article class="svc-card" data-index="04">
+                <div class="svc-card-top">
+                  <div class="svc-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 17l6-6 4 4 8-9" /><path d="M15 6h6v6" />
+                    </svg>
+                  </div>
+                  <h3>ERP &amp; Business Systems</h3>
+                </div>
+                <p>Odoo implementation, customisation, and integration — one system of record with role-based approvals and live reporting.</p>
+                <div class="svc-card-tags">
+                  <span class="svc-card-tag">Odoo</span>
+                  <span class="svc-card-tag">Integrations</span>
+                  <span class="svc-card-tag">Reporting</span>
+                </div>
+              </article>
 
-          <!-- UI/UX Design — banner tile -->
-          <article class="aiauto-tile aiauto-tile--banner">
-            <svg class="aiauto-banner-bg" viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <rect x="20" y="20" width="80" height="60" rx="8" fill="none" stroke="#5fb3e6" stroke-width="1.5" opacity="0.5" />
-              <rect x="30" y="30" width="60" height="8" rx="3" fill="#096dd9" opacity="0.4" />
-              <rect x="30" y="44" width="40" height="6" rx="3" fill="#5fb3e6" opacity="0.3" />
-              <rect x="30" y="56" width="50" height="6" rx="3" fill="#5fb3e6" opacity="0.3" />
-              <circle cx="150" cy="50" r="30" fill="none" stroke="#5fb3e6" stroke-width="1.5" opacity="0.4" />
-              <circle cx="150" cy="50" r="18" fill="#096dd9" opacity="0.2" />
-              <line x1="100" y1="50" x2="120" y2="50" stroke="#5fb3e6" stroke-width="1.5" opacity="0.5" stroke-dasharray="4 3" />
-            </svg>
-            <span class="aiauto-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M8 12h8M12 8v8" />
-              </svg>
-            </span>
-            <div class="aiauto-banner-copy">
-              <h3>UI/UX Design</h3>
-              <p>Wireframes, interactive prototypes, and production-ready design systems — validated with real users before a line of code is written.</p>
+              <article class="svc-card" data-index="05">
+                <div class="svc-card-top">
+                  <div class="svc-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="9" cy="7" r="4" /><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" /><path d="M16 3.13a4 4 0 010 7.75" /><path d="M21 21v-2a4 4 0 00-3-3.87" />
+                    </svg>
+                  </div>
+                  <h3>Staff Augmentation</h3>
+                </div>
+                <p>Senior engineers embedded directly into your team — same timezone overlap, same Slack, same code review standards as your own engineers.</p>
+                <div class="svc-card-tags">
+                  <span class="svc-card-tag">Dedicated Teams</span>
+                  <span class="svc-card-tag">Senior Engineers</span>
+                </div>
+              </article>
+
+              <article class="svc-card" data-index="06">
+                <div class="svc-card-top">
+                  <div class="svc-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" />
+                    </svg>
+                  </div>
+                  <h3>UI/UX Design</h3>
+                </div>
+                <p>Wireframes, interactive prototypes, and production-ready design systems — validated with real users before a line of code is written.</p>
+                <div class="svc-card-tags">
+                  <span class="svc-card-tag">Figma</span>
+                  <span class="svc-card-tag">Design Systems</span>
+                  <span class="svc-card-tag">Prototyping</span>
+                </div>
+              </article>
+
             </div>
-          </article>
+
+          </div>
 
         </div>
       </div>
@@ -4658,25 +4658,33 @@
         observer.observe(section);
       })();
 
-// ai & automation — reveal: the whole mosaic fades/rises into place the
-      // first time it scrolls into view, each tile staggered by the
-      // ".aiauto-pre"/".aiauto-in" delay rules under AI & AUTOMATION
+// services — staggered card entrance
       (function () {
-        const mosaic = document.getElementById("aiAutoMosaic");
-        if (!mosaic) return;
-        const tiles = Array.from(mosaic.querySelectorAll(".aiauto-tile"));
-        tiles.forEach((el) => el.classList.add("aiauto-pre"));
+        const grid = document.getElementById("svcCards");
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll(".svc-card"));
+        const rail = document.querySelector(".services-rail");
+        cards.forEach((el) => el.classList.add("svc-card-pre"));
+        if (rail) {
+          rail.style.opacity = "0";
+          rail.style.transform = "translateY(28px)";
+          rail.style.transition = "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)";
+        }
         const observer = new IntersectionObserver(
           (entries, obs) => {
             entries.forEach((entry) => {
               if (!entry.isIntersecting) return;
-              tiles.forEach((el) => el.classList.add("aiauto-in"));
+              cards.forEach((el) => el.classList.add("svc-card-in"));
+              if (rail) {
+                rail.style.opacity = "1";
+                rail.style.transform = "translateY(0)";
+              }
               obs.disconnect();
             });
           },
-          { threshold: 0.2 },
+          { threshold: 0.15 }
         );
-        observer.observe(mosaic);
+        observer.observe(grid);
       })();
 
 // our process — accordion of steps; the active one drives the ring
