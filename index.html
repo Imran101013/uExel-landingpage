@@ -1386,262 +1386,352 @@
 
       /* ===== SERVICES ===== */
       .services {
-        background: var(--black);
-        padding: 120px 0;
+        --svc-ink: var(--navy-2);
+        --svc-photo-w: clamp(150px, 12.5vw, 300px);
+        --svc-pad-y: 120px;
+        --svc-row-gap: 64px;
+        background: var(--offwhite);
         overflow: hidden;
-        position: relative;
+        isolation: isolate;
       }
+      /* faded office photo washed out behind the whole section */
       .services::before {
         content: "";
         position: absolute;
         inset: 0;
-        background-image: radial-gradient(circle, rgba(9,109,217,0.07) 1px, transparent 1px);
-        background-size: 44px 44px;
+        z-index: -1;
+        background:
+          linear-gradient(90deg, rgba(245, 248, 252, 0.7) 0%, rgba(245, 248, 252, 0) 45%),
+          linear-gradient(180deg, rgba(245, 248, 252, 0.97) 0%, rgba(245, 248, 252, 0.88) 50%, rgba(245, 248, 252, 0.93) 100%),
+          url("Services-bg.jpg") 40% 55% / cover no-repeat;
+        filter: grayscale(0.5);
         pointer-events: none;
-        mask-image: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(0,0,0,0.5) 0%, transparent 100%);
-        -webkit-mask-image: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(0,0,0,0.5) 0%, transparent 100%);
       }
       .services-layout {
         display: grid;
-        grid-template-columns: 320px 1fr;
-        gap: 50px;
-        align-items: start;
+        grid-template-columns: clamp(260px, 20vw, 330px) minmax(0, 1fr) var(--svc-photo-w);
+        column-gap: clamp(40px, 4vw, 64px);
+        /* left edge lines up with .wrap content; the photo column runs to the viewport edge */
+        padding-left: max(40px, calc((100% - var(--maxw)) / 2 + 40px));
       }
+
+      /* left rail */
       .services-rail {
-        position: sticky;
-        top: 50px;
+        display: flex;
+        flex-direction: column;
+        padding-block: var(--svc-pad-y);
       }
       .services-rail h2 {
-        font-size: clamp(28px, 3.2vw, 40px);
-        color: #fff;
-        line-height: 1.05;
-        margin: 0 0 20px;
+        font-size: clamp(36px, 3.3vw, 48px);
+        font-weight: 500;
+        line-height: 1.08;
+        letter-spacing: -0.01em;
+        text-transform: none;
+        color: var(--svc-ink);
+        text-wrap: balance;
+        margin: 0 0 24px;
+      }
+      .services-rail-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 48px;
       }
       .services-rail-lede {
-        font-size: 14.5px;
-        line-height: 1.65;
-        color: #7d8590;
-        margin: 0 0 36px;
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 0 0 32px;
+        max-width: 38ch;
       }
-      .services-core-pills {
+      .services-rail-help {
+        margin: 18px 0 0;
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--muted-2);
+        max-width: 32ch;
+      }
+      .services-rail-help strong {
+        display: block;
+        color: var(--svc-ink);
+        font-weight: 600;
+      }
+      .services-practices {
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid rgba(10, 46, 73, 0.14);
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-bottom: 36px;
       }
-      .services-core-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 11px 16px;
-        border: 1px solid rgba(9,109,217,0.35);
-        border-radius: 8px;
-        font-size: 13px;
+      .services-practices-label {
+        margin: 0 0 4px;
+        font-size: 12px;
         font-weight: 600;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: #5fb3e6;
-        background: rgba(9,109,217,0.07);
-        transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        color: var(--muted-2);
       }
-      .services-core-pill:hover {
-        background: rgba(9,109,217,0.16);
-        border-color: rgba(9,109,217,0.6);
-        color: #fff;
+      .services-practice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 8px 0;
+        font-family: "Fraunces", "Inter", serif;
+        font-size: 20px;
+        font-weight: 500;
+        color: var(--svc-ink);
+        transition: color 0.25s ease;
+      }
+      .services-practice svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .services-practice:hover {
+        color: var(--blue);
+      }
+      .services-practice:hover svg {
         transform: translateX(4px);
       }
-      .services-core-pill svg {
-        width: 15px;
-        height: 15px;
+
+      /* service grid — no card chrome; subgrid keeps titles and copy aligned across each row */
+      .svc-items {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: clamp(28px, 3vw, 48px);
+        padding-block: var(--svc-pad-y) calc(var(--svc-pad-y) - var(--svc-row-gap));
+      }
+      .svc-item {
+        display: grid;
+        grid-row: span 4;
+        grid-template-rows: subgrid;
+        row-gap: 0;
+        align-content: start;
+        padding-bottom: var(--svc-row-gap);
+      }
+      .svc-item-icon {
+        display: block;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 26px;
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .svc-item-icon svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        stroke: var(--svc-ink);
+      }
+      .svc-item-icon .acc {
+        stroke: var(--blue);
+      }
+      .svc-item-icon .dot {
+        stroke-width: 2.6;
+      }
+      .svc-item-icon .solid {
+        fill: var(--offwhite);
+      }
+      .svc-item:hover .svc-item-icon {
+        transform: translateY(-4px);
+      }
+      .svc-item h3 {
+        font-size: clamp(20px, 1.6vw, 24px);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: -0.005em;
+        text-transform: none;
+        color: var(--svc-ink);
+        text-wrap: pretty;
+        align-self: end;
+        margin: 0 0 14px;
+      }
+      .svc-item p {
+        margin: 0 0 24px;
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--muted-2);
+        max-width: 36ch;
+      }
+      .svc-item-explore {
+        justify-self: start;
+        align-self: start;
+        gap: 10px;
+        padding: 11px 18px 11px 20px;
+        font-size: 12.5px;
+        color: #096dd9;
+        background: transparent;
+        border: 1px solid rgba(10, 46, 73, 0.28);
+        transition:
+          background 0.25s ease,
+          border-color 0.25s ease,
+          color 0.25s ease;
+      }
+      .svc-item-explore svg {
+        width: 14px;
+        height: 14px;
         flex-shrink: 0;
-        opacity: 0.8;
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      .services-core-pill-label {
-        flex: 1;
+      .svc-item-explore:hover {
+        background: var(--svc-ink);
+        border-color: var(--svc-ink);
+        color: #fff;
       }
-      .services-core-pill-arrow {
-        opacity: 0.5;
-        font-size: 16px;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-      .services-core-pill:hover .services-core-pill-arrow {
-        opacity: 1;
+      .svc-item-explore:hover svg {
         transform: translateX(3px);
       }
-      /* service cards grid */
-      .svc-cards {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        border-radius: 20px;
-        overflow: hidden;
-        padding-top: 5px;
-      }
-      .svc-card {
+
+      /* edge photo — bleeds off the right side of the viewport */
+      .services-photo {
         position: relative;
-        background: #0d1117;
-        padding: 34px 28px 28px;
-        display: flex;
-        flex-direction: column;
         overflow: hidden;
-        border-left: 2px solid transparent;
-        transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease;
+        background: var(--navy-2);
       }
-      /* per-card accent colours cycling through 3 blue tones */
-      .svc-card:nth-child(1), .svc-card:nth-child(2) { --svc-accent: #096dd9; }
-      .svc-card:nth-child(3), .svc-card:nth-child(4) { --svc-accent: #1d4ed8; }
-      .svc-card:nth-child(5), .svc-card:nth-child(6) { --svc-accent: #0ea5e9; }
-      /* bottom-left radial glow */
-      .svc-card::after {
+      .services-photo img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 38% 50%;
+      }
+      .services-photo::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 80% 60% at 0% 110%, rgba(var(--svc-accent-rgb,9,109,217),0.12) 0%, transparent 70%);
-        opacity: 0;
-        transition: opacity 0.4s ease;
+        background: linear-gradient(90deg, rgba(10, 46, 73, 0.22) 0%, rgba(10, 46, 73, 0) 45%);
         pointer-events: none;
       }
-      .svc-card:hover {
-        background: #111720;
-        border-left-color: var(--svc-accent);
-        transform: translateY(-3px);
-        box-shadow: 0 16px 40px -16px rgba(9,109,217,0.3);
-      }
-      .svc-card:hover::after  { opacity: 1; }
-      .svc-card-top {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 16px;
-      }
-      .svc-card-icon {
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
-        background: rgba(9,109,217,0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--svc-accent, var(--blue));
-        flex-shrink: 0;
-        transition: background 0.3s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
-      }
-      .svc-card-icon svg {
-        width: 18px;
-        height: 18px;
-      }
-      .svc-card:hover .svc-card-icon {
-        background: rgba(9,109,217,0.18);
-        transform: rotate(8deg) scale(1.08);
-        box-shadow: 0 0 0 6px rgba(9,109,217,0.08);
-      }
-      .svc-card h3 {
-        font-family: "Inter", sans-serif;
-        font-size: 15.5px;
-        font-weight: 600;
-        color: #d1d9e0;
-        text-transform: none;
-        letter-spacing: 0;
-        margin: 0;
-        line-height: 1.3;
-        transition: color 0.3s ease;
-      }
-      .svc-card:hover h3 { color: #fff; }
-      .svc-card p {
-        font-size: 13px;
-        line-height: 1.65;
-        color: #4a5568;
-        margin: 0 0 20px;
-        flex: 1;
-        transition: color 0.3s ease;
-      }
-      .svc-card:hover p { color: #7a8694; }
-      .svc-card-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: auto;
-      }
-      .svc-card-tag {
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        padding: 3px 9px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.07);
-        color: rgba(255,255,255,0.3);
-        transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-      }
-      .svc-card:hover .svc-card-tag {
-        background: rgba(9,109,217,0.12);
-        border-color: rgba(9,109,217,0.3);
-        color: #5fb3e6;
-      }
-      /* bottom CTA strip */
-      .services-bottom {
-        margin-top: 32px;
-        padding: 22px 20px;
-        border: 1px solid rgba(255,255,255,0.07);
-        border-radius: 12px;
-        background: rgba(255,255,255,0.02);
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .services-bottom p {
-        margin: 0;
-        font-size: 18px;
-        line-height: 1.55;
-        color: #5a6475;
-      }
-      .services-bottom p strong {
-        color: #c7cdd4;
-        font-weight: 500;
-      }
-      .services-bottom .btn {
-        align-self: flex-start;
-      }
-      /* entrance animation */
-      .svc-card-pre {
+
+      /* entrance — JS arms this only when motion is allowed, so content is visible by default */
+      .services.is-armed .services-rail > *,
+      .services.is-armed .svc-item {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(22px);
       }
-      @media (prefers-reduced-motion: no-preference) {
-        .svc-card-pre {
-          transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1);
-        }
-        .svc-card-pre:nth-child(1) { transition-delay: 0s; }
-        .svc-card-pre:nth-child(2) { transition-delay: 0.07s; }
-        .svc-card-pre:nth-child(3) { transition-delay: 0.14s; }
-        .svc-card-pre:nth-child(4) { transition-delay: 0.21s; }
-        .svc-card-pre:nth-child(5) { transition-delay: 0.28s; }
-        .svc-card-pre:nth-child(6) { transition-delay: 0.35s; }
+      .services.is-armed .services-photo {
+        clip-path: inset(0 0 0 100%);
       }
-      .svc-card-pre.svc-card-in {
+      .services.is-armed .services-photo img {
+        transform: scale(1.12);
+      }
+      .services.is-in .services-rail > *,
+      .services.is-in .svc-item {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
+        transition:
+          opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
-      @media (max-width: 900px) {
+      .services.is-in .services-rail > :nth-child(2) { transition-delay: 0.08s; }
+      .services.is-in .services-rail > :nth-child(3) { transition-delay: 0.16s; }
+      .services.is-in .svc-item {
+        transition-delay: calc(0.12s + var(--i, 0) * 0.07s);
+      }
+      .services.is-in .services-photo {
+        clip-path: inset(0);
+        transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.18, 1) 0.1s;
+      }
+      .services.is-in .services-photo img {
+        transform: none;
+        transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+      }
+
+      @media (max-width: 1180px) {
         .services-layout {
-          grid-template-columns: 1fr;
-          gap: 48px;
+          grid-template-columns: minmax(0, 1fr) var(--svc-photo-w);
         }
         .services-rail {
-          position: static;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          align-items: start;
+          column-gap: 48px;
+          padding-bottom: 64px;
         }
-        .services-core-pills {
-          flex-direction: row;
-          flex-wrap: wrap;
+        .services-rail h2 {
+          grid-column: 1;
+          grid-row: 1 / span 2;
+          font-size: clamp(36px, 4.4vw, 48px);
+          margin: 0;
         }
-        .services-core-pill {
-          flex-direction: row;
+        .services-rail-body {
+          grid-column: 2;
+          margin-bottom: 0;
+        }
+        .services-practices {
+          grid-column: 2;
+          margin-top: 32px;
+        }
+        .svc-items {
+          grid-column: 1;
+          padding-top: 0;
+        }
+        .services-photo {
+          grid-column: 2;
+          grid-row: 1 / span 2;
         }
       }
-      @media (max-width: 600px) {
-        .svc-cards {
-          grid-template-columns: 1fr;
+      @media (max-width: 980px) {
+        .services {
+          --svc-pad-y: 88px;
+        }
+        .services-layout {
+          padding-left: 24px;
+        }
+        .services-rail {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .services-rail h2 {
+          grid-row: auto;
+          max-width: 16ch;
+          margin-bottom: 20px;
+        }
+        .services-rail-body,
+        .services-practices {
+          grid-column: 1;
+        }
+        .svc-items {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 720px) {
+        .services {
+          --svc-pad-y: 64px;
+          --svc-row-gap: 48px;
+        }
+        .services-layout {
+          grid-template-columns: minmax(0, 1fr);
+          column-gap: 0;
+          padding-left: 0;
+        }
+        .services-rail,
+        .svc-items {
+          padding-inline: 24px;
+        }
+        .services-rail {
+          padding-bottom: 48px;
+        }
+        .services-photo {
+          grid-column: 1;
+          grid-row: auto;
+          height: 320px;
+        }
+        .services-photo img {
+          object-position: 70% 25%;
+        }
+      }
+      @media (max-width: 540px) {
+        .services {
+          --svc-pad-y: 52px;
+          --svc-row-gap: 40px;
+        }
+        .svc-items {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .services-photo {
+          height: 260px;
         }
       }
 
@@ -3089,7 +3179,6 @@
         .work-with,
         .featured,
         .expertise,
-        .services,
         .process,
         .testimonials,
         .cta-banner {
@@ -3145,51 +3234,6 @@
       button:focus-visible {
         outline: 2px solid var(--blue);
         outline-offset: 3px;
-      }
-
-      /* ---- compact service card grid (AI & Automation Services) ---- */
-      .svc-grid {
-        margin-top: 50px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
-      }
-      .svc-card {
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 26px 24px;
-        transition:
-          border-color 0.3s ease,
-          background 0.3s ease,
-          transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      .svc-card:hover {
-        border-color: rgba(9, 109, 217, 0.5);
-        background: rgba(255, 255, 255, 0.05);
-        transform: translateY(-3px);
-      }
-      .svc-card h3 {
-        font-size: 17px;
-        color: #fff;
-        margin: 0 0 10px;
-        font-weight: 400;
-      }
-      .svc-card p {
-        margin: 0;
-        font-size: 13.5px;
-        line-height: 1.55;
-        color: #aeb6bf;
-      }
-      @media (max-width: 900px) {
-        .svc-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      @media (max-width: 560px) {
-        .svc-grid {
-          grid-template-columns: 1fr;
-        }
       }
 
       /* ---- horizontal era timeline (The Journey) ---- */
@@ -3776,146 +3820,154 @@
         </div>
     </section>
 
-    <section class="services" id="services">
-      <div class="wrap">
-        <div class="services-layout">
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="services-layout">
 
-          <!-- Left rail -->
-          <div class="services-rail">
-            <h2>Our Services</h2>
+        <!-- Left rail -->
+        <div class="services-rail">
+          <h2 id="services-title">Services built around your business</h2>
+          <div class="services-rail-body">
             <p class="services-rail-lede">End-to-end engineering across the disciplines that matter — from cloud infrastructure and custom software to ERP and design.</p>
-            <div class="services-core-pills">
-              <a href="#expertise" class="services-core-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z" />
-                </svg>
-                <span class="services-core-pill-label">Applied AI</span>
-                <span class="services-core-pill-arrow">→</span>
-              </a>
-              <a href="#expertise" class="services-core-pill">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M9 2h6" /><path d="M10 2v6.5L4.8 17a2 2 0 001.7 3h10.9a2 2 0 001.7-3L14 8.5V2" /><path d="M7 14h10" />
-                </svg>
-                <span class="services-core-pill-label">Healthcare IT</span>
-                <span class="services-core-pill-arrow">→</span>
-              </a>
-            </div>
-            <div class="services-bottom">
-              <p><strong>Not sure which service fits?</strong> <br/> Tell us what you're building and we'll map it to the right team.</p>
-              <a href="#contact" class="btn btn-primary">Book a Call</a>
-            </div>
+            <a href="#contact" class="btn btn-primary">Book a Call</a>
+            <p class="services-rail-help"><strong>Not sure which service fits?</strong> Tell us what you're building and we'll map it to the right team.</p>
           </div>
-
-          <!-- Right: service cards -->
-          <div>
-            <div class="svc-cards" id="svcCards">
-
-              <article class="svc-card" data-index="01">
-                <div class="svc-card-top">
-                  <div class="svc-card-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
-                    </svg>
-                  </div>
-                  <h3>Custom Software Development</h3>
-                </div>
-                <p>Bespoke web and backend systems designed around your domain — clean architecture, tested, and built to scale from day one.</p>
-                <div class="svc-card-tags">
-                  <span class="svc-card-tag">Web Apps</span>
-                  <span class="svc-card-tag">APIs</span>
-                  <span class="svc-card-tag">Microservices</span>
-                </div>
-              </article>
-
-              <article class="svc-card" data-index="02">
-                <div class="svc-card-top">
-                  <div class="svc-card-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="2" y="3" width="20" height="14" rx="2" /><path d="M8 21h8M12 17v4" />
-                    </svg>
-                  </div>
-                  <h3>Web &amp; Mobile Development</h3>
-                </div>
-                <p>React, React Native, and cross-platform apps — from MVP to app-store launch, built for performance and accessibility.</p>
-                <div class="svc-card-tags">
-                  <span class="svc-card-tag">React</span>
-                  <span class="svc-card-tag">React Native</span>
-                  <span class="svc-card-tag">PWA</span>
-                </div>
-              </article>
-
-              <article class="svc-card" data-index="03">
-                <div class="svc-card-top">
-                  <div class="svc-card-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M7 18a4 4 0 01-.6-7.96A5 5 0 0116.9 8.1 4.5 4.5 0 0117.5 18H7z" />
-                    </svg>
-                  </div>
-                  <h3>Cloud &amp; DevOps</h3>
-                </div>
-                <p>AWS architecture, CI/CD pipelines, containerisation, and cost-modelled migrations — operated and monitored after go-live.</p>
-                <div class="svc-card-tags">
-                  <span class="svc-card-tag">AWS</span>
-                  <span class="svc-card-tag">Docker</span>
-                  <span class="svc-card-tag">Kubernetes</span>
-                </div>
-              </article>
-
-              <article class="svc-card" data-index="04">
-                <div class="svc-card-top">
-                  <div class="svc-card-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 17l6-6 4 4 8-9" /><path d="M15 6h6v6" />
-                    </svg>
-                  </div>
-                  <h3>ERP &amp; Business Systems</h3>
-                </div>
-                <p>Odoo implementation, customisation, and integration — one system of record with role-based approvals and live reporting.</p>
-                <div class="svc-card-tags">
-                  <span class="svc-card-tag">Odoo</span>
-                  <span class="svc-card-tag">Integrations</span>
-                  <span class="svc-card-tag">Reporting</span>
-                </div>
-              </article>
-
-              <article class="svc-card" data-index="05">
-                <div class="svc-card-top">
-                  <div class="svc-card-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="9" cy="7" r="4" /><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" /><path d="M16 3.13a4 4 0 010 7.75" /><path d="M21 21v-2a4 4 0 00-3-3.87" />
-                    </svg>
-                  </div>
-                  <h3>Staff Augmentation</h3>
-                </div>
-                <p>Senior engineers embedded directly into your team — same timezone overlap, same Slack, same code review standards as your own engineers.</p>
-                <div class="svc-card-tags">
-                  <span class="svc-card-tag">Dedicated Teams</span>
-                  <span class="svc-card-tag">Senior Engineers</span>
-                </div>
-              </article>
-
-              <article class="svc-card" data-index="06">
-                <div class="svc-card-top">
-                  <div class="svc-card-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" />
-                    </svg>
-                  </div>
-                  <h3>UI/UX Design</h3>
-                </div>
-                <p>Wireframes, interactive prototypes, and production-ready design systems — validated with real users before a line of code is written.</p>
-                <div class="svc-card-tags">
-                  <span class="svc-card-tag">Figma</span>
-                  <span class="svc-card-tag">Design Systems</span>
-                  <span class="svc-card-tag">Prototyping</span>
-                </div>
-              </article>
-
-            </div>
-
+          <div class="services-practices">
+            <p class="services-practices-label">Specialist practices</p>
+            <a href="#expertise" class="services-practice">
+              Healthcare IT
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
+            </a>
+            <a href="#expertise" class="services-practice">
+              Applied AI
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
+            </a>
           </div>
+        </div>
+
+        <!-- Service grid -->
+        <div class="svc-items">
+
+          <article class="svc-item" style="--i: 0">
+            <span class="svc-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="8" width="40" height="32" rx="3" />
+                <path d="M4 15h40" />
+                <path class="dot" d="M9 11.5h.01M13 11.5h.01M17 11.5h.01" />
+                <path class="acc" d="M19 22.5l-5.5 5 5.5 5M29 22.5l5.5 5-5.5 5M26.5 20l-5 15" />
+              </svg>
+            </span>
+            <h3>Custom Software Development</h3>
+            <p>Bespoke web and backend systems designed around your domain — clean architecture, tested, and built to scale from day one.</p>
+            <a href="#contact" class="btn svc-item-explore" aria-label="Explore Custom Software Development">
+              Explore
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
+            </a>
+          </article>
+
+          <article class="svc-item" style="--i: 1">
+            <span class="svc-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="9" width="28" height="21" rx="2.5" />
+                <path d="M12 37h10M17 30v7" />
+                <path d="M8 15h10M8 19.5h15M8 24h7" />
+                <rect class="acc" x="34" y="16" width="11" height="22" rx="2.5" />
+                <path class="acc" d="M38 34h3" />
+              </svg>
+            </span>
+            <h3>Web &amp; Mobile Development</h3>
+            <p>React, React Native, and cross-platform apps — from MVP to app-store launch, built for performance and accessibility.</p>
+            <a href="#contact" class="btn svc-item-explore" aria-label="Explore Web &amp; Mobile Development">
+              Explore
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
+            </a>
+          </article>
+
+          <article class="svc-item" style="--i: 2">
+            <span class="svc-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 33a8 8 0 01-1.2-15.92A10 10 0 0133.8 13.2 9 9 0 0135 33H14z" />
+                <path class="acc" d="M24 28.5v-9M20 23l4-4 4 4" />
+                <path d="M16 42h16M24 33v9" />
+                <circle cx="13.5" cy="42" r="2.5" />
+                <circle cx="34.5" cy="42" r="2.5" />
+              </svg>
+            </span>
+            <h3>Cloud &amp; DevOps</h3>
+            <p>AWS architecture, CI/CD pipelines, containerisation, and cost-modelled migrations — operated and monitored after go-live.</p>
+            <a href="#contact" class="btn svc-item-explore" aria-label="Explore Cloud &amp; DevOps">
+              Explore
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
+            </a>
+          </article>
+
+          <article class="svc-item" style="--i: 3">
+            <span class="svc-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="7" width="40" height="34" rx="3" />
+                <path d="M4 14h40" />
+                <path class="dot" d="M9 10.5h.01M13 10.5h.01" />
+                <rect x="10" y="30" width="4" height="5" rx="1" />
+                <rect x="17.5" y="28" width="4" height="7" rx="1" />
+                <rect x="25" y="31" width="4" height="4" rx="1" />
+                <rect x="32.5" y="27" width="4" height="8" rx="1" />
+                <path class="acc" d="M12 25l7.5-4 7.5 3 7.5-5.5" />
+                <circle class="acc solid" cx="34.5" cy="18.5" r="1.8" />
+              </svg>
+            </span>
+            <h3>ERP &amp; Business Systems</h3>
+            <p>Odoo implementation, customisation, and integration — one system of record with role-based approvals and live reporting.</p>
+            <a href="#contact" class="btn svc-item-explore" aria-label="Explore ERP &amp; Business Systems">
+              Explore
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
+            </a>
+          </article>
+
+          <article class="svc-item" style="--i: 4">
+            <span class="svc-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="15" r="7" />
+                <path d="M5 41v-3a8 8 0 018-8h10a8 8 0 018 8v3" />
+                <path class="acc" d="M31 8.3a7 7 0 010 13.4" />
+                <path class="acc" d="M43 41v-3a8 8 0 00-6-7.7" />
+              </svg>
+            </span>
+            <h3>Staff Augmentation</h3>
+            <p>Senior engineers embedded directly into your team — same timezone overlap, same Slack, same code review standards as your own engineers.</p>
+            <a href="#contact" class="btn svc-item-explore" aria-label="Explore Staff Augmentation">
+              Explore
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
+            </a>
+          </article>
+
+          <article class="svc-item" style="--i: 5">
+            <span class="svc-item-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path class="acc" d="M9 39L13 17M39 9L35 31" />
+                <path d="M9 39C13 17 35 31 39 9" />
+                <circle class="acc solid" cx="13" cy="17" r="2" />
+                <circle class="acc solid" cx="35" cy="31" r="2" />
+                <rect class="solid" x="6" y="36" width="6" height="6" rx="1" />
+                <rect class="solid" x="36" y="6" width="6" height="6" rx="1" />
+              </svg>
+            </span>
+            <h3>UI/UX Design</h3>
+            <p>Wireframes, interactive prototypes, and production-ready design systems — validated with real users before a line of code is written.</p>
+            <a href="#contact" class="btn svc-item-explore" aria-label="Explore UI/UX Design">
+              Explore
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
+            </a>
+          </article>
 
         </div>
+
+        <!-- Edge photo -->
+        <div class="services-photo" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 720px)" srcset="Services-photo-wide.jpg" width="1200" height="800" />
+            <img src="Services-photo.jpg" alt="" width="640" height="1600" loading="lazy" decoding="async" />
+          </picture>
+        </div>
+
       </div>
     </section>
 
@@ -4659,33 +4711,24 @@
         observer.observe(section);
       })();
 
-// services — staggered card entrance
+// services — edge-photo wipe + staggered rail/grid entrance; armed only when
+      // motion is allowed, so the section stays fully visible without JS
       (function () {
-        const grid = document.getElementById("svcCards");
-        if (!grid) return;
-        const cards = Array.from(grid.querySelectorAll(".svc-card"));
-        const rail = document.querySelector(".services-rail");
-        cards.forEach((el) => el.classList.add("svc-card-pre"));
-        if (rail) {
-          rail.style.opacity = "0";
-          rail.style.transform = "translateY(28px)";
-          rail.style.transition = "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)";
-        }
+        const section = document.getElementById("services");
+        if (!section || !("IntersectionObserver" in window)) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        section.classList.add("is-armed");
         const observer = new IntersectionObserver(
           (entries, obs) => {
             entries.forEach((entry) => {
               if (!entry.isIntersecting) return;
-              cards.forEach((el) => el.classList.add("svc-card-in"));
-              if (rail) {
-                rail.style.opacity = "1";
-                rail.style.transform = "translateY(0)";
-              }
+              section.classList.add("is-in");
               obs.disconnect();
             });
           },
-          { threshold: 0.15 }
+          { threshold: 0, rootMargin: "0px 0px -15% 0px" }
         );
-        observer.observe(grid);
+        observer.observe(section);
       })();
 
 // our process — accordion of steps; the active one drives the ring
