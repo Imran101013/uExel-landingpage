@@ -223,7 +223,7 @@
       .hero {
         background-color: var(--black);
         color: #fff;
-        padding: 96px 0 0;
+        padding: 130px 0 100px;
         overflow: hidden;
         position: relative;
       }
@@ -437,63 +437,14 @@
       }
       .hero-lede {
         color: #c7cdd4;
-        font-size: 17px;
+        font-size: 20px;
         line-height: 1.55;
         margin: 0;
       }
-      .hero-trust {
-        position: relative;
-        z-index: 2;
-        margin-top: 10px;
-        border-top: 1px solid #2c2e3000;
-        background: rgba(5, 7, 10, 0.35);
-      }
-      .hero-trust-inner {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-        flex-wrap: wrap;
-        padding: 70px 40px;
-      }
-      .hero-trust-label {
-        margin: 0;
-        font-size: 20px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.55);
-        white-space: nowrap;
-      }
-      .hero-trust-marquee-wrap {
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-        -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-      }
-      .hero-trust-logos {
-        display: flex;
-        align-items: center;
-        gap: 34px;
-        flex-wrap: nowrap;
-        width: max-content;
-        animation: scroll 22s linear infinite;
-      }
-      .hero-trust-logo {
-        display: flex;
-        align-items: center;
-        flex-shrink: 0;
-      }
-      .hero-trust-logo img {
+      /* ===== PARTNERS ===== */
+      .partners .tech-logo img {
         height: 55px;
-        width: auto;
         object-fit: contain;
-        filter: grayscale(1) invert(1);
-        mix-blend-mode: screen;
-        opacity: 0.75;
-        transition: opacity 0.3s ease;
-      }
-      .hero-trust-logo img:hover {
-        opacity: 1;
       }
       /* ===== ABOUT ===== */
       .about-section {
@@ -1445,7 +1396,7 @@
         max-width: 38ch;
       }
       .services-rail-help {
-        margin: 18px 0 0;
+        margin: 20px 0 20px;
         font-size: 14px;
         line-height: 1.55;
         color: var(--muted-2);
@@ -2327,7 +2278,7 @@
       }
       .stack-lede {
         flex: 0 0 auto;
-        max-width: 200px;
+        max-width: 220px;
         font-family: "Inter", sans-serif;
         font-size: 20px;
         text-transform: uppercase;
@@ -3159,7 +3110,7 @@
       }
       @media (max-width: 560px) {
         .hero {
-          padding: 64px 0 0;
+          padding: 64px 0 48px;
         }
         .hero-stats {
           flex-wrap: wrap;
@@ -3167,14 +3118,6 @@
         }
         .hero-stats > div {
           flex: 1 1 calc(50% - 10px);
-        }
-        .hero-trust-inner {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 16px;
-        }
-        .hero-trust-logos {
-          gap: 24px;
         }
         .work-with,
         .featured,
@@ -3351,7 +3294,6 @@
         .hero-orb,
         .hero-grid,
         .marquee,
-        .hero-trust-logos,
         .cta-illustration,
         .cta-shimmer {
           animation: none !important;
@@ -3433,7 +3375,7 @@
           <div class="hero-col hero-col-right">
             <p class="hero-lede hero-anim-up hero-anim-up-3">
               We are a global software consulting and product engineering
-              partner — building fast, scalable web, mobile, and AI-powered
+              partner - building fast, scalable web, mobile, and AI-powered
               solutions for startups and enterprises.
             </p>
             <div class="hero-stats hero-anim-up hero-anim-up-4">
@@ -3462,29 +3404,31 @@
 
       </div>
 
-      <div class="hero-trust">
-        <div class="wrap hero-trust-inner">
-          <p class="hero-trust-label">Trusted Partners</p>
-          <div class="hero-trust-marquee-wrap">
-            <div class="hero-trust-logos">
-              <span class="hero-trust-logo"><img src="logos/odoo.png" alt="Odoo" loading="lazy" /></span>
-              <span class="hero-trust-logo"><img src="logos/uconnect.png" alt="uConnect" loading="lazy" /></span>
-              <span class="hero-trust-logo"><img src="logos/medit360.webp" alt="MedIT360" loading="lazy" /></span>
-              <span class="hero-trust-logo"><img src="logos/execudea.png" alt="Execudea" loading="lazy" /></span>
-              <span class="hero-trust-logo"><img src="logos/greensquad.png" alt="GreenSquad" loading="lazy" /></span>
-              <span class="hero-trust-logo"><img src="logos/sdatechhub.png" alt="SDA Tech Hub" loading="lazy" /></span>
-              <span class="hero-trust-logo" aria-hidden="true"><img src="logos/odoo.png" alt="" loading="lazy" /></span>
-              <span class="hero-trust-logo" aria-hidden="true"><img src="logos/uconnect.png" alt="" loading="lazy" /></span>
-              <span class="hero-trust-logo" aria-hidden="true"><img src="logos/medit360.webp" alt="" loading="lazy" /></span>
-              <span class="hero-trust-logo" aria-hidden="true"><img src="logos/execudea.png" alt="" loading="lazy" /></span>
-              <span class="hero-trust-logo" aria-hidden="true"><img src="logos/greensquad.png" alt="" loading="lazy" /></span>
-              <span class="hero-trust-logo" aria-hidden="true"><img src="logos/sdatechhub.png" alt="" loading="lazy" /></span>
+      <div class="hero-shimmer" aria-hidden="true"></div>
+    </section>
+
+    <section class="partners marquee-wrap" id="partners" aria-label="Trusted partners">
+      <div class="wrap">
+        <div class="stack-row">
+          <p class="stack-lede">Trusted Partners</p>
+          <div class="marquee-track-wrap">
+            <div class="marquee">
+              <span class="tech-logo"><img src="logos/odoo.png" alt="Odoo" loading="lazy" /></span>
+              <span class="tech-logo"><img src="logos/uconnect.png" alt="uConnect" loading="lazy" /></span>
+              <span class="tech-logo"><img src="logos/medit360.webp" alt="MedIT360" loading="lazy" /></span>
+              <span class="tech-logo"><img src="logos/execudea.png" alt="Execudea" loading="lazy" /></span>
+              <span class="tech-logo"><img src="logos/greensquad.png" alt="GreenSquad" loading="lazy" /></span>
+              <span class="tech-logo"><img src="logos/sdatechhub.png" alt="SDA Tech Hub" loading="lazy" /></span>
+              <span class="tech-logo" aria-hidden="true"><img src="logos/odoo.png" alt="" loading="lazy" /></span>
+              <span class="tech-logo" aria-hidden="true"><img src="logos/uconnect.png" alt="" loading="lazy" /></span>
+              <span class="tech-logo" aria-hidden="true"><img src="logos/medit360.webp" alt="" loading="lazy" /></span>
+              <span class="tech-logo" aria-hidden="true"><img src="logos/execudea.png" alt="" loading="lazy" /></span>
+              <span class="tech-logo" aria-hidden="true"><img src="logos/greensquad.png" alt="" loading="lazy" /></span>
+              <span class="tech-logo" aria-hidden="true"><img src="logos/sdatechhub.png" alt="" loading="lazy" /></span>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="hero-shimmer" aria-hidden="true"></div>
     </section>
 
     <section class="about-section" id="about">
@@ -3583,7 +3527,7 @@
           <h2>The Journey <span class="arrow">↘</span></h2>
           <p class="lede">
             Fourteen years from a first enterprise client to an applied-AI
-            practice — the same team, compounding.
+            practice - the same team, compounding.
           </p>
         </div>
         <div class="journey-track">
@@ -3652,7 +3596,7 @@
             <h3 class="work-title">Startups</h3>
             <span class="work-rule" aria-hidden="true"></span>
             <p>
-              We help startups turn ideas into shipped products — fast. From
+              We help startups turn ideas into shipped products - fast. From
               MVP to full-scale launch, we build with modern stacks like
               React, Node.js, and cloud-native infrastructure. Flexible,
               agile, and outcome-driven, we become your engineering team at
@@ -3690,7 +3634,7 @@
             <span class="work-rule" aria-hidden="true"></span>
             <p>
               We build citizen-facing services and back-office systems for
-              public-sector and development organizations — from e-governance
+              public-sector and development organizations - from e-governance
               portals to registries — with ISO 27001-aligned security and
               capacity building for the teams who run them after we leave.
             </p>
@@ -3768,7 +3712,7 @@
             <div class="case-card-body">
               <h3 class="case-card-title">VR Training for Meta Quest</h3>
               <p class="case-card-text">
-                Immersive training and simulation shipped to Quest headsets —
+                Immersive training and simulation shipped to Quest headsets -
                 clinical procedure practice, safety drills, product walkthroughs.
               </p>
               <a href="#" class="case-card-more">Read More <span aria-hidden="true">→</span></a>
@@ -3827,9 +3771,9 @@
         <div class="services-rail">
           <h2 id="services-title">Services built around your business</h2>
           <div class="services-rail-body">
-            <p class="services-rail-lede">End-to-end engineering across the disciplines that matter — from cloud infrastructure and custom software to ERP and design.</p>
-            <a href="#contact" class="btn btn-primary">Book a Call</a>
+            <p class="services-rail-lede">End-to-end engineering across the disciplines that matter - from cloud infrastructure and custom software to ERP and design.</p>
             <p class="services-rail-help"><strong>Not sure which service fits?</strong> Tell us what you're building and we'll map it to the right team.</p>
+            <a href="#contact" class="btn btn-primary">Book a Call</a>
           </div>
           <div class="services-practices">
             <p class="services-practices-label">Specialist practices</p>
@@ -3857,7 +3801,7 @@
               </svg>
             </span>
             <h3>Custom Software Development</h3>
-            <p>Bespoke web and backend systems designed around your domain — clean architecture, tested, and built to scale from day one.</p>
+            <p>Bespoke web and backend systems designed around your domain - clean architecture, tested, and built to scale from day one.</p>
             <a href="#contact" class="btn svc-item-explore" aria-label="Explore Custom Software Development">
               Explore
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
@@ -3875,7 +3819,7 @@
               </svg>
             </span>
             <h3>Web &amp; Mobile Development</h3>
-            <p>React, React Native, and cross-platform apps — from MVP to app-store launch, built for performance and accessibility.</p>
+            <p>React, React Native, and cross-platform apps - from MVP to app-store launch, built for performance and accessibility.</p>
             <a href="#contact" class="btn svc-item-explore" aria-label="Explore Web &amp; Mobile Development">
               Explore
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
@@ -3893,7 +3837,7 @@
               </svg>
             </span>
             <h3>Cloud &amp; DevOps</h3>
-            <p>AWS architecture, CI/CD pipelines, containerisation, and cost-modelled migrations — operated and monitored after go-live.</p>
+            <p>AWS architecture, CI/CD pipelines, containerisation, and cost-modelled migrations - operated and monitored after go-live.</p>
             <a href="#contact" class="btn svc-item-explore" aria-label="Explore Cloud &amp; DevOps">
               Explore
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
@@ -3915,7 +3859,7 @@
               </svg>
             </span>
             <h3>ERP &amp; Business Systems</h3>
-            <p>Odoo implementation, customisation, and integration — one system of record with role-based approvals and live reporting.</p>
+            <p>Odoo implementation, customisation, and integration - one system of record with role-based approvals and live reporting.</p>
             <a href="#contact" class="btn svc-item-explore" aria-label="Explore ERP &amp; Business Systems">
               Explore
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
@@ -3932,7 +3876,7 @@
               </svg>
             </span>
             <h3>Staff Augmentation</h3>
-            <p>Senior engineers embedded directly into your team — same timezone overlap, same Slack, same code review standards as your own engineers.</p>
+            <p>Senior engineers embedded directly into your team - same timezone overlap, same Slack, same code review standards as your own engineers.</p>
             <a href="#contact" class="btn svc-item-explore" aria-label="Explore Staff Augmentation">
               Explore
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
@@ -3951,7 +3895,7 @@
               </svg>
             </span>
             <h3>UI/UX Design</h3>
-            <p>Wireframes, interactive prototypes, and production-ready design systems — validated with real users before a line of code is written.</p>
+            <p>Wireframes, interactive prototypes, and production-ready design systems - validated with real users before a line of code is written.</p>
             <a href="#contact" class="btn svc-item-explore" aria-label="Explore UI/UX Design">
               Explore
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5" /></svg>
@@ -3977,7 +3921,7 @@
           <h2>Our Process <span class="arrow">↘</span></h2>
           <p class="lede">
             A clear, collaborative path from first conversation to shipped
-            product — refined across 1100+ engagements.
+            product - refined across 1100+ engagements.
           </p>
         </div>
 
@@ -4098,7 +4042,7 @@
                   <div class="process-step-body-inner">
                     <div class="process-step-body-content">
                       <p>
-                        We start by listening — mapping your goals, users, and
+                        We start by listening - mapping your goals, users, and
                         constraints before writing a single line of code.
                       </p>
                       <ul class="process-step-list">
@@ -4179,7 +4123,7 @@
                   <div class="process-step-body-inner">
                     <div class="process-step-body-content">
                       <p>
-                        Our engineers ship in short, visible cycles — so you
+                        Our engineers ship in short, visible cycles - so you
                         always know exactly where the build stands.
                       </p>
                       <ul class="process-step-list">
@@ -4234,7 +4178,7 @@
                   <div class="process-step-body-inner">
                     <div class="process-step-body-content">
                       <p>
-                        Launch is the start, not the finish — we stay on to
+                        Launch is the start, not the finish - we stay on to
                         monitor, support, and iterate.
                       </p>
                       <ul class="process-step-list">
@@ -4333,7 +4277,7 @@
             </div>
             <div class="why-item-body">
               <h3 class="why-title">Fast Turnaround</h3>
-              <p class="why-desc">Agile delivery with no bloat — we ship working software in weeks, not quarters.</p>
+              <p class="why-desc">Agile delivery with no bloat - we ship working software in weeks, not quarters.</p>
             </div>
           </li>
           <li class="why-item reveal" data-d="2">
@@ -4367,7 +4311,7 @@
             </div>
             <div class="why-item-body">
               <h3 class="why-title">Ongoing Support</h3>
-              <p class="why-desc">Launch is a milestone, not an exit — we stay on for monitoring, fixes, and iteration.</p>
+              <p class="why-desc">Launch is a milestone, not an exit - we stay on for monitoring, fixes, and iteration.</p>
             </div>
           </li>
         </ol>
@@ -4484,7 +4428,7 @@
                     >
                   </h3>
                   <p class="insight-card-excerpt">
-                    From agentic workflows to compliance-aware LLMs — the
+                    From agentic workflows to compliance-aware LLMs - the
                     practical shifts we're seeing across healthcare,
                     government, and startup engagements this year.
                   </p>
@@ -4534,7 +4478,7 @@
         <div class="cta-copy">
           <h2 class="reveal">Have a project in mind?<br />Let's talk about it.</h2>
           <p class="cta-sub">
-            Tell us what you're building — we'll get back to you within one
+            Tell us what you're building - we'll get back to you within one
             business day.
           </p>
           <a href="mailto:info@uexel.com" class="btn btn-ghost reveal" data-d="2">Contact Us</a>
